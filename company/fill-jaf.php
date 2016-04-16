@@ -2,7 +2,7 @@
 
 session_start();
 $_SESSION['status'] = "failure";
-include 'functions.php'; 
+include '../functions.php'; 
 
 ?>
 
@@ -87,55 +87,7 @@ $(document).ready(function() {
 <body>
     <div id="wrapper">
 
-        <!-- Navigation -->
-        <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-            <!-- Brand and toggle get grouped for better mobile display -->
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="fill_jaf.php">Training & Placement Office, PEC Chandigarh</a>
-            </div>
-            <!-- Top Menu Items -->
-            <ul class="nav navbar-right top-nav">
-                
-            
-                
-                <li>
-                            <a href="#"><i class="fa fa-fw fa-power-off"></i> Log Out</a>
-
-                </li>
-            </ul>
-            <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
-            <div class="collapse navbar-collapse navbar-ex1-collapse">
-                <ul class="nav navbar-nav side-nav">
-				    <li>
-                        <a href="aboutcompany.php"><i class="fa fa-fw fa-table"></i> About Company</a>
-                    </li>
-                    <li class="active">
-                        <a href="fill_jaf.php"><i class="fa fa-fw fa-dashboard"></i> Fill JAF</a>
-                    </li>
-					<li>
-                        <a href="downloadjaf.php"><i class="fa fa-fw fa-bar-chart-o"></i> Download JAF</a>
-                    </li>
-					<li>
-                        <a href="contactdetails.php"><i class="fa fa-fw fa-dashboard"></i> Contact Details</a>
-                    </li>
-					
-                    <li>
-                        <a href="applications_company.php"><i class="fa fa-fw fa-bar-chart-o"></i> Applications</a>
-                    </li>
-                    <li>
-                        <a href=""><i class="fa fa-fw fa-table"></i> Send Queries</a>
-                    </li>
-					
-                  </ul>
-            </div>
-            <!-- /.navbar-collapse -->
-        </nav>
+        <?php include '../header-company.php'; ?>
 
         <div id="page-wrapper">
 
