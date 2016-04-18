@@ -16,7 +16,7 @@ if($result->num_rows > 0) {
 
 	while($row=$result->fetch_assoc()) {
 		$filename = $_SESSION['cname']."_".$row['job_designation']."_PEC.pdf";
-		$rethtml = $rethtml."<tr><td>".$sno.".   </td><td>".$row['job_designation']."</td><td><a href='downloadpdf.php?filename=".$filename."' target='_blank'>Download JAF</a></td></tr>";
+		$rethtml = $rethtml."<tr><td>".$sno.".   </td><td>".$row['job_designation']."</td><td><a href='downloadpdf.php?filename=JAFs/".$filename."' target='_blank'>Download JAF</a></td></tr>";
 	    $sno++;
 	}
 

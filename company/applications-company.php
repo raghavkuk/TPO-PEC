@@ -16,13 +16,17 @@ include '../functions.php';
     <script type="text/javascript" src="../js/jquery.js"></script>
 	<script type="text/javascript" src="../js/jquery-ui.js"></script>
     <script type="text/javascript" src="../js/bootstrap.min.js"></script>
-	<script type="text/javascript" src="../js/jquery.tabletoCSV.js"></script>
+	<script type="text/javascript" src="../js/jquery.table2excel.js"></script>
 </head>
 <script type="text/javascript">
 
 function download(tableid) {
-	var table = document.getElementById(tableid);
-	$(table).tableToCSV();
+	var tables = document.getElementById(tableid);
+	var caption=$(tables).find('caption').text();
+	$(tables).table2excel({
+		exclude: ".non-data",
+		filename: caption
+	});
 }
 
 $(document).ready(function(){
