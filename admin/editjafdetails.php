@@ -10,7 +10,7 @@ $sql="SELECT * from jaf_details where JAF_id='".$jafid."'";
 $result = $mysqli->query($sql);
 if($result->num_rows > 0)
 {
-	$rethtml=$rethtml."<form id='jaf' method='post' action='savejaftpo.php' class='col-md-5'>";
+	$rethtml=$rethtml."<form id='jaf' method='post' action='savejaftpo.php?jafid=$jafid' class='col-md-5'>";
 	while($row=$result->fetch_assoc()) {
 		if (strpos($row['selection_proc'],"Pre-Placement Talk") !== false) {
         $pptalk="checked";
@@ -81,6 +81,10 @@ if (strpos($row['selection_proc'],"Group Discussion") !== false) {
   <div class="form-group">
   <label for="other">Any other (Specify)</label>
   <input type="text" class="form-control input-lg" name="other" value="'.$row['other'].'" required>
+  </div>
+  <div class="form-group">
+  <label for="dateofvisit">Date of Visit</label>
+  <input type="date" class="form-control input-lg" value="'.$row['dateofvisit'].'" name="dateofvisit">
   </div>
   <div class="form-group">
   <label for="deadline">Application Deadline</label>

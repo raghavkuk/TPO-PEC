@@ -16,6 +16,7 @@ $interview = $_POST["interview"];
 $other = $_POST["other"];
 $selproc = "";
 $deadline = $_POST['deadline'];
+$dateofvisit=$_POST['dateofvisit'];
 $success = 0;
 
 if(isset($_POST["pptalk"]) && $_POST["pptalk"] == 'Yes')
@@ -27,13 +28,13 @@ if(isset($_POST["shortlistfromresume"]) && $_POST["shortlistfromresume"] == 'Yes
 if(isset($_POST["gd"]) && $_POST["gd"] == 'Yes')
 	$selproc=$selproc." Group Discussion";
 
-$sql = "INSERT into jaf_details (company_id,job_designation,job_description,ctc,gross,perks,bond,cgpa,written,interview,other,selection_proc,deadline) values('".$_SESSION['cid']."','".$designation."','".$jobdesc."','".$ctc."','".$gross."','".$perks."','".$bond."','".$cgpa."','".$written."','".$interview."','".$other."','".$selproc."','".$deadline."')";
+$sql = "INSERT into jaf_details (company_id,company_name,job_designation,job_description,ctc,gross,perks,bond,cgpa,written,interview,other,selection_proc,dateofvisit,deadline) values('".$_SESSION['cid']."','".$_SESSION['cname']."','".$designation."','".$jobdesc."','".$ctc."','".$gross."','".$perks."','".$bond."','".$cgpa."','".$written."','".$interview."','".$other."','".$selproc."','".$dateofvisit."','".$deadline."')";
 if ($mysqli->query($sql) === TRUE) {
     echo "New record created successfully";
 	$success=1;
 	
 } else {
-    echo "Error: " . $sql . "<br>" . $conn->error;
+    echo "Error: " . $sql . "<br>" . $mysqli->error;
 }
 
 $mysqli->close();
@@ -56,6 +57,7 @@ if($success==1){
  &nbsp; &nbsp; &nbsp;Written: <?php echo $written; ?><br>
  &nbsp; &nbsp; &nbsp;Interview: <?php echo $interview;?><br>
  &nbsp; &nbsp; &nbsp;Others: <?php echo $other;?><br>
+ &nbsp; &nbsp; &nbsp;Date of Visit: <?php echo $dateofvisit;?><br>
  &nbsp; &nbsp; &nbsp;Application deadline: <?php echo $deadline;?><br>
  </font>
 </p> 
@@ -69,7 +71,7 @@ if($success==1){
 
         //write html to PDF
         $mpdf->WriteHTML($body);
-        $filename=$_SESSION['cname']."_".$designation."_PEC.pdf";
+        $filename="../JAFs/".$_SESSION['cname']."_".$designation."_PEC.pdf";
         //output pdf
         //$mpdf->Output($filename,'D');
 

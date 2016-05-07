@@ -1,9 +1,6 @@
 <?php 
 session_start();
 include '../functions.php'; 
-$_SESSION['successedit']='fail';
-if(isset($_GET['status']))
-$_SESSION['successedit']=$_GET['status'];
 ?>
 <html>
 <head>
@@ -19,24 +16,16 @@ $_SESSION['successedit']=$_GET['status'];
 </head>
 <script type="text/javascript">
 $(document).ready(function(){
-	var status='<?php echo $_SESSION['successedit']?>';
-	if(status=='success')
-	{
-		$('#successmessage').html('<strong>Following are companies that sent a fresh JAF. Edit the JAF and send to the students..</strong><br><br>JAF Details successfully edited!!!');
-	}
-	else
-	{
-		$('#successmessage').html('<strong>Following are companies that sent a fresh JAF. Edit the JAF and send to the students..</strong>');
-	}
+	
 	$.ajax({
-		url: 'getnewcompanies.php',
+		url: 'getvisitingcompanies.php',
 		dataType: 'html',
 		success: function(rethtml) {
-			$('#newcompanies').html(rethtml);
+			$('#visitingcompanies').html(rethtml);
 			
 		},
 		error: function() {
-		    $('#newcompanies').html("<h3>Error</h3>");
+		    $('#visitingcompanies').html("<h3>Error</h3>");
 	    }
 	});
 	
@@ -65,11 +54,11 @@ $(document).ready(function(){
 
     </div>
     <!-- /#wrapper -->
-	<div class="alert alert-info alert-dismissable">
+	<!--div class="alert alert-info alert-dismissable">
 	<div id="successmessage">
 	</div>
-	</div>
-	<div id="newcompanies">
+	</div-->
+	<div id="visitingcompanies">
 	</div>
 	</body>
 	</html>
