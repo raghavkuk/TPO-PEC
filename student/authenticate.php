@@ -15,7 +15,7 @@ $result = $mysqli->query($query);
 if($result->num_rows == 1){
 
 	session_start();
-	$res_row = $mysqli->fetch_row($result);
+	$res_row = $result->fetch_row();
 	$_SESSION["sid"] = $res_row[0];
 	redirect("http://localhost/tpo/student/home.php");
 	$result->close();
