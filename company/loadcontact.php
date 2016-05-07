@@ -2,6 +2,7 @@
 
 session_start();
 
+include '../db_connection.php';
 $rethtml = "";
 
 $sql = "SELECT * from company_contact where company_id='".$_SESSION['cid']."'";

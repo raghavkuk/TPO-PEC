@@ -17,7 +17,7 @@ include '../functions.php';
 <script type="text/javascript">
 $(document).ready(function(){
 	var cid = <?php echo $_SESSION['cid']; ?>;
-	var about = <?php if (isset($_SESSION['about'])) {echo $_SESSION['about'];} ?>;
+	var about = <?php if (isset($_SESSION['about'])) {echo $_SESSION['about'];} else { echo 0;}?>;
 	
     if(cid != 0 || about == 1){
         $.ajax({
@@ -27,6 +27,7 @@ $(document).ready(function(){
         	success: function(rethtml) {
         		$('#aboutform').hide();
         		$('#aboutcompany').html(rethtml);
+				
         	},
         	error: function() {
         		$('#aboutcompany').html("<h3>Error</h3>");

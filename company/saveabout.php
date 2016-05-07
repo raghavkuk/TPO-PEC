@@ -2,6 +2,7 @@
 
 session_start();
 
+include '../db_connection.php';
 $_SESSION['about'] = 0;
 
 $name = $_POST['name'];

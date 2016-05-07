@@ -32,6 +32,7 @@ function preview() {
 	var interview="<font size='3'><strong>Interview: </strong></font><font size='4'>"+$('#interview').val()+"</font><br>";
 	var other="<font size='3'><strong>Other: </strong></font><font size='4'>"+$('input[name="other"]').val()+"</font><br>";
 	var deadline="<font size='3'><strong>Application Deadline: </strong></font><font size='4'>"+$('input[name="deadline"]').val()+"</font><br>";
+	var dateofvisit="<font size='3'><strong>Date of Visit: </strong></font><font size='4'>"+$('input[name="dateofvisit"]').val()+"</font><br>";
 	var data=designation+desc+ctc+gross+perks+bond+cgpa+written+interview+other+deadline;
 	$('#preview_data').html('');
     $('#preview_data').append(data);
@@ -197,6 +198,10 @@ $(document).ready(function() {
   <div class="form-group">
   <label for="other">Any other (Specify)</label>
   <input type="text" class="form-control input-lg" name="other" required>
+  </div>
+  <div class="form-group">
+  <label for="dateofvisit">Date of Visit</label>
+  <input type="date" class="form-control input-lg" name="dateofvisit">
   </div>
   <div class="form-group">
   <label for="deadline">Application Deadline</label>

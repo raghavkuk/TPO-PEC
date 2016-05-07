@@ -1,6 +1,7 @@
 <?php
 
 session_start();
+include '../db_connection.php';
 
 $contactname = $_POST["contactname"];
 $contactdesig = $_POST["contactdesig"];
