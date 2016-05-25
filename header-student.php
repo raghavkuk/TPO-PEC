@@ -16,7 +16,7 @@
             
                 
                 <li>
-                    <a href="#"><i class="fa fa-fw fa-power-off"></i> Log Out</a>
+                    <a href="login.php"><i class="fa fa-fw fa-power-off"></i><font color="#cdcdcd"> Log Out</font></a>
 
                 </li>
             </ul>
@@ -29,9 +29,7 @@
                     <li>
                         <a href="announcements.php"><i class="fa fa-fw fa-bar-chart-o"></i> Announcements</a>
                     </li>
-                    <li>
-                        <a href="already-visited.php"><i class="fa fa-fw fa-table"></i> Already Visited</a>
-                    </li>
+                    
                   </ul>
             </div>
             <!-- /.navbar-collapse -->

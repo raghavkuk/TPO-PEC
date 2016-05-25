@@ -1,4 +1,24 @@
 <!-- Navigation -->
+<style>
+a:link {
+    color: green;
+}
+
+/* visited link */
+a:visited {
+    color: green;
+}
+
+/* mouse over link */
+a:hover {
+    color: red;
+}
+
+/* selected link */
+a:active {
+    color: yellow;
+}
+</style>
 <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
@@ -8,17 +28,11 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="fill-jaf.php">Training & Placement Office, PEC Chandigarh</a>
+        <a class="navbar-brand" href="fill-jaf.php"><font color="aqua">Training & Placement Office, PEC Chandigarh</font></a>
     </div>
     <!-- Top Menu Items -->
     <ul class="nav navbar-right top-nav">
-        
-        <li>
-            <a href="#"><i class="fa fa-fw fa-power-off"></i> Log Out</a>
-        </li>
-    </ul>
-    <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
-    <div class="collapse navbar-collapse navbar-ex1-collapse">
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
         <ul class="nav navbar-nav side-nav">
 		    <li class="active">
                 <a href="aboutcompany.php"><i class="fa fa-fw fa-table"></i> About Company</a>
@@ -35,11 +49,16 @@
             <li>
                 <a href="applications-company.php"><i class="fa fa-fw fa-bar-chart-o"></i> Applications</a>
             </li>
-            <li>
-                <a href=""><i class="fa fa-fw fa-table"></i> Send Queries</a>
-            </li>
+            
 			
           </ul>
     </div>
+
+        <li>
+            <a href="company-login.html"><i class="fa fa-fw fa-power-off"></i> <font color="#cdcdcd">Log Out</font></a>
+        </li>
+    </ul>
+    <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
+    
     <!-- /.navbar-collapse -->
 </nav>

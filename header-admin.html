@@ -8,19 +8,19 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="fill-jaf.php">Training & Placement Office, PEC Chandigarh</a>
+        <a class="navbar-brand" href="fill-jaf.php"><font color="aqua">Training & Placement Office, PEC Chandigarh</font></a>
     </div>
     <!-- Top Menu Items -->
     <ul class="nav navbar-right top-nav">
         
         <li>
-            <a href="#"><i class="fa fa-fw fa-power-off"></i> Log Out</a>
+            <a href="admin-login.html"><i class="fa fa-fw fa-power-off"></i> <font color="#cdcdcd">Log Out</font></a>
         </li>
     </ul>
     <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
     <div class="collapse navbar-collapse navbar-ex1-collapse">
         <ul class="nav navbar-nav side-nav">
-		    <li class="active">
+		    <li>
                 <a href="addcompany.php"><i class="fa fa-fw fa-table"></i> Add a New Company</a>
             </li>
 			<li>
@@ -39,14 +39,29 @@
                 <a href="applications-admin.php"><i class="fa fa-fw fa-dashboard"></i> Applications</a>
             </li>
             <li>
-                <a href="editrecord.php"><i class="fa fa-fw fa-bar-chart-o"></i> Edit Placement Record</a>
+                <a href="#" data-toggle="collapse" data-target="#editmenu"><i class="fa fa-fw fa-arrows-v"></i> Edit Placement Record<i class="fa fa-fw fa-caret-down"></i></a>
+				<ul id="editmenu" class="collapse">
+                            <li>
+                                <a href="editrecord.php">B.E. Placement</a>
+                            </li>
+                            <li>
+                                <a href="#">M.E. Placement</a>
+                            </li>
+							<li>
+                                <a href="#">B.E. Internship</a>
+                            </li>
+                        </ul>
+            </li>
+			<li>
+                <a href="add-announcement.php"><i class="fa fa-fw fa-table"></i> Send an Announcement</a>
+            </li>
+			<li>
+                <a href="allannouncements.php"><i class="fa fa-fw fa-table"></i> See Sent Announcements</a>
             </li>
 			<li>
                 <a href="analytics.php"><i class="fa fa-fw fa-bar-chart-o"></i> Watch Analytics</a>
             </li>
-            <li>
-                <a href="queries.php"><i class="fa fa-fw fa-table"></i> Answer Queries</a>
-            </li>
+            
 			
           </ul>
     </div>

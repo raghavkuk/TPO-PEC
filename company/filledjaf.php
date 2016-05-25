@@ -7,7 +7,7 @@ include '../db_connection.php';
 $rethtml = "";
 $sno = 1;
 
-$sql = "SELECT * from jaf_details where company_id='".$_SESSION['cid']."'";
+$sql = "SELECT * from jaf_details where company_id='".$_SESSION['cid']."' order by JAF_id desc";
 $result = $mysqli->query($sql);
 
 if($result->num_rows > 0) {

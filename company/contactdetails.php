@@ -41,7 +41,7 @@ include '../functions.php';
         <div id="wrapper">
 
             <?php include '../header-company.php'; ?>
-
+			
             <div id="page-wrapper">
 
                 <div class="container-fluid">
@@ -49,7 +49,7 @@ include '../functions.php';
                     <!-- Page Heading -->
                     <div class="row">
                         <div class="col-lg-12">
-                            <h3 class="page-header">
+                            <h3  align="center" class="page-header">
                                 <?php echo $_SESSION['cname'] ?> Recruitment At PEC
                             </h3>
                             <!--ol class="breadcrumb"-->

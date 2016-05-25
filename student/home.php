@@ -19,12 +19,14 @@ $details_row = $result->fetch_assoc();
 $student_name = $details_row['name'];
 $branch = $details_row['branch'];
 $cgpa = $details_row['cgpa'];
-
+$_SESSION['branch']=$branch;
+$_SESSION['name']=$student_name;
+$_SESSION['cgpa']=$cgpa;
 $programme_query = "SELECT programme FROM ".$student_login_table." WHERE sid = ".$sid;
 $programme_result = $mysqli->query($programme_query);
 $programme_row = $programme_result->fetch_assoc();
 $programme = $programme_row['programme'];
-
+$_SESSION['prog']=$programme;
 ?>
 
 <!DOCTYPE html>
@@ -78,9 +80,21 @@ $programme = $programme_row['programme'];
                         <div class="panel-group" id="companies-accordion">
 
                             <?php 
-
-                                $jaf_query = "SELECT * FROM ".$jaf_table." WHERE cgpa <= ".$cgpa;
-                                $jaf_result = $mysqli->query($jaf_query);
+                                $pkg=0;
+                                $sql="select status, package from placementdetails where sid=$sid";
+								$result=$mysqli->query($sql);
+								while($row=$result->fetch_assoc())
+								{
+									if($row['status']!='PLACED')
+									{
+										$pkg=$row['package'];
+										$pkg=200000+$pkg;
+									}
+								}
+								
+								$jaf_query = "SELECT * FROM ".$jaf_table." WHERE reviewed>0 and cgpa <= ".$cgpa." and ctc>=$pkg and deadline>curdate() and programme like '%BE%' and (branches_be like '%$branch%' or branches_me like '%$branch%') order by deadline";
+                                
+								$jaf_result = $mysqli->query($jaf_query);
 
                                 $i = 0;
 
@@ -191,7 +205,8 @@ $programme = $programme_row['programme'];
                                                         <div class="form-group">
                                                             <label class="control-label col-sm-2"></label>
                                                             <div class="col-sm-10">
-                                                                <select class="form-control">
+                                                                <select class="form-control" name="cvoptions">
+																<option value="No CV">No CV</option>
                                                                 <?php 
 
                                                                     $cv_query = "SELECT * FROM ".$cv_table." WHERE sid = ".$sid ;
@@ -200,7 +215,7 @@ $programme = $programme_row['programme'];
                                                                     while ($cv = $cv_result->fetch_assoc()) {
                                                                         $filename = $cv['filename']; ?>
 
-                                                                        <option><?php echo $filename; ?></option>
+                                                                        <option value="<?php echo $filename;  ?>"><?php echo $filename; ?></option>
 
                                                                     <?php }
                                                                 ?>

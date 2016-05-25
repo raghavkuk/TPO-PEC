@@ -18,6 +18,17 @@ include '../functions.php';
     <script type="text/javascript" src="../js/bootstrap.min.js"></script>
 	<script type="text/javascript" src="../js/jquery.table2excel.js"></script>
 </head>
+<style>
+.ui-accordion { width: 100%; margin: 0 auto; } 
+.ui-accordion .ui-accordion-header { text-align: center; font-weight:bold; cursor: pointer; position: relative; margin-top: 10px; zoom: 1;margin-bottom: 10px; padding-top: 10px; padding-bottom: 10px; }
+.ui-accordion .ui-accordion-li-fix { display: inline; }
+.ui-accordion .ui-accordion-header-active { border-bottom: 0 !important; }
+.ui-accordion .ui-accordion-header a { display: block; font-size: 1em; padding: .5em .5em .5em .7em; }
+.ui-accordion-icons .ui-accordion-header a { padding-left: 2.2em;}
+.ui-accordion .ui-accordion-header .ui-icon { position: absolute; left: .5em; top: 50%; margin-top: -8px; }
+.ui-accordion .ui-accordion-content { padding: 1em 2.2em; border-top: 0; margin-top: -2px; position: relative; top: 1px; margin-bottom: 2px; overflow: auto; display: none; zoom: 1; }
+.ui-accordion .ui-accordion-content-active { display: block; }
+</style>
 <script type="text/javascript">
 
 function download(tableid) {
@@ -109,7 +120,7 @@ $(document).ready(function(){
                 <!-- Page Heading -->
                 <div class="row">
                     <div class="col-lg-12">
-                        <h3 class="page-header">
+                        <h3 align="center"  class="page-header">
                             <?php echo $_SESSION['cname'] ?> Recruitment At PEC
                         </h3>
                         <!--ol class="breadcrumb">

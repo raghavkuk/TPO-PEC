@@ -24,27 +24,28 @@
 
 <body>
 
-    <div id="page-wrapper">
+    
 
         <div class="container">
-
+<div class="page-header">
+    <font color="white"><h2 align="center">Training and Placement Cell, PEC Chandigarh</h2></font>
+</div>
             <form class="form-signin" method="POST" action="authenticate.php" >
-                <h2 class="form-signin-heading">Please sign in</h2>
+                <font color="white"><h2 class="form-signin-heading">Please sign in</h2></font>
                 <label for="inputEmail" class="sr-only">Username</label>
                 <input type="text" id="inputUsername" name="username" class="form-control" placeholder="Username" required="" autofocus="">
+				<br>
                 <label for="inputPassword" class="sr-only">Password</label>
                 <input type="password" id="inputPassword" name="password" class="form-control" placeholder="Password" required="">
-                <div class="checkbox">
-                    <label>
-                        <input type="checkbox" value="remember-me"> Remember me
-                    </label>
-                </div>
+                
                 <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
             </form>
-
+<center>
+<img src="../images/PEC-Logo.png">
+</center>
         </div>
 
-    </div>
+    
 
     <!-- jQuery -->
     <script src="../js/jquery.js"></script>

@@ -111,7 +111,8 @@ $(document).ready(function() {
         <input type="password" class="form-control input-lg" name="confirmpass" required>
     </div-->
 	</form>
-		<button id="submitbtn" class="btn btn-primary btn-lg btn-block">Preview</button>   
+	<br>
+		<button id="submitbtn" class="btn btn-primary btn-lg btn-block" style='width: 70%;'>Preview</button>   
 	</div>
 </body>
 </html>

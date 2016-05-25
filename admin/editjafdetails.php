@@ -6,11 +6,27 @@ $rethtml = "";
 $pptalk="";
 $sl="";
 $gd="";
+$aero="";
+$cse="";
+$civil="";
+$ece="";
+$ee="";
+$mech="";
+$meta="";
+$prod="";
+$meaero="";
+$mecse="";
+$mecivil="";
+$meece="";
+$meee="";
+$memech="";
+$memeta="";
+$meprod="";
 $sql="SELECT * from jaf_details where JAF_id='".$jafid."'";
 $result = $mysqli->query($sql);
 if($result->num_rows > 0)
 {
-	$rethtml=$rethtml."<form id='jaf' method='post' action='savejaftpo.php?jafid=$jafid' class='col-md-5'>";
+	$rethtml=$rethtml."<form id='jaf' method='post' action='savejaftpo.php?jafid=$jafid'>";
 	while($row=$result->fetch_assoc()) {
 		if (strpos($row['selection_proc'],"Pre-Placement Talk") !== false) {
         $pptalk="checked";
@@ -21,9 +37,64 @@ if (strpos($row['selection_proc'],"Shortlist from Resumes") !== false) {
 if (strpos($row['selection_proc'],"Group Discussion") !== false) {
         $gd="checked";
 }
-	$rethtml=$rethtml.'<h2>Job Details</h2>
+if (strpos($row['branches_be'],"Aerospace") !== false) {
+        $aero="checked";
+}
+if (strpos($row['branches_be'],"Civil") !== false) {
+        $civil="checked";
+}
+if (strpos($row['branches_be'],"Computer Science") !== false) {
+        $cse="checked";
+}
+if (strpos($row['branches_be'],"Electronics and Communication") !== false) {
+        $ece="checked";
+}
+if (strpos($row['branches_be'],"Electrical") !== false) {
+        $ee="checked";
+}
+if (strpos($row['branches_be'],"Mechanical") !== false) {
+        $mech="checked";
+}
+if (strpos($row['branches_be'],"Metallurgy") !== false) {
+        $meta="checked";
+}
+if (strpos($row['branches_be'],"Production") !== false) {
+        $prod="checked";
+}
+if (strpos($row['branches_me'],"Aerospace") !== false) {
+        $meaero="checked";
+}
+if (strpos($row['branches_me'],"Civil") !== false) {
+        $mecivil="checked";
+}
+if (strpos($row['branches_me'],"Computer Science") !== false) {
+        $mecse="checked";
+}
+if (strpos($row['branches_me'],"Electronics and Communication") !== false) {
+        $meece="checked";
+}
+if (strpos($row['branches_me'],"Electrical") !== false) {
+        $meee="checked";
+}
+if (strpos($row['branches_me'],"Mechanical") !== false) {
+        $memech="checked";
+}
+if (strpos($row['branches_me'],"Metallurgy") !== false) {
+        $memeta="checked";
+}
+if (strpos($row['branches_me'],"Production") !== false) {
+        $meprod="checked";
+}
+	$rethtml=$rethtml.'<div id="col1"><h2>Job Details</h2>
 	<div id="jobdetails">
 	<p>
+	<div class="form-group">
+	    <label for="type">Job Type</label>
+		<select name="type" id="type" class="form-control input-lg" value="'.$row['jobtype'].'">
+        <option value="Full-Time">Full-Time</option>
+  <option value="Internship">Internship</option>
+  </select>
+  </div>
 	<div class="form-group">
         <label for="designation">Job Designation </label>
         <input type="text" class="form-control input-lg" name="designation" value="'.$row['job_designation'].'" required>
@@ -33,7 +104,7 @@ if (strpos($row['selection_proc'],"Group Discussion") !== false) {
        <textarea name="jobdesc" id="jobdesc" class="form-control input-lg" required>'.$row['job_description'].'</textarea>
     </div>
 	<div class="form-group">
-        <label for="ctc">Cost to Company </label>
+        <label for="ctc">Cost to Company/ Stipend </label>
         <input type="number" class="form-control input-lg" name="ctc" value="'.$row['ctc'].'" required>
     </div>
 	<div class="form-group">
@@ -50,12 +121,51 @@ if (strpos($row['selection_proc'],"Group Discussion") !== false) {
     </div>
 	</p>
 	</div>
+	<div class="form-group">
+	    <label for="prog">Allowed programme(s)</label>
+		<select name="prog" id="prog" class="form-control input-lg" value="'.$row['programme'].'">
+        <option value="BE">BE only</option>
+  <option value="ME">ME only</option>
+  <option value="BE/ME">Both BE and ME</option>
+  </select>
+  </div>
+  <h4>Allowed Trades in B.E.</h4>
+	<div class="form-group">
+	<fieldset>
+	<input type="checkbox" value="Aerospace" id="aero" name="aero" '.$aero.'>Aerospace</input><br/><br/>
+	<input type="checkbox" value="Civil" name="civil" id="civil" '.$civil.'>Civil</input><br/><br/>
+	<input type="checkbox" value="Computer Science" name="cse" id="cse" '.$cse.'>Computer Science</input><br/><br/>
+	<input type="checkbox" value="Electronics and Communication" name="ece" id="ece" '.$ece.'>Electronics and Communication</input><br/><br/>
+	<input type="checkbox" value="Electrical" name="ee" id="ee" '.$ee.'>Electrical</input><br/><br/>
+	<input type="checkbox" value="Mechanical" name="mech" id="mech" '.$mech.'>Mechanical</input><br/><br/>
+	<input type="checkbox" value="Metallurgy" name="meta" id="meta" '.$meta.'>Metallurgy</input><br/><br/>
+	<input type="checkbox" value="Production" name="prod" id="prod" '.$prod.'>Production</input><br/>
+	</fieldset>
+  </div>
+  </div>
+  <div id="col3"></div>
+  <div id="col2">
+  <br><br><br>
+  <h4>Allowed Trades in M.E.</h4>
+	<div class="form-group">
+	<fieldset>
+	<input type="checkbox" value="Aerospace" id="meaero" name="meaero" '.$meaero.'>Aerospace</input><br/><br/>
+	<input type="checkbox" value="Civil" name="mecivil" id="mecivil" '.$mecivil.'>Civil</input><br/><br/>
+	<input type="checkbox" value="Computer Science" name="mecse" id="mecse" '.$mecse.'>Computer Science</input><br/><br/>
+	<input type="checkbox" value="Electronics and Communication" name="meece" id="meece" '.$meece.'>Electronics and Communication</input><br/><br/>
+	<input type="checkbox" value="Electrical" name="meee" id="meee" '.$meee.'>Electrical</input><br/><br/>
+	<input type="checkbox" value="Mechanical" name="memech" id="memech" '.$memech.'>Mechanical</input><br/><br/>
+	<input type="checkbox" value="Metallurgy" name="memeta" id="memeta" '.$memeta.'>Metallurgy</input><br/><br/>
+	<input type="checkbox" value="Production" name="meprod" id="meprod" '.$meprod.'>Production</input><br/>
+	</fieldset>
+  </div>
+  
 	<h2>Selection Procedure</h2>
 	<div class="form-group">
 	<fieldset>
-	<input type="checkbox" value="Pre-Placement Talk" name="pptalk" '.$pptalk.'>Pre-Placement Talk</input><br/><br/>
-	<input type="checkbox" value="Shortlist from Resumes" name="shortlistfromresume" '.$sl.'>Shortlist from Resumes</input><br/><br/>
-	<input type="checkbox" value="Group Discussion" name="gd" '.$gd.'>Group Discussion</input>
+	<input type="checkbox" value="Pre-Placement Talk" name="pptalk" id="pptalk" '.$pptalk.'>Pre-Placement Talk</input><br/><br/>
+	<input type="checkbox" value="Shortlist from Resumes" name="shortlistfromresume" id="shortlistfromresume" '.$sl.'>Shortlist from Resumes</input><br/><br/>
+	<input type="checkbox" value="Group Discussion" name="gd" id="gd" '.$gd.'>Group Discussion</input>
 	</fieldset>
 		
   </div>
@@ -90,7 +200,8 @@ if (strpos($row['selection_proc'],"Group Discussion") !== false) {
   <label for="deadline">Application Deadline</label>
   <input type="date" format="yyyy-mm-dd" class="form-control input-lg" name="deadline" value="'.$row['deadline'].'" required>
   </div>
-  <input type="submit" value="EDIT">
+  </div>
+  <button id="editbtn" class="btn btn-primary btn-lg btn-block">Preview</button>
   </form>';
 	}
 	

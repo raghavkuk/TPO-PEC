@@ -17,10 +17,29 @@ include '../functions.php';
 	<script type="text/javascript" src="../js/jquery-ui.js"></script>
     <script type="text/javascript" src="../js/bootstrap.min.js"></script>
 </head>
+<style>
+#col1{
+	
+    width:40%;
+    float:left;
+    padding:5px; 
+}
+#col3{
+	width:10%;
+	float: left;
+	padding:5px;
+}
+#col2{
+	width:40%;
+    float:left;
+    padding:10px; 
+}
+</style>
 <script type="text/javascript">
 
 function preview() {
 	//var title="<h3 align='center'>Preview JAF Before Submission</h3>"
+	var jobtype="<font size='3'><strong>Job Type: </strong></font><font size='4'>"+$('#type').val()+"</font><br>";
 	var designation="<font size='3'><strong>Job Designation: </strong></font><font size='4'>"+$('input[name="designation"]').val()+"</font><br>";
 	var desc="<font size='3'><strong>Job Description: </strong></font><font size='4'>"+$('#jobdesc').val()+"</font><br>";
 	var ctc="<font size='3'><strong>Cost to Company: </strong></font><font size='4'>"+$('input[name="ctc"]').val()+"</font><br>";
@@ -28,12 +47,65 @@ function preview() {
 	var perks="<font size='3'><strong>Perks: </strong></font><font size='4'>"+$('input[name="perks"]').val()+"</font><br>";
 	var bond="<font size='3'><strong>Bond: </strong></font><font size='4'>"+$('input[name="bond"]').val()+"</font><br>";
 	var cgpa="<font size='3'><strong>CGPA Cut-Off: </strong></font><font size='4'>"+$('input[name="cgpa"]').val()+"</font><br>";
+	var prog="<font size='3'><strong>Programmes Allowed: </strong></font><font size='4'>"+$('#prog').val()+"</font><br>";
+	var branchesbe="<font size='3'><strong>Branches in BE: </strong></font><font size='4'>";
+	if(aero.checked)
+		branchesbe=branchesbe+"Aerospace"+"<br>";
+	if(civil.checked)
+		branchesbe=branchesbe+"Civil<br>";
+	if(cse.checked)
+		branchesbe=branchesbe+"Computer Science<br>";
+	if(ece.checked)
+		branchesbe=branchesbe+"Electronice and Commuication<br>";
+	if(ee.checked)
+		branchesbe=branchesbe+"Electrical<br>";
+	if(mech.checked)
+		branchesbe=branchesbe+"Mechanical<br>";
+	if(meta.checked)
+		branchesbe=branchesbe+"Metallurgy<br>";
+	if(prod.checked)
+		branchesbe=branchesbe+"Production<br>";
+	branchesbe=branchesbe+"</font><br>";
+	if(aero.checked&&civil.checked&&cse.checked&&ece.checked&&ee.checked&&mech.checked&&meta.checked&&prod.checked)
+		branchesme="<font size='3'><strong>Branches in BE:</strong></font><font size='4'>All</font><br>";
+	if(!aero.checked&&!civil.checked&&!cse.checked&&!ece.checked&&!ee.checked&&!mech.checked&&!meta.checked&&!prod.checked)
+		branchesme="<font size='3'><strong>Branches in BE:</strong></font><font size='4'>NA</font><br>";
+	var branchesme="<font size='3'><strong>Branches in ME: </strong></font><font size='4'>";
+	if(meaero.checked)
+		branchesme=branchesme+"Aerospace"+"<br>";
+	if(mecivil.checked)
+		branchesme=branchesme+"Civil<br>";
+	if(mecse.checked)
+		branchesme=branchesme+"Computer Science<br>";
+	if(meece.checked)
+		branchesme=branchesme+"Electronice and Commuication<br>";
+	if(meee.checked)
+		branchesme=branchesme+"Electrical<br>";
+	if(memech.checked)
+		branchesme=branchesme+"Mechanical<br>";
+	if(memeta.checked)
+		branchesme=branchesme+"Metallurgy<br>";
+	if(meprod.checked)
+		branchesme=branchesme+"Production<br>";
+	branchesme=branchesme+"</font><br>";
+	if(meaero.checked&&mecivil.checked&&mecse.checked&&meece.checked&&meee.checked&&memech.checked&&memeta.checked&&meprod.checked)
+		branchesme="<font size='3'><strong>Branches in ME:</strong></font><font size='4'>All</font><br>";
+	if(!meaero.checked&&!mecivil.checked&&!mecse.checked&&!meece.checked&&!meee.checked&&!memech.checked&&!memeta.checked&&!meprod.checked)
+		branchesme="<font size='3'><strong>Branches in ME:</strong></font><font size='4'>NA</font><br>";
 	var written="<font size='3'><strong>Written: </strong></font><font size='4'>"+$('#written').val()+"</font><br>";
 	var interview="<font size='3'><strong>Interview: </strong></font><font size='4'>"+$('#interview').val()+"</font><br>";
+	var selproc="<font size='3'><strong>Selection Procedure: </strong></font><font size='4'>";
+	if(pptalk.checked)
+		selproc=selproc+"Pre-Placement Talk<br>";
+	if(shortlistfromresume.checked)
+		selproc=selproc+"Shortlist from Resumes";
+	if(gd.checked)
+		selproc=selproc+"Group Discussion";
+	selproc=selproc+"</font><br>";
 	var other="<font size='3'><strong>Other: </strong></font><font size='4'>"+$('input[name="other"]').val()+"</font><br>";
 	var deadline="<font size='3'><strong>Application Deadline: </strong></font><font size='4'>"+$('input[name="deadline"]').val()+"</font><br>";
 	var dateofvisit="<font size='3'><strong>Date of Visit: </strong></font><font size='4'>"+$('input[name="dateofvisit"]').val()+"</font><br>";
-	var data=designation+desc+ctc+gross+perks+bond+cgpa+written+interview+other+deadline;
+	var data=jobtype+designation+desc+ctc+gross+perks+bond+cgpa+prog+branchesbe+branchesme+written+interview+other+dateofvisit+deadline;
 	$('#preview_data').html('');
     $('#preview_data').append(data);
 	$('#preview_data').dialog({
@@ -62,7 +134,9 @@ function preview() {
 		
 function setvisible(){
 	
-    <?php if( isset($_SESSION['status']) && $_GET['status'] == 'success'){ $_SESSION['status']="success"; }?>
+    <?php if( isset($_SESSION['status']) && isset($_GET['status'])){ 
+	if($_GET['status']=='success')
+	$_SESSION['status']="success"; }?>
 
 	var status="<?php echo $_SESSION['status']; ?>";
 	if(status=="success") {
@@ -89,7 +163,7 @@ $(document).ready(function() {
     <div id="wrapper">
 
         <?php include '../header-company.php'; ?>
-
+		
         <div id="page-wrapper">
 
             <div class="container-fluid">
@@ -97,7 +171,7 @@ $(document).ready(function() {
                 <!-- Page Heading -->
                 <div class="row">
                     <div class="col-lg-12">
-                        <h3 class="page-header">
+                        <h3 align="center"  class="page-header">
                             <?php echo $_SESSION['cname']; ?> Recruitment At PEC
                         </h3>
                         <!--ol class="breadcrumb">
@@ -136,21 +210,29 @@ $(document).ready(function() {
 	
 <div class="container">
 <div id="preview_data" title="Preview JAF before Submission" style="display:none;"></div>
-<form id="jaf" method="post" action="savejaf.php" class="col-md-5">
-	   
+<form id="jaf" method="post" action="savejaf.php">
+	  <div id="col1"> 
 	<h2>Job Details</h2>
 	<div id="jobdetails">
 	<p>
 	<div class="form-group">
+	    <label for="prog">Job Type</label>
+		<select name="type" id="type" class="form-control input-lg">
+        <option value="Full-Time">Full-time</option>
+  <option value="Internship">Internship</option>
+  </select>
+  </div>
+	<div class="form-group">
         <label for="designation">Job Designation </label>
         <input type="text" class="form-control input-lg" name="designation" required>
     </div>
+	
 	<div class="form-group">
         <label for="jobdesc">Job Description: </label>
        <textarea name="jobdesc" id="jobdesc" class="form-control input-lg" placeholder="Brief Job Description" required></textarea>
     </div>
 	<div class="form-group">
-        <label for="ctc">Cost to Company </label>
+        <label for="ctc">Cost to Company/ Stipend </label>
         <input type="number" class="form-control input-lg" name="ctc" required>
     </div>
 	<div class="form-group">
@@ -167,12 +249,51 @@ $(document).ready(function() {
     </div>
 	</p>
 	</div>
+	
+	<div class="form-group">
+	    <label for="prog">Allowed programme(s)</label>
+		<select name="prog" id="prog" class="form-control input-lg">
+        <option value="BE">BE only</option>
+  <option value="ME">ME only</option>
+  <option value="BE/ME">Both BE and ME</option>
+  </select>
+  </div>
+	<h4>Allowed Trades in B.E.</h4>
+	<div class="form-group">
+	<fieldset>
+	<input type="checkbox" value="Aerospace" id="aero" name="aero">Aerospace</input><br/><br/>
+	<input type="checkbox" value="Civil" name="civil" id="civil">Civil</input><br/><br/>
+	<input type="checkbox" value="Computer Science" name="cse" id="cse">Computer Science</input><br/><br/>
+	<input type="checkbox" value="Electronics and Communication" name="ece" id="ece">Electronics and Communication</input><br/><br/>
+	<input type="checkbox" value="Electrical" name="ee" id="ee">Electrical</input><br/><br/>
+	<input type="checkbox" value="Mechanical" name="mech" id="mech">Mechanical</input><br/><br/>
+	<input type="checkbox" value="Metallurgy" name="meta" id="meta">Metallurgy</input><br/><br/>
+	<input type="checkbox" value="Production" name="prod" id="prod">Production</input><br/>
+	</fieldset>
+  </div>
+  </div>
+  <div id="col3"></div>
+  <div id="col2">
+  <br><br><br>
+  <h4>Allowed Trades in M.E.</h4>
+	<div class="form-group">
+	<fieldset>
+	<input type="checkbox" value="Aerospace" name="meaero" id="meaero">Aerospace</input><br/><br/>
+	<input type="checkbox" value="Civil" name="mecivil" id="mecivil">Civil</input><br/><br/>
+	<input type="checkbox" value="Computer Science" name="mecse" id="mecse">Computer Science</input><br/><br/>
+	<input type="checkbox" value="Electronics and Communication" name="meece" id="meece">Electronics and Communication</input><br/><br/>
+	<input type="checkbox" value="Electrical" name="meee" id="meee">Electrical</input><br/><br/>
+	<input type="checkbox" value="Mechanical" name="memech" id="memech">Mechanical</input><br/><br/>
+	<input type="checkbox" value="Metallurgy" name="memeta" id="memeta">Metallurgy</input><br/><br/>
+	<input type="checkbox" value="Production" name="meprod" id="meprod">Production</input><br/>
+	</fieldset>
+  </div>
 	<h2>Selection Procedure</h2>
 	<div class="form-group">
 	<fieldset>
-	<input type="checkbox" value="Pre-Placement Talk" name="pptalk">Pre-Placement Talk</input><br/><br/>
-	<input type="checkbox" value="Shortlist from Resumes" name="shortlistfromresume">Shortlist from Resumes</input><br/><br/>
-	<input type="checkbox" value="Group Discussion" name="gd">Group Discussion</input>
+	<input type="checkbox" value="Pre-Placement Talk" name="pptalk" id="pptalk">Pre-Placement Talk</input><br/><br/>
+	<input type="checkbox" value="Shortlist from Resumes" name="shortlistfromresume" id="shortlistfromresume">Shortlist from Resumes</input><br/><br/>
+	<input type="checkbox" value="Group Discussion" name="gd" id="gd">Group Discussion</input>
 	</fieldset>
 		
   </div>
@@ -206,7 +327,8 @@ $(document).ready(function() {
   <div class="form-group">
   <label for="deadline">Application Deadline</label>
   <input type="date" class="form-control input-lg" name="deadline" required>
-  </div>  
+  </div>
+</div>  
   </div>
 <button id="submitbtn" class="btn btn-primary btn-lg btn-block" width="100px">Preview</button>   
  
