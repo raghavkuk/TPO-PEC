@@ -111,5 +111,59 @@ else
 {
 	  echo "Error: <br>" . $mysqli->error;
 }
+
+if($_SESSION['statusann'] == 'success'){
+
+$gcm_table = "gcm_registrations";
+	// API access key from Google API's Console
+define( 'API_ACCESS_KEY', 'AIzaSyAz7bgKV-EbYxplyaCmOVERJ4OSXONFWuE' );
+
+$registrationIds = array( $_GET['id'] );
+
+for($i=0; $i<sizeof($branches); $i++){
+	$regIdQuery = 'SELECT token FROM '.$gcm_table.' WHERE branch LIKE "%'.$branches[i].'%"';
+	$regResult = $mysqli->query($regIdQuery);
+	while($regId = $regResult->fetch_assoc()){
+		$rid = $regId['token'];
+		array_push($registrationIds, $rid);
+	}
+}
+
+
+    // prep the bundle
+$msg = array
+(
+    'message'   => $ann,
+    'title'     => 'This is a title. title',
+    'subtitle'  => 'This is a subtitle. subtitle',
+    'tickerText'    => 'Ticker text here...Ticker text here...Ticker text here',
+    'vibrate'   => 1,
+    'sound'     => 1,
+    'largeIcon' => 'large_icon',
+    'smallIcon' => 'small_icon'
+);
+$fields = array
+(
+    'registration_ids'  => $registrationIds,
+    'data'          => $msg
+);
+
+ 
+$headers = array
+(
+    'Authorization: key=' . API_ACCESS_KEY,
+    'Content-Type: application/json'
+);
+ 
+$ch = curl_init();
+curl_setopt( $ch,CURLOPT_URL, 'https://android.googleapis.com/gcm/send' );
+curl_setopt( $ch,CURLOPT_POST, true );
+curl_setopt( $ch,CURLOPT_HTTPHEADER, $headers );
+curl_setopt( $ch,CURLOPT_RETURNTRANSFER, true );
+curl_setopt( $ch,CURLOPT_SSL_VERIFYPEER, false );
+curl_setopt( $ch,CURLOPT_POSTFIELDS, json_encode( $fields ) );
+$result = curl_exec($ch );
+curl_close( $ch );
+}
 $mysqli->close();
 ?>
