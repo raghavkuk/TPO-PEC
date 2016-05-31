@@ -26,6 +26,14 @@ $programme_query = "SELECT programme FROM ".$student_login_table." WHERE sid = "
 $programme_result = $mysqli->query($programme_query);
 $programme_row = $programme_result->fetch_assoc();
 $programme = $programme_row['programme'];
+$placementtable="";
+$loginprog=$_SESSION['loginprog'];
+if($loginprog=="BE Final year")
+	$placementtable="placementdetails_be";
+if($loginprog=="BE Third year")
+	$placementtable="placementdetails_beint";
+if($loginprog=="ME Final year")
+	$placementtable="placementdetails_me";
 $_SESSION['prog']=$programme;
 ?>
 
@@ -81,13 +89,13 @@ $_SESSION['prog']=$programme;
 
                             <?php 
                                 $pkg=0;
-                                $sql="select status, package from placementdetails where sid=$sid";
+                                $sql="select * from $placementtable where sid=$sid";
 								$result=$mysqli->query($sql);
 								while($row=$result->fetch_assoc())
 								{
 									if($row['status']!='PLACED')
 									{
-										$pkg=$row['package'];
+										$pkg=$row['package1'];
 										$pkg=200000+$pkg;
 									}
 								}

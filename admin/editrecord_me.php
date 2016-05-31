@@ -36,7 +36,7 @@ function download(tableid) {
 $(document).ready(function(){
     //acknowledgement message
 	$.ajax({
-		url: 'fetchrecords.php',
+		url: 'fetchrecords_me.php',
 		dataType: 'html',
 		success: function(rethtml) {
 			$('#editrecord').html(rethtml);
@@ -52,7 +52,7 @@ $(document).ready(function(){
         var value = $(this).text() ;
         if(value!="")
 		{
-		$.post('saverecords.php' , field_userid + "=" + value, function(data){
+		$.post('saverecords_me.php' , field_userid + "=" + value, function(data){
             if(data != '')
             {
                 message_status.show();
@@ -87,7 +87,7 @@ $(document).ready(function(){
                 <div class="row">
                     <div class="col-lg-12">
                         <h3 class="page-header">
-                            Recruitment at PEC- Admin Panel- PLACEMENT DETAILS (B.E.)
+                            Recruitment at PEC- Admin Panel- PLACEMENT DETAILS (M.E.)
                         </h3>
             </div>
             <!-- /.container-fluid -->

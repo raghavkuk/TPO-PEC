@@ -14,14 +14,20 @@ $ee="";
 $mech="";
 $meta="";
 $prod="";
-$meaero="";
-$mecse="";
-$mecivil="";
-$meece="";
-$meee="";
-$memech="";
-$memeta="";
+$meind="";
+$mecivilwr="";
+$meenv="";
+$metran="";
 $meprod="";
+$meee="";
+$mecivilstru="";
+$meecevlsi="";
+$mecse="";
+$meinddes="";
+$memech="";
+$meis="";
+$meece="";
+$metqem="";
 $sql="SELECT * from jaf_details where JAF_id='".$jafid."'";
 $result = $mysqli->query($sql);
 if($result->num_rows > 0)
@@ -61,17 +67,17 @@ if (strpos($row['branches_be'],"Metallurgy") !== false) {
 if (strpos($row['branches_be'],"Production") !== false) {
         $prod="checked";
 }
-if (strpos($row['branches_me'],"Aerospace") !== false) {
-        $meaero="checked";
+if (strpos($row['branches_me'],"Industrial Material Metallurgy") !== false) {
+        $meind="checked";
 }
-if (strpos($row['branches_me'],"Civil") !== false) {
-        $mecivil="checked";
+if (strpos($row['branches_me'],"Civil (Water Resources)") !== false) {
+        $mecivilwr="checked";
 }
-if (strpos($row['branches_me'],"Computer Science") !== false) {
-        $mecse="checked";
+if (strpos($row['branches_me'],"Environmental Engineering") !== false) {
+        $meenv="checked";
 }
-if (strpos($row['branches_me'],"Electronics and Communication") !== false) {
-        $meece="checked";
+if (strpos($row['branches_me'],"Transportation Engineering") !== false) {
+        $metran="checked";
 }
 if (strpos($row['branches_me'],"Electrical") !== false) {
         $meee="checked";
@@ -79,12 +85,31 @@ if (strpos($row['branches_me'],"Electrical") !== false) {
 if (strpos($row['branches_me'],"Mechanical") !== false) {
         $memech="checked";
 }
-if (strpos($row['branches_me'],"Metallurgy") !== false) {
-        $memeta="checked";
+if (strpos($row['branches_me'],"Civil (Structure)") !== false) {
+        $mecivilstru="checked";
 }
 if (strpos($row['branches_me'],"Production") !== false) {
         $meprod="checked";
 }
+if (strpos($row['branches_me'],"Electronics (VLSI)") !== false) {
+        $meecevlsi="checked";
+}
+if (strpos($row['branches_me'],"Computer Science") !== false) {
+        $mecse="checked";
+}
+if (strpos($row['branches_me'],"Industrial Design") !== false) {
+        $meinddes="checked";
+}
+if (strpos($row['branches_me'],"Computer Science (Information Security)") !== false) {
+        $meis="checked";
+}
+if (strpos($row['branches_me'],"Electronics") !== false) {
+        $meece="checked";
+}
+if (strpos($row['branches_me'],"TQEM") !== false) {
+        $metqem="checked";
+}
+
 	$rethtml=$rethtml.'<div id="col1"><h2>Job Details</h2>
 	<div id="jobdetails">
 	<p>
@@ -149,14 +174,20 @@ if (strpos($row['branches_me'],"Production") !== false) {
   <h4>Allowed Trades in M.E.</h4>
 	<div class="form-group">
 	<fieldset>
-	<input type="checkbox" value="Aerospace" id="meaero" name="meaero" '.$meaero.'>Aerospace</input><br/><br/>
-	<input type="checkbox" value="Civil" name="mecivil" id="mecivil" '.$mecivil.'>Civil</input><br/><br/>
-	<input type="checkbox" value="Computer Science" name="mecse" id="mecse" '.$mecse.'>Computer Science</input><br/><br/>
-	<input type="checkbox" value="Electronics and Communication" name="meece" id="meece" '.$meece.'>Electronics and Communication</input><br/><br/>
-	<input type="checkbox" value="Electrical" name="meee" id="meee" '.$meee.'>Electrical</input><br/><br/>
-	<input type="checkbox" value="Mechanical" name="memech" id="memech" '.$memech.'>Mechanical</input><br/><br/>
-	<input type="checkbox" value="Metallurgy" name="memeta" id="memeta" '.$memeta.'>Metallurgy</input><br/><br/>
-	<input type="checkbox" value="Production" name="meprod" id="meprod" '.$meprod.'>Production</input><br/>
+	<input type="checkbox" value="Industrial Material Metallurgy" name="meind" id="meind" $meind>Industrial Material Metallurgy</input><br/><br/>
+	<input type="checkbox" value="Civil (Water Resources)" name="mecivilwr" id="mecivilwr" $mecivilwr>Civil (Water Resources)</input><br/><br/>
+	<input type="checkbox" value="Environmental Engineering" name="meenv" id="meenv" $meenv>Environmental Engineering</input><br/><br/>
+	<input type="checkbox" value="Transportation Engineering" name="metran" id="metran" $metran>Transportation Engineering</input><br/><br/>
+	<input type="checkbox" value="Production" name="meprod" id="meprod" $meprod>Production</input><br/><br/>
+	<input type="checkbox" value="Electrical" name="meee" id="meee" $meee>Electrical</input><br/><br/>
+	<input type="checkbox" value="Civil (Structure)" name="mecivilstru" id="mecivilstru" $mecivilstru>Civil (Structure)</input><br/><br/>
+	<input type="checkbox" value="Electronics (VLSI)" name="meecevlsi" id="meecevlsi" $meecevlsi>Electronics (VLSI)</input><br/><br/>
+	<input type="checkbox" value="Computer Science" name="mecse" id="mecse" $mecse>Computer Science</input><br/><br/>
+	<input type="checkbox" value="Industrial Design" name="meinddes" id="meinddes" $meinddes>Industrial Design</input><br/><br/>
+	<input type="checkbox" value="Mechanical" name="memech" id="memech" $memech>Mechanical</input><br/><br/>
+	<input type="checkbox" value="Computer Science (Information Security)" name="meis" id="meis" $meis>Computer Science (Information Security)</input><br/><br/>
+	<input type="checkbox" value="Electronics" name="meece" id="meece" $meece>Electronics</input><br/><br/>
+	<input type="checkbox" value="TQEM" name="metqem" id="metqem" $metqem>TQEM</input><br/><br/>
 	</fieldset>
   </div>
   

@@ -37,7 +37,12 @@
 				<br>
                 <label for="inputPassword" class="sr-only">Password</label>
                 <input type="password" id="inputPassword" name="password" class="form-control" placeholder="Password" required="">
-                
+                <font color="white"><label for="prog">Programme</label></font>
+		        <select name="prog" id="prog" class="form-control input-lg">
+                <option value="BE Final year">BE Final year</option>
+                <option value="ME Final year">ME Final year</option>
+                <option value="BE Third year">BE Third year</option>
+                </select><br>
                 <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
             </form>
 <center>

@@ -9,7 +9,7 @@ if($result->num_rows > 0)
 	$rethtml = $rethtml."<div class='table-responsive'><table class='table' id='comp'><caption>Companies to Visit</caption><thead><td><b>Company Name</b></td><td><b>Date of Visit</b></td><td><b>Date of Departure</b></td></thead>";
 		while($row=$result->fetch_assoc()) {
 			$id=$row['JAF_id'];
-			$rethtml = $rethtml."<tr><td class='data'>".$row['company_name']."</td><td class='data' contenteditable='true' id='dateofvisit:$id'>".$row['dateofvisit']."</td><td class='data' contenteditable='true' id='dateofdept:$id'>".$row['dateofdept']."</td><td><button onclick='preview($id)'>Remove Company</button></td></tr>";
+			$rethtml = $rethtml."<tr><td class='data'>".$row['company_name']."</td><td class='data' contenteditable='true' id='dateofvisit:$id'>".$row['dateofvisit']."</td><td class='data' contenteditable='true' id='dateofdept:$id'>".$row['dateofdept']."</td><td><button onclick='refresh()'>Refresh</button></td><td><button onclick='preview($id)'>Remove Company</button></td></tr>";
 		
 		}
 		$rethtml = $rethtml."</table></div>";

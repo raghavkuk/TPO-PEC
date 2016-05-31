@@ -15,6 +15,10 @@ include '../functions.php';
 	<script type="text/javascript" src="../js/jquery.table2excel.js"></script>
 </head>
 <script type="text/javascript">
+function refresh()
+{
+	location.reload();
+}
 function preview(id)
 {
 	var data="Are you sure you want to remove this company?";
@@ -101,7 +105,7 @@ $(document).ready(function(){
                 <div class="row">
                     <div class="col-lg-12">
                         <h3 class="page-header">
-                            Recruitment at PEC- Admin Panel
+                            Recruitment at PEC- Admin Panel- COMPANIES VISITING @ PEC
                         </h3>
             </div>
             <!-- /.container-fluid -->
@@ -117,7 +121,7 @@ $(document).ready(function(){
 	</div-->
 	<h4 align="center" id='status' style="visibility:hidden; background-color: aqua; padding-top: 5px; padding-bottom: 5px; margin-bottom: 5px; width: 50% "></h4>
     <h4 align="center" id='status2' style="display:none; background-color: aqua; padding-top: 5px; padding-bottom: 5px; margin-bottom: 5px; width: 50% "></h4>	
-	<h4 align="center">Edit the date of visit or Remove a company</h4>
+	<h4 align="center">Edit the dates and click Refresh OR Remove a Company!</h4>
 	<div class='container'>
 	<div id="preview_data" title="Confirm Removal of Company!" style="display:none;"></div>
 	<div id="visitingcompanies">

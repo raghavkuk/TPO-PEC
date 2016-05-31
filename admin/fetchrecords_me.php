@@ -5,18 +5,24 @@ include '../db_connection.php';
 
 $rethtml = "";
 $i = 0;
-$placement_table = "placementdetails_be";
+$placement_table = "placementdetails_me";
 $branches=array();
-$branches[0]="Aerospace";
-$branches[1]="Civil";
-$branches[2]="Computer Science";
-$branches[3]="Electronics and Communication";
-$branches[4]="Electrical";
-$branches[5]="Mechanical";
-$branches[6]="Metallurgy";
-$branches[7]="Production";
+$branches[0]="Industrial Material Metallurgy";
+$branches[1]="Civil (Water Resources)";
+$branches[2]="Environmental Engineering";
+$branches[3]="Transportation Engineering";
+$branches[4]="Production";
+$branches[5]="Electrical";
+$branches[6]="Civil (Structure)";
+$branches[7]="Electronics (VLSI)";
+$branches[8]="Computer Science";
+$branches[9]="Industrial Design";
+$branches[10]="Mechanical";
+$branches[11]="Computer Science (Information Security)";
+$branches[12]="Electronics";
+$branches[13]="TQEM";
 
-	$count = 8;
+	$count = 14;
 	$i = 0;
 
 	while($count--) {

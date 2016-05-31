@@ -1,0 +1,29 @@
+Industrial Material Metallurgy
+Civil (Water Resources)
+Environmental Engineering
+Transportation Engineering
+Production
+Electrical
+Civil (Structure)
+Electronics (VLSI)
+Computer Science
+Industrial Design
+Mechanical
+Computer Science (Information Security)
+Electronics
+TQEM
+
+meind
+mecivilwr
+meenv
+metran
+meprod
+meee
+mecivilstru
+meecevlsi
+mecse
+meinddes
+memech
+meis
+meece
+metqem

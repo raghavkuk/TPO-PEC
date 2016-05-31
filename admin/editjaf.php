@@ -67,26 +67,38 @@ function preview() {
 	if(!aero.checked&&!civil.checked&&!cse.checked&&!ece.checked&&!ee.checked&&!mech.checked&&!meta.checked&&!prod.checked)
 		branchesme="<font size='3'><strong>Branches in BE:</strong></font><font size='4'>NA</font><br>";
 	var branchesme="<font size='3'><strong>Branches in ME: </strong></font><font size='4'>";
-	if(meaero.checked)
-		branchesme=branchesme+"Aerospace"+"<br>";
-	if(mecivil.checked)
-		branchesme=branchesme+"Civil<br>";
-	if(mecse.checked)
-		branchesme=branchesme+"Computer Science<br>";
-	if(meece.checked)
-		branchesme=branchesme+"Electronice and Commuication<br>";
-	if(meee.checked)
-		branchesme=branchesme+"Electrical<br>";
-	if(memech.checked)
-		branchesme=branchesme+"Mechanical<br>";
-	if(memeta.checked)
-		branchesme=branchesme+"Metallurgy<br>";
+	if(meind.checked)
+		branchesme=branchesme+"Industrial Material Metallurgy"+"<br>";
+	if(mecivilwr.checked)
+		branchesme=branchesme+"Civil(Water Resources)<br>";
+	if(meenv.checked)
+		branchesme=branchesme+"Environmental Engineering<br>";
+	if(metran.checked)
+		branchesme=branchesme+"Transportation Engineering<br>";
 	if(meprod.checked)
 		branchesme=branchesme+"Production<br>";
+	if(meee.checked)
+		branchesme=branchesme+"Electrical<br>";
+	if(mecivilstru.checked)
+		branchesme=branchesme+"Civil(Structure)<br>";
+	if(meecevlsi.checked)
+		branchesme=branchesme+"Electronics(VLSI)<br>";
+	if(mecse.checked)
+		branchesme=branchesme+"Computer Science<br>";
+	if(meinddes.checked)
+		branchesme=branchesme+"Industrial Design<br>";
+	if(memech.checked)
+		branchesme=branchesme+"Mechanical<br>";
+	if(meis.checked)
+		branchesme=branchesme+"Computer Science (Information Security)<br>";
+	if(meece.checked)
+		branchesme=branchesme+"Electronics<br>";
+	if(metqem.checked)
+		branchesme=branchesme+"TQEM<br>";
 	branchesme=branchesme+"</font><br>";
-	if(meaero.checked&&mecivil.checked&&mecse.checked&&meece.checked&&meee.checked&&memech.checked&&memeta.checked&&meprod.checked)
+	if(meind.checked&&mecivilwr.checked&&meenv.checked&&metran.checked&&meprod.checked&&meee.checked&&mecivilstru.checked&&meecevlsi.checked&&mecse.checked&&meinddes.checked&&memech.checked&&meis.checked&&meece.checked&&metqem.checked)
 		branchesme="<font size='3'><strong>Branches in ME:</strong></font><font size='4'>All</font><br>";
-	if(!meaero.checked&&!mecivil.checked&&!mecse.checked&&!meece.checked&&!meee.checked&&!memech.checked&&!memeta.checked&&!meprod.checked)
+	if(!meind.checked&&!mecivilwr.checked&&!meenv.checked&&!metran.checked&&!meprod.checked&&!meee.checked&&!mecivilstru.checked&&!meecevlsi.checked&&!mecse.checked&&!meinddes.checked&&!memech.checked&&!meis.checked&&!meece.checked&&!metqem.checked)
 		branchesme="<font size='3'><strong>Branches in ME:</strong></font><font size='4'>NA</font><br>";
 	var written="<font size='3'><strong>Written: </strong></font><font size='4'>"+$('#written').val()+"</font><br>";
 	var interview="<font size='3'><strong>Interview: </strong></font><font size='4'>"+$('#interview').val()+"</font><br>";
