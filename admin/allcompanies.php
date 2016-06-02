@@ -12,7 +12,7 @@ include '../functions.php';
     <script type="text/javascript" src="../js/jquery.js"></script>
 	<script type="text/javascript" src="../js/jquery-ui.js"></script>
     <script type="text/javascript" src="../js/bootstrap.min.js"></script>
-	<script type="text/javascript" src="../js/jquery.table2excel.js"></script>
+	<script type="text/javascript" src="../js/jquery-table2excel-master/src/jquery.table2excel.js"></script>
 </head>
 <script type="text/javascript">
 function download() {

@@ -11,7 +11,10 @@ include '../functions.php';
     <script type="text/javascript" src="../js/jquery.js"></script>
 	<script type="text/javascript" src="../js/jquery-ui.js"></script>
     <script type="text/javascript" src="../js/bootstrap.min.js"></script>
-	<script type="text/javascript" src="../js/jquery.table2excel.js"></script>
+	<!--script type="text/javascript" src="../datatables/media/js/jquery.dataTables.js"></script-->
+	<script type="text/javascript" src="../js/jquery-table2excel-master/src/jquery.table2excel.js"></script>
+	
+	
 </head>
 <style>
 .ui-accordion { width: 90%; margin: 0 auto; } 
@@ -28,12 +31,41 @@ include '../functions.php';
 function download(tableid) {
 	var tables = document.getElementById(tableid);
 	var caption=$(tables).find('caption').text();
+	
 	$(tables).table2excel({
-		exclude: ".non-data",
-		filename: caption
+		filename: caption,
+		exclude: ".noExl1",
+		exclude_img: true,
+		exclude_links: true
+		//exclude_inputs: true
+	});
+	//$(tables).tableToCSV();
+}
+function searchTable(inputVal,tableid)
+{
+	var id=tableid.substring(2);
+	var table = document.getElementById(id);
+	$(table).find('tr').each(function(index, row)
+	{
+		var allCells = $(row).find('td');
+		if(allCells.length > 0)
+		{
+			var found = false;
+			allCells.each(function(index, td)
+			{
+				var regExp = new RegExp(inputVal, 'i');
+				if(regExp.test($(td).text()))
+				{
+					found = true;
+					return false;
+				}
+			});
+			if(found == true)$(row).show();else $(row).hide();
+		}
 	});
 }
 $(document).ready(function(){
+	
     //acknowledgement message
 	$.ajax({
 		url: 'fetchrecords.php',
@@ -45,13 +77,46 @@ $(document).ready(function(){
 				heightStyle: "content",
 				active: false
 			});
+			/*$("table").each(function(){
+				var curtable=$(this);
+				$(curtable).DataTable(
+				{
+					 paging: false
+			    });
+			});*/
 			var message_status = $("#status");
+            var value="";
+            var selectbox=0;	
+        $('.search').keyup(function()
+	    {
+		searchTable($(this).val(),$(this).attr("id"));
+     	});			
+		$(".status").change(function()
+	    {
+		   value=$(this).val();
+		   selectbox=1;
+		   $(this).parent().focus();
+	    });
+		$(".eligible").change(function()
+	    {
+		   value=$(this).val();
+		   selectbox=1;
+		   $(this).parent().focus();
+	    });
+		$(".blocked").change(function()
+	    {
+		   value=$(this).val();
+		   selectbox=1;
+		   $(this).parent().focus();
+	    });
     $("td[contenteditable='true']").blur(function(){
 		
         var field_userid = $(this).attr("id") ;
-        var value = $(this).text() ;
-        if(value!="")
-		{
+        if(selectbox==0){
+		value = $(this).text() ;
+		}
+		
+        
 		$.post('saverecords.php' , field_userid + "=" + value, function(data){
             if(data != '')
             {
@@ -61,7 +126,8 @@ $(document).ready(function(){
                 setTimeout(function(){message_status.hide()},3000);
             }
         });
-	}
+		selectbox=0;
+	
     });
 		},
 		error: function() {

@@ -11,7 +11,9 @@ include '../functions.php';
     <script type="text/javascript" src="../js/jquery.js"></script>
 	<script type="text/javascript" src="../js/jquery-ui.js"></script>
     <script type="text/javascript" src="../js/bootstrap.min.js"></script>
-	<script type="text/javascript" src="../js/jquery.table2excel.js"></script>
+	<script type="text/javascript" src="../js/jquery-table2excel-master/src/jquery.table2excel.js"></script>
+	<script type="text/javascript" src="../datatables/media/js/jquery.dataTables.js"></script>
+
 </head>
 <style>
 .ui-accordion { width: 90%; margin: 0 auto; } 
@@ -45,11 +47,38 @@ $(document).ready(function(){
 				heightStyle: "content",
 				active: false
 			});
+			$("table").each(function(){
+				var curtable=$(this);
+				$(curtable).DataTable({"paging": false});
+			});
 			var message_status = $("#status");
+			var value="";
+            var selectbox=0;			
+		$(".status").change(function()
+	    {
+		   value=$(this).val();
+		   selectbox=1;
+		   $(this).parent().focus();
+	    });
+		$(".eligible").change(function()
+	    {
+		   value=$(this).val();
+		   selectbox=1;
+		   $(this).parent().focus();
+	    });
+		$(".blocked").change(function()
+	    {
+		   value=$(this).val();
+		   selectbox=1;
+		   $(this).parent().focus();
+	    });
     $("td[contenteditable='true']").blur(function(){
 		
         var field_userid = $(this).attr("id") ;
-        var value = $(this).text() ;
+		if(selectbox==0){
+		value = $(this).text() ;
+		}
+        
         if(value!="")
 		{
 		$.post('saverecords_me.php' , field_userid + "=" + value, function(data){
@@ -61,6 +90,7 @@ $(document).ready(function(){
                 setTimeout(function(){message_status.hide()},3000);
             }
         });
+		selectbox=0;
 	}
     });
 		},

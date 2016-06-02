@@ -230,7 +230,7 @@ $(document).ready(function() {
 	<div class="form-group">
 	    <label for="prog">Job Type</label>
 		<select name="type" id="type" class="form-control input-lg">
-        <option value="Full-Time">Full-time</option>
+        <option value="Placement">Full-time</option>
   <option value="Internship">Internship</option>
   </select>
   </div>

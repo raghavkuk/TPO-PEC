@@ -12,7 +12,7 @@ include '../functions.php';
     <script type="text/javascript" src="../js/jquery.js"></script>
 	<script type="text/javascript" src="../js/jquery-ui.js"></script>
     <script type="text/javascript" src="../js/bootstrap.min.js"></script>
-	<script type="text/javascript" src="../js/jquery.table2excel.js"></script>
+	<script type="text/javascript" src="../js/jquery-table2excel-master/src/jquery.table2excel.js"></script>
 	
 </head>
 <style>
@@ -32,8 +32,11 @@ function download(tableid) {
 	var tables = document.getElementById(tableid);
 	var caption=$(tables).find('caption').text();
 	$(tables).table2excel({
-		exclude: "non-data",
-		filename: caption
+		filename: caption,
+		exclude: '.noExl',
+		exclude_img: true,
+		exclude_links: true,
+		exclude_inputs: true
 	});
 }
 

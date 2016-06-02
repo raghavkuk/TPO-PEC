@@ -45,9 +45,10 @@
             // get contents of table except for exclude
             $(e.element).each( function(i,o) {
                 var tempRows = "";
-                $(o).find("tr").not(e.settings.exclude).each(function (i,o) {
-                    tempRows += "<tr>" + $(o).html() + "</tr>";
-                });
+                //$(o).find("tr").not(e.settings.exclude).each(function (i,o) {
+                  //  tempRows += "<tr>" + $(o).html() + "</tr>";
+                //});
+				$(o).find("tr").not(e.settings.exclude).each(function (i, o) { var cloneRow = $(o).clone(); $(cloneRow).find(e.settings.exclude).remove(); var html = $(cloneRow).html(); tempRows += "<tr>" + html + "</tr>"; });
                 e.tableRows.push(tempRows);
             });
 

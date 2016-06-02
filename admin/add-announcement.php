@@ -38,9 +38,31 @@ function preview()
 		branchesbe=branchesbe+"Production<br>";
 	branchesbe=branchesbe+"</font><br>";
 	if(aero.checked&&civil.checked&&cse.checked&&ece.checked&&ee.checked&&mech.checked&&meta.checked&&prod.checked)
-		branchesme="<font size='3'><strong>Branches in BE:</strong></font><font size='4'>All</font><br>";
+		branchesbe="<font size='3'><strong>Branches in BE:</strong></font><font size='4'>All</font><br>";
 	if(!aero.checked&&!civil.checked&&!cse.checked&&!ece.checked&&!ee.checked&&!mech.checked&&!meta.checked&&!prod.checked)
-		branchesme="<font size='3'><strong>Branches in BE:</strong></font><font size='4'>NA</font><br>";
+		branchesbe="<font size='3'><strong>Branches in BE:</strong></font><font size='4'>NA</font><br>";
+	var branchesbeint="<font size='3'><strong>Branches in BE Internship: </strong></font><font size='4'>";
+	if(aeroint.checked)
+		branchesbeint=branchesbeint+"Aerospace"+"<br>";
+	if(civilint.checked)
+		branchesbeint=branchesbeint+"Civil<br>";
+	if(cseint.checked)
+		branchesbeint=branchesbeint+"Computer Science<br>";
+	if(eceint.checked)
+		branchesbeint=branchesbeint+"Electronics and Commuication<br>";
+	if(eeint.checked)
+		branchesbeint=branchesbeint+"Electrical<br>";
+	if(mechint.checked)
+		branchesbeint=branchesbeint+"Mechanical<br>";
+	if(metaint.checked)
+		branchesbeint=branchesbeint+"Metallurgy<br>";
+	if(prodint.checked)
+		branchesbeint=branchesbeint+"Production<br>";
+	branchesbeint=branchesbeint+"</font><br>";
+	if(aeroint.checked&&civilint.checked&&cseint.checked&&eceint.checked&&eeint.checked&&mechint.checked&&metaint.checked&&prodint.checked)
+		branchesbeint="<font size='3'><strong>Branches in BE Internship:</strong></font><font size='4'>All</font><br>";
+	if(!aeroint.checked&&!civilint.checked&&!cseint.checked&&!eceint.checked&&!eeint.checked&&!mechint.checked&&!metaint.checked&&!prodint.checked)
+		branchesbeint="<font size='3'><strong>Branches in BE Internship:</strong></font><font size='4'>NA</font><br>";
 	var branchesme="<font size='3'><strong>Branches in ME: </strong></font><font size='4'>";
 	if(meind.checked)
 		branchesme=branchesme+"Industrial Material Metallurgy"+"<br>";
@@ -75,7 +97,7 @@ function preview()
 		branchesme="<font size='3'><strong>Branches in ME:</strong></font><font size='4'>All</font><br>";
 	if(!meind.checked&&!mecivilwr.checked&&!meenv.checked&&!metran.checked&&!meprod.checked&&!meee.checked&&!mecivilstru.checked&&!meecevlsi.checked&&!mecse.checked&&!meinddes.checked&&!memech.checked&&!meis.checked&&!meece.checked&&!metqem.checked)
 		branchesme="<font size='3'><strong>Branches in ME:</strong></font><font size='4'>NA</font><br>";
-	var data=announcement+jafs+branchesbe+branchesme;
+	var data=announcement+jafs+branchesbe+branchesbeint+branchesme;
 	$('#preview_data').html('');
     $('#preview_data').append(data);
 	$('#preview_data').dialog({
@@ -175,7 +197,7 @@ $(document).ready(function() {
 	<br>
 	<h3>OR</h3>
 	<br>
-	<h4>Send to all students of these branches (B.E.)</h4>
+	<h4>Send to all students of these branches (B.E. Placement)</h4>
 	<div class="form-group">
 	<fieldset>
 	<input type="checkbox" value="Aerospace" id="aero" name="aero">Aerospace</input><br/><br/>
@@ -186,6 +208,20 @@ $(document).ready(function() {
 	<input type="checkbox" value="Mechanical" name="mech" id="mech">Mechanical</input><br/><br/>
 	<input type="checkbox" value="Metallurgy" name="meta" id="meta">Metallurgy</input><br/><br/>
 	<input type="checkbox" value="Production" name="prod" id="prod">Production</input><br/>
+	</fieldset>
+  </div>
+  <br>
+  <h4>Send to all students of these branches (B.E. Internship)</h4>
+  <div class="form-group">
+	<fieldset>
+	<input type="checkbox" value="Aerospace" id="aeroint" name="aeroint">Aerospace</input><br/><br/>
+	<input type="checkbox" value="Civil" name="civilint" id="civilint">Civil</input><br/><br/>
+	<input type="checkbox" value="Computer Science" name="cseint" id="cseint">Computer Science</input><br/><br/>
+	<input type="checkbox" value="Electronics and Communication" name="eceint" id="eceint">Electronics and Communication</input><br/><br/>
+	<input type="checkbox" value="Electrical" name="eeint" id="eeint">Electrical</input><br/><br/>
+	<input type="checkbox" value="Mechanical" name="mechint" id="mechint">Mechanical</input><br/><br/>
+	<input type="checkbox" value="Metallurgy" name="metaint" id="metaint">Metallurgy</input><br/><br/>
+	<input type="checkbox" value="Production" name="prodint" id="prodint">Production</input><br/>
 	</fieldset>
   </div>
   <br>

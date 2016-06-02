@@ -27,13 +27,15 @@ if($result->num_rows > 0) {
 
 	while($count--) {
 		$j=0;
-		$sql = "SELECT distinct job_designation from ".$applicaitons_table." where company_id=$companies[$i]";
+		$sql = "SELECT distinct job_designation,jobtype from ".$applicaitons_table." where company_id=$companies[$i]";
 
 		$profiles=array();
+		$jobtype=array();
 		$result = $mysqli->query($sql);
 		if($result->num_rows>0){
 			while($row=$result->fetch_assoc()){
 				$profiles[$j]=$row['job_designation'];
+				$jobtype[$j]=$row['jobtype'];
 				$j++;
 			}
 		}
@@ -45,10 +47,10 @@ if($result->num_rows > 0) {
 			$result1=$mysqli->query($sql);
 			
 		$tableid = "table_".$j;
- 		$rethtml = $rethtml."<h3>Applications for $companyname[$i] for Profile:".$profiles[$j]."</h3><div class='table-responsive'><table class='table' id=table_".$j."><caption>Applications for ".$profiles[$j]."</caption><thead><td class='data'><b>Student ID</b></td><td class='data'><b>Student Name</b></td><td class='data'><b>Student Programme</b></td><td class='data'><b>Student Branch</b></td><td class='non-data'><b>CV Link</b></td></thead>";
+ 		$rethtml = $rethtml."<h3>Applications for <u>$companyname[$i]</u> for Profile:<u>".$profiles[$j]."</u> (".$jobtype[$j].")</h3><div class='table-responsive'><table class='table' id=table_".$j."><caption>Applications for ".$profiles[$j]." (".$jobtype[$j].")</caption><thead><td><b>Student ID</b></td><td><b>Student Name</b></td><td><b>Student Programme</b></td><td><b>Student Branch</b></td><td class='noExl'><b>CV Link</b></td></thead>";
         
 		while($row=$result1->fetch_assoc()) {
-			$rethtml = $rethtml."<tr><td class='data'>".$row['sid']."</td><td class='data'>".$row['student_name']."</td><td class='data'>".$row['student_programme']."</td><td class='data'>".$row['student_branch']."</td><td class='non-data'><a href='downloadcv.php?filename=".$row['cv_id']."' target='_blank'>Download CV</a></td></tr>";
+			$rethtml = $rethtml."<tr><td>".$row['sid']."</td><td>".$row['student_name']."</td><td>".$row['student_programme']."</td><td>".$row['student_branch']."</td><td class='noExl'><a href='downloadcv.php?filename=".$row['cv_id']."' target='_blank'>Download CV</a></td></tr>";
 		}
 
 		$rethtml = $rethtml."</table><button id='export_".$j."' data-export='export' onclick=download('".$tableid."')>Download Info</button></div>";

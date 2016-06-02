@@ -65,11 +65,19 @@ $(document).ready(function(){
 		dataType: 'html',
 		success: function(rethtml) {
 			$('#visitingcompanies').html(rethtml);
+			
 			var message_status = $("#status2");
+			//$(".date").datepicker({dateFormat: 'yyyy-mm-dd'});
+			var value="";
+			$(".date").change(function(){
+				$(this).val(new Date().toISOString().substring(0,10));
+				value=$(this).val();
+		        $(this).parent().focus();
+			});
 			$("td[contenteditable='true']").blur(function(){
 		
         var field_userid = $(this).attr("id") ;
-        var value = $(this).text() ;
+        
         if(value!="" || value!="YYYY-MM-DD")
 		{
 		$.post('saverecords2.php' , field_userid + "=" + value, function(data){

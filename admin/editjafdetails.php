@@ -116,7 +116,7 @@ if (strpos($row['branches_me'],"TQEM") !== false) {
 	<div class="form-group">
 	    <label for="type">Job Type</label>
 		<select name="type" id="type" class="form-control input-lg" value="'.$row['jobtype'].'">
-        <option value="Full-Time">Full-Time</option>
+        <option value="Placement">Full-Time</option>
   <option value="Internship">Internship</option>
   </select>
   </div>

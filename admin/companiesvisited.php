@@ -12,9 +12,22 @@ include '../functions.php';
     <script type="text/javascript" src="../js/jquery.js"></script>
 	<script type="text/javascript" src="../js/jquery-ui.js"></script>
     <script type="text/javascript" src="../js/bootstrap.min.js"></script>
-	<script type="text/javascript" src="../js/jquery.table2excel.js"></script>
+	<!--script type="text/javascript" src="../js/jquery.table2excel.js"></script-->
+	<!--script type="text/javascript" src="../js/tableexport/tableExport.js"></script>
+	<script type="text/javascript" src="../js/tableexport/jquery.base64.js"></script-->
+	<script type="text/javascript" src="../js/jquery-table2excel-master/src/jquery.table2excel.js"></script>
 </head>
 <script type="text/javascript">
+function download(tableid) {
+	var tables = document.getElementById(tableid);
+	var caption=$(tables).find('caption').text();
+	//tableToExcel('comp', 'W3C Example Table');
+	$('#comp').table2excel({
+		filename: caption,
+		name: 'companies'
+	});
+	//$(tables).tableToCSV();
+}
 $(document).ready(function(){
 	
 	$.ajax({
