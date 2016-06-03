@@ -7,7 +7,7 @@ $sql="SELECT * from announcements order by aid desc";
 $result = $mysqli->query($sql);
 if($result->num_rows > 0)
 {
-$rethtml = $rethtml."<h3>Announcements</h3><div class='table-responsive'><table class='table' id='ann'><caption>Announcements sent</caption><thead><td><b>Date/Time</b></td><td><b>Announcement</b></td><td><b>To the Applicants of</b></td><td><b>To these branches (BE Placement)</b></td><td><b>To these branches (BE Internship)</b></td><td><b>To these branches (ME)</b></td></thead>";
+$rethtml = $rethtml."<h3>Announcements</h3><b>Search: </b><input type='text' class='search' id='t_ann' placeholder='Type a keyword'></input><div class='table-responsive'><table class='table' id='ann'><caption>Announcements sent</caption><thead><th><b>Date/Time</b></th><th><b>Announcement</b></th><th><b>To the Applicants of</b></th><th><b>To these branches (BE Placement)</b></th><th><b>To these branches (BE Internship)</b></th><th><b>To these branches (ME)</b></th></thead>";
 		while($row=$result->fetch_assoc()) {
 			$rethtml = $rethtml."<tr><td class='data'>".$row['timestamp']."</td><td class='data'>".$row['announcement']."</td><td class='data'>".$row['company_name']."</td><td class='data'>".$row['branches_be']."</td><td class='data'>".$row['branches_beint']."</td><td>".$row['branches_me']."</td></tr>";		
 		}

@@ -34,7 +34,7 @@ function download(tableid) {
 	
 	$(tables).table2excel({
 		filename: caption,
-		exclude: ".noExl1",
+		exclude: ".noExl",
 		exclude_img: true,
 		exclude_links: true
 		//exclude_inputs: true
@@ -116,7 +116,7 @@ $(document).ready(function(){
 		value = $(this).text() ;
 		}
 		
-        
+        if(value!=""){
 		$.post('saverecords.php' , field_userid + "=" + value, function(data){
             if(data != '')
             {
@@ -127,7 +127,7 @@ $(document).ready(function(){
             }
         });
 		selectbox=0;
-	
+		}
     });
 		},
 		error: function() {

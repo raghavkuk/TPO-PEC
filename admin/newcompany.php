@@ -19,6 +19,7 @@ $_SESSION['successedit']=$_GET['status'];
 	<script type="text/javascript" src="../js/jquery-table2excel-master/src/jquery.table2excel.js"></script>
 </head>
 <script type="text/javascript">
+
 function preview2(id)
 {
 	var data="Are you sure you want to remove this company?";
@@ -87,6 +88,29 @@ function preview(x)
       }
             });
 }
+function searchTable(inputVal,tableid)
+{
+	var id=tableid.substring(2);
+	var table = document.getElementById(id);
+	$(table).find('tr').each(function(index, row)
+	{
+		var allCells = $(row).find('td');
+		if(allCells.length > 0)
+		{
+			var found = false;
+			allCells.each(function(index, td)
+			{
+				var regExp = new RegExp(inputVal, 'i');
+				if(regExp.test($(td).text()))
+				{
+					found = true;
+					return false;
+				}
+			});
+			if(found == true)$(row).show();else $(row).hide();
+		}
+	});
+}
 $(document).ready(function(){
 	$('#message').html('');
 	var deleted="<?php if(isset($_GET['deleted'])){ if($_GET['deleted']=='true'){ echo "true"; }} else echo "false";?>";
@@ -115,6 +139,10 @@ $(document).ready(function(){
 				var x=$(this).attr('id');
 				preview(x);
 			});
+					$('.search').keyup(function()
+	    {
+		searchTable($(this).val(),$(this).attr("id"));
+     	});
 		},
 		error: function() {
 		    $('#newcompanies').html("<h3>Error</h3>");

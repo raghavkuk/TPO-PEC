@@ -16,7 +16,7 @@ include '../functions.php';
     <script type="text/javascript" src="../js/jquery.js"></script>
 	<script type="text/javascript" src="../js/jquery-ui.js"></script>
     <script type="text/javascript" src="../js/bootstrap.min.js"></script>
-	<script type="text/javascript" src="../js/jquery.table2excel.js"></script>
+	<script type="text/javascript" src="../js/jquery-table2excel-master/src/jquery.table2excel.js"></script>
 </head>
 <style>
 .ui-accordion { width: 100%; margin: 0 auto; } 
@@ -35,7 +35,7 @@ function download(tableid) {
 	var tables = document.getElementById(tableid);
 	var caption=$(tables).find('caption').text();
 	$(tables).table2excel({
-		exclude: ".non-data",
+		exclude: ".noExl",
 		filename: caption
 	});
 }
@@ -104,9 +104,7 @@ $(document).ready(function(){
                     <li class="active">
                         <a href="applications-company.php"><i class="fa fa-fw fa-bar-chart-o"></i> Applications</a>
                     </li>
-                    <li>
-                        <a href=""><i class="fa fa-fw fa-table"></i> Send Queries</a>
-                    </li>
+                    
 					
                   </ul>
             </div>

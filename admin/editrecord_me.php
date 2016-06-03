@@ -12,7 +12,7 @@ include '../functions.php';
 	<script type="text/javascript" src="../js/jquery-ui.js"></script>
     <script type="text/javascript" src="../js/bootstrap.min.js"></script>
 	<script type="text/javascript" src="../js/jquery-table2excel-master/src/jquery.table2excel.js"></script>
-	<script type="text/javascript" src="../datatables/media/js/jquery.dataTables.js"></script>
+	<!--script type="text/javascript" src="../datatables/media/js/jquery.dataTables.js"></script-->
 
 </head>
 <style>
@@ -27,11 +27,34 @@ include '../functions.php';
 .ui-accordion .ui-accordion-content-active { display: block; }
 </style>
 <script type="text/javascript">
+function searchTable(inputVal,tableid)
+{
+	var id=tableid.substring(2);
+	var table = document.getElementById(id);
+	$(table).find('tr').each(function(index, row)
+	{
+		var allCells = $(row).find('td');
+		if(allCells.length > 0)
+		{
+			var found = false;
+			allCells.each(function(index, td)
+			{
+				var regExp = new RegExp(inputVal, 'i');
+				if(regExp.test($(td).text()))
+				{
+					found = true;
+					return false;
+				}
+			});
+			if(found == true)$(row).show();else $(row).hide();
+		}
+	});
+}
 function download(tableid) {
 	var tables = document.getElementById(tableid);
 	var caption=$(tables).find('caption').text();
 	$(tables).table2excel({
-		exclude: ".non-data",
+		exclude: ".noExl",
 		filename: caption
 	});
 }
@@ -47,13 +70,18 @@ $(document).ready(function(){
 				heightStyle: "content",
 				active: false
 			});
-			$("table").each(function(){
+			/*$("table").each(function(){
 				var curtable=$(this);
 				$(curtable).DataTable({"paging": false});
-			});
+			});*/
+			
 			var message_status = $("#status");
 			var value="";
-            var selectbox=0;			
+            var selectbox=0;	
+        $('.search').keyup(function()
+	    {
+		searchTable($(this).val(),$(this).attr("id"));
+     	});			
 		$(".status").change(function()
 	    {
 		   value=$(this).val();
