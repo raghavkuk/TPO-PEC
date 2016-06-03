@@ -21,15 +21,15 @@ function placementchart(cgpa,branch,gender)
 {
 	var placed=0,notplaced=0,studies=0,total=0;
 	$.ajax({
-		url: 'getnumbers.php?cgpa='+cgpa+'&branch='+branch+'&gender='+gender,
+		url: 'getnumbersbeint.php?cgpa='+cgpa+'&branch='+branch+'&gender='+gender,
 		dataType: 'xml',
 		success: function(retxml) {
 			$(retxml).find('numbers').each(function(){
-			placed = parseInt($(this).find('placedbe').text());
-			notplaced = parseInt($(this).find('notplacedbe').text());
-			studies = parseInt($(this).find('studiesbe').text());
+			placed = parseInt($(this).find('placedbeint').text());
+			notplaced = parseInt($(this).find('notplacedbeint').text());
+			//studies = parseInt($(this).find('studiesbe').text());
 			});
-        	$('#numberplacedbe').highcharts({
+        	$('#numberplacedbeint').highcharts({
 		    exporting: {
             chartOptions: { // specific options for the exported image
                 plotOptions: {
@@ -60,7 +60,7 @@ function placementchart(cgpa,branch,gender)
                 type: 'pie'
             },
             title: {
-                text: 'Number of Students Placed with CGPA>='+cgpa
+                text: 'Number of Students who Got Internship with CGPA>='+cgpa
             },
             tooltip: {
 				pointFormat: '<b>Number:</b>{point.y}<br><b>Percentage:</b>{point.percentage:.1f}%'
@@ -80,24 +80,20 @@ function placementchart(cgpa,branch,gender)
                 name: 'Students',
                 colorByPoint: true,
                 data: [{
-                    name: 'Unplaced (Eligible) Students',
+                    name: 'Students did not get internship',
                     y: notplaced
                 }, {
-                    name: 'Placed Students',
+                    name: 'Students secured Internship',
                     y: placed,
                     sliced: true,
                     selected: true
-                },
-				{
-                    name: 'Higher Studies',
-                    y: studies
                 }]
             }]
         });
 			
 		},
 		error: function() {
-		    $('#numberplacedbe').html("<h3>Error</h3>");
+		    $('#numberplacedbeint').html("<h3>Error</h3>");
 	    }
 	});
 }
@@ -105,10 +101,10 @@ $(document).ready(function(){
 	placementchart('6.5','All','Both');
 	$('#getchart').click(function()
 	{
-       placementchart($('#cgselect').val(),$('#branchselect').val(),$('#genderselect').val());
+		placementchart($('#cgselect').val(),$('#branchselect').val(),$('#genderselect').val());
 	});
 		//chart2
-	
+		
 		$('#monthwise').highcharts({
 		exporting: {
             chartOptions: { // specific options for the exported image
@@ -188,8 +184,6 @@ $(document).ready(function(){
     </div>
 	<div id="analyics" class='container'>
 	<h2 align="center">Placement trends</h2>
-	<div class='row'>
-	<div class='col-md-3'>
 	<h4>Select CGPA</h4>
 	<select name='cg' id='cgselect'>
 	<option value='6.5'>Default (>6.5)</option>
@@ -203,8 +197,6 @@ $(document).ready(function(){
 	<option value='8.5'>>=8.5</option>
 	<option value='9'>>=9</option>
 	</select>
-	</div>
-	<div class='col-md-3'>
 	<h4>Select Branch</h4>
 	<select name='branch' id='branchselect'>
 	<option value='All'>All</option>
@@ -217,20 +209,16 @@ $(document).ready(function(){
 	<option value='Metallurgy'>Metallurgy</option>
 	<option value='Production'>Production</option>
 	</select>
-	</div>
-	<div class='col-md-4'>
 	<h4>Gender</h4>
 	<select name='gender' id='genderselect'>
 	<option value='Both'>Both</option>
 	<option value='Male'>Male</option>
 	<option value='Female'>Female</option>
 	</select>
-	<button id='getchart'>Get Data</button>
-	</div>
-	</div>
 	<br>
-	<div id="numberplacedbe" align="center" style="width: 80%; margin: 0 auto;"></div><br><br>
-	<div id="companywisebe" align="center" style="width: 80%; margin: 0 auto;"></div><br><br>
+	<button id='getchart'>Get Data</button>
+	<br>
+	<div id="numberplacedbeint" align="center" style="width: 80%; margin: 0 auto;"></div><br><br>
 	<div id="monthwise" align="center" style="width: 80%; margin: 0 auto;"></div>
 	</div>	
 </body>

@@ -21,15 +21,15 @@ function placementchart(cgpa,branch,gender)
 {
 	var placed=0,notplaced=0,studies=0,total=0;
 	$.ajax({
-		url: 'getnumbers.php?cgpa='+cgpa+'&branch='+branch+'&gender='+gender,
+		url: 'getnumbersme.php?cgpa='+cgpa+'&branch='+branch+'&gender='+gender,
 		dataType: 'xml',
 		success: function(retxml) {
 			$(retxml).find('numbers').each(function(){
-			placed = parseInt($(this).find('placedbe').text());
-			notplaced = parseInt($(this).find('notplacedbe').text());
-			studies = parseInt($(this).find('studiesbe').text());
+			placed = parseInt($(this).find('placedme').text());
+			notplaced = parseInt($(this).find('notplacedme').text());
+			studies = parseInt($(this).find('studiesme').text());
 			});
-        	$('#numberplacedbe').highcharts({
+        	$('#numberplacedme').highcharts({
 		    exporting: {
             chartOptions: { // specific options for the exported image
                 plotOptions: {
@@ -60,7 +60,7 @@ function placementchart(cgpa,branch,gender)
                 type: 'pie'
             },
             title: {
-                text: 'Number of Students Placed with CGPA>='+cgpa
+                text: 'Number of Students Placed (ME) with CGPA>='+cgpa
             },
             tooltip: {
 				pointFormat: '<b>Number:</b>{point.y}<br><b>Percentage:</b>{point.percentage:.1f}%'
@@ -97,7 +97,7 @@ function placementchart(cgpa,branch,gender)
 			
 		},
 		error: function() {
-		    $('#numberplacedbe').html("<h3>Error</h3>");
+		    $('#numberplacedme').html("<h3>Error</h3>");
 	    }
 	});
 }
@@ -105,10 +105,10 @@ $(document).ready(function(){
 	placementchart('6.5','All','Both');
 	$('#getchart').click(function()
 	{
-       placementchart($('#cgselect').val(),$('#branchselect').val(),$('#genderselect').val());
+		placementchart($('#cgselect').val(),$('#branchselect').val(),$('#genderselect').val());
 	});
 		//chart2
-	
+		
 		$('#monthwise').highcharts({
 		exporting: {
             chartOptions: { // specific options for the exported image
@@ -188,8 +188,6 @@ $(document).ready(function(){
     </div>
 	<div id="analyics" class='container'>
 	<h2 align="center">Placement trends</h2>
-	<div class='row'>
-	<div class='col-md-3'>
 	<h4>Select CGPA</h4>
 	<select name='cg' id='cgselect'>
 	<option value='6.5'>Default (>6.5)</option>
@@ -203,34 +201,34 @@ $(document).ready(function(){
 	<option value='8.5'>>=8.5</option>
 	<option value='9'>>=9</option>
 	</select>
-	</div>
-	<div class='col-md-3'>
 	<h4>Select Branch</h4>
 	<select name='branch' id='branchselect'>
 	<option value='All'>All</option>
-	<option value='Aerospace'>Aerospace</option>
-	<option value='Civil'>Civil</option>
-	<option value='Computer Science'>Computer Science</option>
-	<option value='Electrical'>Electrical</option>
-	<option value='Electronics and Communiction'>Electronics and Communiction</option>
-	<option value='Mechanical'>Mechanical</option>
-	<option value='Metallurgy'>Metallurgy</option>
-	<option value='Production'>Production</option>
+	<option value='Industrial Material Metallurgy'>Industrial Material Metallurgy</option>
+<option value='Civil (Water Resources'>Civil (Water Resources)</option>
+<option value='Environmental Engineering'>Environmental Engineering</option>
+<option value='Transportation Engineering'>Transportation Engineering</option>
+<option value='Production'>Production</option>
+<option value='Electrical'>Electrical</option>
+<option value='Civil (Structure)'>Civil (Structure)</option>
+<option value='Electronics (VLSI)'>Electronics (VLSI)</option>
+<option value='Computer Science'>Computer Science</option>
+<option value='Industrial Design'>Industrial Design</option>
+<option value='Mechanical'>Mechanical</option>
+<option value='Computer Science (Information Security)'>Computer Science (Information Security)</option>
+<option value='Electronics'>Electronics</option>
+<option value='TQEM'>TQEM</option>
 	</select>
-	</div>
-	<div class='col-md-4'>
 	<h4>Gender</h4>
 	<select name='gender' id='genderselect'>
 	<option value='Both'>Both</option>
 	<option value='Male'>Male</option>
 	<option value='Female'>Female</option>
 	</select>
+	<br><br>
 	<button id='getchart'>Get Data</button>
-	</div>
-	</div>
 	<br>
-	<div id="numberplacedbe" align="center" style="width: 80%; margin: 0 auto;"></div><br><br>
-	<div id="companywisebe" align="center" style="width: 80%; margin: 0 auto;"></div><br><br>
+	<div id="numberplacedme" align="center" style="width: 80%; margin: 0 auto;"></div><br><br>
 	<div id="monthwise" align="center" style="width: 80%; margin: 0 auto;"></div>
 	</div>	
 </body>
