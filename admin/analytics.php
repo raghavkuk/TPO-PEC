@@ -19,7 +19,13 @@ include '../functions.php';
 <script type="text/javascript">
 function placementchart(cgpa,branch,gender)
 {
-	var placed=0,notplaced=0,studies=0,total=0;
+	var placed=0,notplaced=0,studies=0,total=0,students;
+	if(gender=='Both')
+		students='Students';
+    else if(gender=='Male')
+		students='Males';
+	else
+		students='Females';
 	$.ajax({
 		url: 'getnumbers.php?cgpa='+cgpa+'&branch='+branch+'&gender='+gender,
 		dataType: 'xml',
@@ -29,6 +35,7 @@ function placementchart(cgpa,branch,gender)
 			notplaced = parseInt($(this).find('notplacedbe').text());
 			studies = parseInt($(this).find('studiesbe').text());
 			});
+			if(branch=='All') branch='All Branches';
         	$('#numberplacedbe').highcharts({
 		    exporting: {
             chartOptions: { // specific options for the exported image
@@ -60,7 +67,7 @@ function placementchart(cgpa,branch,gender)
                 type: 'pie'
             },
             title: {
-                text: 'Number of Students Placed with CGPA>='+cgpa
+                text: 'Number of '+students+ ' Placed with CGPA>='+cgpa+' of '+branch
             },
             tooltip: {
 				pointFormat: '<b>Number:</b>{point.y}<br><b>Percentage:</b>{point.percentage:.1f}%'
