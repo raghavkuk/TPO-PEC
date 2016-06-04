@@ -108,10 +108,10 @@ $(document).ready(function(){
                     <option value="Civil/Infrastructure">Civil/Infrastructure</option>
                     <option value="Manufacturing/Automobile">Manufacturing/Automobile</option>
                     <option value="Software">Software</option>
-                    <option value="Eletronics/Communication">Eletronics/Communication</option>
+                    <option value="Electronics/Communication">Electronics/Communication</option>
                     <option value="Core(Technical)">Core(Technical)</option>
                     <option value="Teaching and Research">Teaching and Research</option>
-                    <option value="">Other</option>
+                    <option value="Other">Other</option>
                 </select>
             </div>
 	       

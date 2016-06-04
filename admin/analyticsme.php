@@ -19,7 +19,7 @@ include '../functions.php';
 <script type="text/javascript">
 function placementchart(cgpa,branch,gender)
 {
-	var placed=0,notplaced=0,studies=0,total=0,students;
+	var placed=0, placedppo=0,notplaced=0,studies=0,analytics=0,consultancy=0,vlsi=0,finance=0,civilinfra=0,manufac=0,software=0,ece=0,core=0,teaching=0,other=0,students;
 	if(gender=='Both')
 		students='Students';
     else if(gender=='Male')
@@ -34,6 +34,17 @@ function placementchart(cgpa,branch,gender)
 			placed = parseInt($(this).find('placedme').text());
 			notplaced = parseInt($(this).find('notplacedme').text());
 			studies = parseInt($(this).find('studiesme').text());
+			analytics= parseInt($(this).find('analytics').text());
+			consultancy= parseInt($(this).find('consultancy').text());
+			vlsi= parseInt($(this).find('vlsi').text());
+			finance= parseInt($(this).find('finance').text());
+			civilinfra= parseInt($(this).find('civilinfra').text());
+			manufac= parseInt($(this).find('manufac').text());
+			software= parseInt($(this).find('software').text());
+			ece= parseInt($(this).find('ece').text());
+			core= parseInt($(this).find('core').text());
+			teaching= parseInt($(this).find('teaching').text());
+			other= parseInt($(this).find('other').text());
 			});
 			if(branch=='All') branch='All Branches';
         	$('#numberplacedme').highcharts({
@@ -102,11 +113,122 @@ function placementchart(cgpa,branch,gender)
             }]
         });
 			
+			
+		//chart2
+
+      $('#sectorplacedme').highcharts({
+		    exporting: {
+            chartOptions: { // specific options for the exported image
+                plotOptions: {
+                    series: {
+                        dataLabels: {
+                            enabled: true,
+							format: '<b>{point.name}</b><br><b>Number:</b>{point.y}<br><b>Percentage:</b>{point.percentage:.1f}%'
+                        }
+                    },
+					
+					
+					
+                },
+				legend: {
+						enabled: true
+					},
+					tooltip: {
+						enabled: true
+					}
+            },
+            scale: 3,
+            fallbackToExportServer: false
+        },
+            chart: {
+                plotBackgroundColor: null,
+                plotBorderWidth: null,
+                plotShadow: false,
+                type: 'pie'
+            },
+            title: {
+                text: 'Number of '+students+ ' (ME) placed in different sectors with CGPA>='+cgpa+' of '+branch
+            },
+            tooltip: {
+				pointFormat: '<b>Number:</b>{point.y}<br><b>Percentage:</b>{point.percentage:.1f}%'
+                //pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+            },
+            plotOptions: {
+                pie: {
+                    allowPointSelect: true,
+                    cursor: 'pointer',
+                    dataLabels: {
+                        enabled: false
+                    },
+                    showInLegend: true
+                }
+            },
+            series: [{
+                name: 'Students',
+                colorByPoint: true,
+                data: [{
+                    name: 'Analytics/KPO',
+                    y: analytics
+                }, {
+                    name: 'Consultancy',
+                    y: consultancy,
+                    sliced: true,
+                    selected: true
+                },
+				{
+                    name: 'VLSI/Embedded Systems',
+                    y: vlsi
+                },
+				{
+                    name: 'Finance',
+                    y: finance
+                },
+				{
+                    name: 'Civil/Infrastructure',
+                    y: civilinfra
+                },
+				{
+                    name: 'Manufacturing/Automobile',
+                    y: manufac
+                },
+				{
+                    name: 'Software',
+                    y: software
+                },
+				{
+                    name: 'Electronics/Communication',
+                    y: ece
+                },
+				{
+                    name: 'Core (Technical)',
+                    y: core
+                },
+				{
+                    name: 'Teaching/Research',
+                    y: teaching
+                },
+				{
+                    name: 'Other',
+                    y: other
+                },
+				{
+                    name: 'Unplaced',
+                    y: notplaced
+                }
+				]
+            }]
+        });
+			
 		},
 		error: function() {
 		    $('#numberplacedme').html("<h3>Error</h3>");
 	    }
 	});
+	
+	//chart2
+	
+			
+		
 }
 function companylist()
 {
@@ -276,6 +398,8 @@ $(document).ready(function(){
 	</div>
 	<br>
 	<div id="numberplacedme" align="center" style="width: 80%; margin: 0 auto;"></div><br><br>
+	<div id="sectorplacedme" style="width: 80%; margin: 0 auto;"></div><br><br>
+	<h2 align="center">Company Wise Trends</h2>
 	<div class='row'>
 	<div class='col-md-3'>
 	<h4>Select Company</h4>
