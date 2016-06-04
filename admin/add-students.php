@@ -42,7 +42,7 @@
                 <!-- Page Heading -->
                 <div class="row">
                     <div class="col-lg-12">
-                            <form action="save-students.php" method="post" enctype="multipart/form-data"> 
+                            <form action="sendmails.php" method="post" enctype="multipart/form-data"> 
                                 <h3>
                                     <span class="label label-default">Upload Excel File (.xlsx)</span>
                                 </h3>
@@ -93,7 +93,7 @@ if ( isset($_POST["submit"]) ) {
                 unlink($_FILES["file"]["name"]); 
             } 
             $file_name = $_FILES["file"]["name"];
-            if(move_uploaded_file($_FILES["file"]["tmp_name"], 'C:\wamp\www\tpo\admin\\'.$file_name)){
+            if(move_uploaded_file($_FILES["file"]["tmp_name"], '..\sheets\\'.$file_name)){
                 echo 'hey!';
             } 
             $uploadedStatus = 1; 

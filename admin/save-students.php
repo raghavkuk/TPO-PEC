@@ -53,7 +53,7 @@ for($i = 2; $i <= $arrayCount; $i++) {
 	$father_name = trim( $allDataInSheet[$i]["AA"] );
 	$mother_name = trim( $allDataInSheet[$i]["AB"] );
 	$father_contact = trim( $allDataInSheet[$i]["AC"] );
-	$branch = "Conputer Science & Engineering";
+	$branch = "Computer Science";
 
 
 	$query = "INSERT INTO student_details (sid, name, gender, category, address, dob, branch, aieee_rank, 
@@ -65,8 +65,8 @@ for($i = 2; $i <= $arrayCount; $i++) {
 		'".$school_12th."', '".$sgpa_sem1."', '".$sgpa_sem2."', '".$sgpa_sem3."', '".$sgpa_sem4."', '".$cgpa."', 
 		'".$training."', '".$backlog."', '".$contact_no."', '".$email."', '".$father_name."', '".$mother_name."', 
 		'".$father_contact."')";
-
-	$result = $mysqli->query($query);
+echo $query."<br>";
+	//$result = $mysqli->query($query);
 
 }
 
