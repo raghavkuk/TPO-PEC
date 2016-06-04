@@ -349,11 +349,11 @@ $(document).ready(function(){
 
     </div>
 	<div id="analyics" class='container'>
-	<h2 align="center">Placement trends</h2>
+	<h2 align="center">Placement trends- ME</h2>
 	<div class="row">
 	<div class="col-md-3">
 	<h4>Select CGPA</h4>
-	<select name='cg' id='cgselect'>
+	<select name='cg' id='cgselect' class='form-control input-lg'>
 	<option value='6.5'>Default (>6.5)</option>
 	<option value='5'>>=5</option>
 	<option value='5.5'>>=5.5</option>
@@ -368,7 +368,7 @@ $(document).ready(function(){
 	</div>
 	<div class="col-md-3">
 	<h4>Select Branch</h4>
-	<select name='branch' id='branchselect'>
+	<select name='branch' id='branchselect' class='form-control input-lg'>
 	<option value='All'>All</option>
 	<option value='Industrial Material Metallurgy'>Industrial Material Metallurgy</option>
 <option value='Civil (Water Resources'>Civil (Water Resources)</option>
@@ -386,14 +386,16 @@ $(document).ready(function(){
 <option value='TQEM'>TQEM</option>
 	</select>
 	</div>
-	<div class="col-md-4">
+	<div class="col-md-3">
 	<h4>Gender</h4>
-	<select name='gender' id='genderselect'>
+	<select name='gender' id='genderselect' class='form-control input-lg'>
 	<option value='Both'>Both</option>
 	<option value='Male'>Male</option>
 	<option value='Female'>Female</option>
 	</select>
-	<button id='getchart'>Get Data</button>
+	</div><div class='col-md-1'>
+	<br><br>
+	<button id='getchart' class='btn btn-primary'>Get Data</button>
 	</div>
 	</div>
 	<br>
