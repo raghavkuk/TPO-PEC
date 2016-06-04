@@ -19,7 +19,7 @@ include '../functions.php';
 <script type="text/javascript">
 function placementchart(cgpa,branch,gender)
 {
-	var placed=0,notplaced=0,studies=0,total=0,students;
+	var placed=0, placedppo=0,notplaced=0,studies=0,total=0,students;
 	if(gender=='Both')
 		students='Students';
     else if(gender=='Male')
@@ -34,6 +34,7 @@ function placementchart(cgpa,branch,gender)
 			placed = parseInt($(this).find('placedbe').text());
 			notplaced = parseInt($(this).find('notplacedbe').text());
 			studies = parseInt($(this).find('studiesbe').text());
+			placedppo= parseInt($(this).find('placedppo').text());
 			});
 			if(branch=='All') branch='All Branches';
         	$('#numberplacedbe').highcharts({
@@ -96,9 +97,14 @@ function placementchart(cgpa,branch,gender)
                     selected: true
                 },
 				{
+                    name: 'Placed (Pre-Placement Offer) Students',
+                    y: placedppo
+                },
+				{
                     name: 'Higher Studies',
                     y: studies
-                }]
+                }
+				]
             }]
         });
 			

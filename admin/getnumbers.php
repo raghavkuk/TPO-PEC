@@ -39,6 +39,14 @@ if($result->num_rows > 0)
 		while($row=$result->fetch_assoc()) {
 			$retxml = $retxml."<studiesbe>".$row['studies']."</studiesbe>";
 		}
+}
+$sql="SELECT count(*) as studies from placementdetails_be where status='PLACED (PPO)'".$branchquery.$genderquery;
+$result = $mysqli->query($sql);
+if($result->num_rows > 0)
+{
+		while($row=$result->fetch_assoc()) {
+			$retxml = $retxml."<placedppo>".$row['studies']."</placedppo>";
+		}
 }	
 $retxml = $retxml."</numbers>";
 $mysqli->close();

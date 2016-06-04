@@ -11,7 +11,7 @@ $con=mysqli_connect("localhost","root","");
    if($result->num_rows>0)
    {
 	  
-	header('Location: addcompany.php');
+	header('Location: newcompany.php');
    }
    $_SESSION['statusadd']='failure';
 $con->close();

@@ -166,7 +166,7 @@ $(document).ready(function(){
                 <div class="row">
                     <div class="col-lg-12">
                         <h3 class="page-header">
-                            Recruitment at PEC- Admin Panel
+                            Recruitment at PEC- Admin Panel (NEW COMPANIES)
                         </h3>
             </div>
             <!-- /.container-fluid -->
