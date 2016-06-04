@@ -67,7 +67,7 @@ function placementchart(cgpa,branch,gender)
                 type: 'pie'
             },
             title: {
-                text: 'Number of '+students+ ' Placed with CGPA>='+cgpa+' of '+branch
+                text: 'Number of '+students+ ' (BE) who got internship with CGPA>='+cgpa+' of '+branch
             },
             tooltip: {
 				pointFormat: '<b>Number:</b>{point.y}<br><b>Percentage:</b>{point.percentage:.1f}%'
@@ -104,15 +104,48 @@ function placementchart(cgpa,branch,gender)
 	    }
 	});
 }
+function companylist()
+{
+	$.ajax({
+		url: 'getcompanylist.php?prog=BEINT',
+		dataType: 'html',
+		success: function(rethtml) {
+			$('#companyselect').html(rethtml);
+			placementdata($('#companylist').val());
+		},
+		error: function() {
+		    $('#companyselect').html("<h3>Error</h3>");
+	    }
+	});
+}
+function placementdata(company)
+{
+	$.ajax({
+		url: 'getcompanydatabeint.php?company='+company,
+		dataType: 'html',
+		success: function(rethtml) {
+			$('#companywisebeint').html(rethtml);
+			
+		},
+		error: function() {
+		    $('#companywisebeint').html("<h3>Error</h3>");
+	    }
+	});
+}
 $(document).ready(function(){
 	placementchart('6.5','All','Both');
+	companylist();
+	
+	$('#companylist').change(function(){
+		placementdata($('#companyselect').val());
+	});
 	$('#getchart').click(function()
 	{
 		placementchart($('#cgselect').val(),$('#branchselect').val(),$('#genderselect').val());
 	});
 		//chart2
 		
-		$('#monthwise').highcharts({
+		/*$('#monthwise').highcharts({
 		exporting: {
             chartOptions: { // specific options for the exported image
                 plotOptions: {
@@ -161,7 +194,7 @@ $(document).ready(function(){
             data: [49, 71, 66, 29, 44]
 
         }]
-    });
+    });*/
     });
 	
 
@@ -191,6 +224,8 @@ $(document).ready(function(){
     </div>
 	<div id="analyics" class='container'>
 	<h2 align="center">Placement trends</h2>
+	<div class="row">
+	<div class="col-md-3">
 	<h4>Select CGPA</h4>
 	<select name='cg' id='cgselect'>
 	<option value='6.5'>Default (>6.5)</option>
@@ -204,6 +239,8 @@ $(document).ready(function(){
 	<option value='8.5'>>=8.5</option>
 	<option value='9'>>=9</option>
 	</select>
+	</div>
+	<div class="col-md-3">
 	<h4>Select Branch</h4>
 	<select name='branch' id='branchselect'>
 	<option value='All'>All</option>
@@ -216,17 +253,28 @@ $(document).ready(function(){
 	<option value='Metallurgy'>Metallurgy</option>
 	<option value='Production'>Production</option>
 	</select>
+	</div>
+	<div class="col-md-4">
 	<h4>Gender</h4>
 	<select name='gender' id='genderselect'>
 	<option value='Both'>Both</option>
 	<option value='Male'>Male</option>
 	<option value='Female'>Female</option>
 	</select>
-	<br>
 	<button id='getchart'>Get Data</button>
+	</div>
+	</div>
 	<br>
 	<div id="numberplacedbeint" align="center" style="width: 80%; margin: 0 auto;"></div><br><br>
-	<div id="monthwise" align="center" style="width: 80%; margin: 0 auto;"></div>
+	<div class='row'>
+	<div class='col-md-3'>
+	<h4>Select Company</h4>
+	<div id="companyselect"></div>
+	<br><br>
+	</div>
+	</div>
+	<div id="companywisebeint" style="width: 80%; margin: 0 auto;"><h4 align='center'><br><br><br>Select Values above to get data!</h4></div><br><br>
+	<!--div id="monthwise" align="center" style="width: 80%; margin: 0 auto;"></div-->
 	</div>	
 </body>
 </html>
