@@ -43,6 +43,7 @@ function preview() {
 	var designation="<font size='3'><strong>Job Designation: </strong></font><font size='4'>"+$('input[name="designation"]').val()+"</font><br>";
 	var desc="<font size='3'><strong>Job Description: </strong></font><font size='4'>"+$('#jobdesc').val()+"</font><br>";
 	var ctc="<font size='3'><strong>Cost to Company: </strong></font><font size='4'>"+$('input[name="ctc"]').val()+"</font><br>";
+	var ctcme="<font size='3'><strong>Cost to Company (if different for ME): </strong></font><font size='4'>"+$('input[name="ctcme"]').val()+"</font><br>";
 	var gross="<font size='3'><strong>Gross: </strong></font><font size='4'>"+$('input[name="gross"]').val()+"</font><br>";
 	var perks="<font size='3'><strong>Perks: </strong></font><font size='4'>"+$('input[name="perks"]').val()+"</font><br>";
 	var bond="<font size='3'><strong>Bond: </strong></font><font size='4'>"+$('input[name="bond"]').val()+"</font><br>";
@@ -117,7 +118,7 @@ function preview() {
 	var other="<font size='3'><strong>Other: </strong></font><font size='4'>"+$('input[name="other"]').val()+"</font><br>";
 	var deadline="<font size='3'><strong>Application Deadline: </strong></font><font size='4'>"+$('input[name="deadline"]').val()+"</font><br>";
 	var dateofvisit="<font size='3'><strong>Date of Visit: </strong></font><font size='4'>"+$('input[name="dateofvisit"]').val()+"</font><br>";
-	var data=jobtype+designation+desc+ctc+gross+perks+bond+cgpa+prog+branchesbe+branchesme+written+interview+other+dateofvisit+deadline;
+	var data=jobtype+designation+desc+ctc+ctcme+gross+perks+bond+cgpa+prog+branchesbe+branchesme+written+interview+other+dateofvisit+deadline;
 	$('#preview_data').html('');
     $('#preview_data').append(data);
 	$('#preview_data').dialog({
@@ -244,12 +245,16 @@ $(document).ready(function() {
        <textarea name="jobdesc" id="jobdesc" class="form-control input-lg" placeholder="Brief Job Description" required></textarea>
     </div>
 	<div class="form-group">
-        <label for="ctc">Cost to Company/ Stipend </label>
-        <input type="number" class="form-control input-lg" name="ctc" required>
+        <label for="ctc">Cost to Company/ Stipend (e.g. 900000 or 956000)</label>
+        <input type="number" step="any" class="form-control input-lg" name="ctc">
+    </div>
+	<div class="form-group">
+        <label for="ctc">Cost to Company (if different for ME; e.g. 1000000 or 1056800) </label>
+        <input type="number" step="any" class="form-control input-lg" name="ctcme">
     </div>
 	<div class="form-group">
         <label for="gross">Gross (Take home before Tax and other deuctions) </label>
-        <input type="text" class="form-control input-lg" name="gross">
+        <input type="number" step="any" class="form-control input-lg" name="gross">
     </div>
 	<div class="form-group">
         <label for="perks">Bonus/Perks/Incentives (if any) </label>

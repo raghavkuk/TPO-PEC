@@ -7,6 +7,7 @@ $type=$_POST["type"];
 $designation = $_POST["designation"];
 $jobdesc = $_POST["jobdesc"];
 $ctc = $_POST["ctc"];
+$ctcme=$_POST["ctcme"];
 $gross = $_POST["gross"];
 $perks = $_POST["perks"];
 $bond = $_POST["bond"];
@@ -19,6 +20,17 @@ $selproc = "";
 $deadline = $_POST['deadline'];
 $dateofvisit=$_POST['dateofvisit'];
 $success = 0;
+$ctcnew=$ctc;
+if($type=="Placement")
+$ctc=$ctc/100000;
+else
+	$ctc=$ctc/1000;
+if($ctcme!="")
+{
+	$ctcnewme=$ctcme;
+    $ctcme=$ctcme/100000;
+}
+else $ctcnewme="NA";
 $branches=array();
 $c = 0;
 $trades="";
@@ -156,7 +168,7 @@ if($c>0)
 	}
 	$selproc=$selproc.$sp[$i];
 }
-$sql = "INSERT into jaf_details (company_id,company_name,jobtype,job_designation,job_description,ctc,gross,perks,bond,cgpa,programme,branches_be,branches_me,written,interview,other,selection_proc,dateofvisit,deadline) values('".$_SESSION['cid']."','".$_SESSION['cname']."','".$type."','".$designation."','".$jobdesc."','".$ctc."','".$gross."','".$perks."','".$bond."','".$cgpa."','".$prog."','".$trades."','".$tradesme."','".$written."','".$interview."','".$other."','".$selproc."','".$dateofvisit."','".$deadline."')";
+$sql = "INSERT into jaf_details (company_id,company_name,jobtype,job_designation,job_description,ctc,ctcme,gross,perks,bond,cgpa,programme,branches_be,branches_me,written,interview,other,selection_proc,dateofvisit,deadline) values('".$_SESSION['cid']."','".$_SESSION['cname']."','".$type."','".$designation."','".$jobdesc."','".$ctc."','".$ctcme."','".$gross."','".$perks."','".$bond."','".$cgpa."','".$prog."','".$trades."','".$tradesme."','".$written."','".$interview."','".$other."','".$selproc."','".$dateofvisit."','".$deadline."')";
 if ($mysqli->query($sql) === TRUE) {
     echo "New record created successfully";
 	$success=1;
@@ -177,7 +189,8 @@ if($success==1){
  &nbsp; &nbsp; &nbsp; <font size='5'>Job Type: <?php echo $type;?><br>
  &nbsp; &nbsp; &nbsp; Job Designation: <?php echo $designation;?><br>
  &nbsp; &nbsp; &nbsp;Job Description: <?php echo $jobdesc;?><br>
- &nbsp; &nbsp; &nbsp;Cost to Company/ Stipend: <?php echo $ctc; ?><br>
+ &nbsp; &nbsp; &nbsp;Cost to Company/ Stipend: <?php echo $ctcnew; ?><br>
+ &nbsp; &nbsp; &nbsp;Cost to Company (if different for ME): <?php echo $ctcnewme; ?><br>
  &nbsp; &nbsp; &nbsp;Gross Take Home: <?php echo $gross; ?><br>
  &nbsp; &nbsp; &nbsp;Perks: <?php echo $perks; ?><br>
  &nbsp; &nbsp; &nbsp;Bond: <?php echo $bond; ?><br>

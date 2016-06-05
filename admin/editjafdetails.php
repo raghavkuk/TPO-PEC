@@ -34,6 +34,41 @@ if($result->num_rows > 0)
 {
 	$rethtml=$rethtml."<form id='jaf' method='post' action='savejaftpo.php?jafid=$jafid'>";
 	while($row=$result->fetch_assoc()) {
+		if($row['jobtype']=="Placement")
+		$ctc=$row['ctc']*100000;
+	    else
+			$ctc=$row['ctc']*1000;
+		$ctcme=$row['ctcme']*100000;
+		$fulltime="";
+		$internship="";
+		$beonly="";
+		$meonly="";
+		$both="";
+		$tech="";
+		$apti="";
+		$teap="";
+		$inper="";
+		$vc="";
+		if($row['jobtype']=="Placement")
+			$fulltime="selected";
+		else
+			$internship="selected";
+		if($row['programme']=="BE")
+			$beonly="selected";
+		else if($row['programme']=="ME")
+			$meonly="selected";
+		else
+			$both="selected";
+		if($row['written']=="Technical")
+			$tech="selected";
+		else if($row['written']=="Aptitude")
+			$apti="selected";
+		else
+			$teap="selected";
+		if($row['interview']=="In Person")
+			$inper="selected";
+		else
+			$vc="selected";
 		if (strpos($row['selection_proc'],"Pre-Placement Talk") !== false) {
         $pptalk="checked";
 }
@@ -115,9 +150,9 @@ if (strpos($row['branches_me'],"TQEM") !== false) {
 	<p>
 	<div class="form-group">
 	    <label for="type">Job Type</label>
-		<select name="type" id="type" class="form-control input-lg" value="'.$row['jobtype'].'">
-        <option value="Placement">Full-Time</option>
-  <option value="Internship">Internship</option>
+		<select name="type" id="type" class="form-control input-lg">
+        <option value="Placement" '.$fulltime.'>Full-Time</option>
+  <option value="Internship" '.$internship.'>Internship</option>
   </select>
   </div>
 	<div class="form-group">
@@ -130,7 +165,11 @@ if (strpos($row['branches_me'],"TQEM") !== false) {
     </div>
 	<div class="form-group">
         <label for="ctc">Cost to Company/ Stipend </label>
-        <input type="number" class="form-control input-lg" name="ctc" value="'.$row['ctc'].'" required>
+        <input type="number" class="form-control input-lg" name="ctc" value="'.$ctc.'">
+    </div>
+	<div class="form-group">
+        <label for="ctc">Cost to Company (if different for ME) </label>
+        <input type="number" step="any" class="form-control input-lg" name="ctcme" value="'.$ctcme.'">
     </div>
 	<div class="form-group">
         <label for="gross">Gross (Take home before Tax and other deuctions) </label>
@@ -148,10 +187,10 @@ if (strpos($row['branches_me'],"TQEM") !== false) {
 	</div>
 	<div class="form-group">
 	    <label for="prog">Allowed programme(s)</label>
-		<select name="prog" id="prog" class="form-control input-lg" value="'.$row['programme'].'">
-        <option value="BE">BE only</option>
-  <option value="ME">ME only</option>
-  <option value="BE/ME">Both BE and ME</option>
+		<select name="prog" id="prog" class="form-control input-lg">
+        <option value="BE" '.$beonly.'>BE only</option>
+  <option value="ME" '.$meonly.'>ME only</option>
+  <option value="BE/ME" '.$both.'>Both BE and ME</option>
   </select>
   </div>
   <h4>Allowed Trades in B.E.</h4>
@@ -174,20 +213,20 @@ if (strpos($row['branches_me'],"TQEM") !== false) {
   <h4>Allowed Trades in M.E.</h4>
 	<div class="form-group">
 	<fieldset>
-	<input type="checkbox" value="Industrial Material Metallurgy" name="meind" id="meind" $meind>Industrial Material Metallurgy</input><br/><br/>
-	<input type="checkbox" value="Civil (Water Resources)" name="mecivilwr" id="mecivilwr" $mecivilwr>Civil (Water Resources)</input><br/><br/>
-	<input type="checkbox" value="Environmental Engineering" name="meenv" id="meenv" $meenv>Environmental Engineering</input><br/><br/>
-	<input type="checkbox" value="Transportation Engineering" name="metran" id="metran" $metran>Transportation Engineering</input><br/><br/>
-	<input type="checkbox" value="Production" name="meprod" id="meprod" $meprod>Production</input><br/><br/>
-	<input type="checkbox" value="Electrical" name="meee" id="meee" $meee>Electrical</input><br/><br/>
-	<input type="checkbox" value="Civil (Structure)" name="mecivilstru" id="mecivilstru" $mecivilstru>Civil (Structure)</input><br/><br/>
-	<input type="checkbox" value="Electronics (VLSI)" name="meecevlsi" id="meecevlsi" $meecevlsi>Electronics (VLSI)</input><br/><br/>
-	<input type="checkbox" value="Computer Science" name="mecse" id="mecse" $mecse>Computer Science</input><br/><br/>
-	<input type="checkbox" value="Industrial Design" name="meinddes" id="meinddes" $meinddes>Industrial Design</input><br/><br/>
-	<input type="checkbox" value="Mechanical" name="memech" id="memech" $memech>Mechanical</input><br/><br/>
-	<input type="checkbox" value="Computer Science (Information Security)" name="meis" id="meis" $meis>Computer Science (Information Security)</input><br/><br/>
-	<input type="checkbox" value="Electronics" name="meece" id="meece" $meece>Electronics</input><br/><br/>
-	<input type="checkbox" value="TQEM" name="metqem" id="metqem" $metqem>TQEM</input><br/><br/>
+	<input type="checkbox" value="Industrial Material Metallurgy" name="meind" id="meind" '. $meind.'>Industrial Material Metallurgy</input><br/><br/>
+	<input type="checkbox" value="Civil (Water Resources)" name="mecivilwr" id="mecivilwr" '.$mecivilwr.'>Civil (Water Resources)</input><br/><br/>
+	<input type="checkbox" value="Environmental Engineering" name="meenv" id="meenv" '.$meenv.'>Environmental Engineering</input><br/><br/>
+	<input type="checkbox" value="Transportation Engineering" name="metran" id="metran" '.$metran.'>Transportation Engineering</input><br/><br/>
+	<input type="checkbox" value="Production" name="meprod" id="meprod" '.$meprod.'>Production</input><br/><br/>
+	<input type="checkbox" value="Electrical" name="meee" id="meee" '.$meee.'>Electrical</input><br/><br/>
+	<input type="checkbox" value="Civil (Structure)" name="mecivilstru" id="mecivilstru" '.$mecivilstru.'>Civil (Structure)</input><br/><br/>
+	<input type="checkbox" value="Electronics (VLSI)" name="meecevlsi" id="meecevlsi" '.$meecevlsi.'>Electronics (VLSI)</input><br/><br/>
+	<input type="checkbox" value="Computer Science" name="mecse" id="mecse" '.$mecse.'>Computer Science</input><br/><br/>
+	<input type="checkbox" value="Industrial Design" name="meinddes" id="meinddes" '.$meinddes.'>Industrial Design</input><br/><br/>
+	<input type="checkbox" value="Mechanical" name="memech" id="memech" '.$memech.'>Mechanical</input><br/><br/>
+	<input type="checkbox" value="Computer Science (Information Security)" name="meis" id="meis" '.$meis.'>Computer Science (Information Security)</input><br/><br/>
+	<input type="checkbox" value="Electronics" name="meece" id="meece" '.$meece.'>Electronics</input><br/><br/>
+	<input type="checkbox" value="TQEM" name="metqem" id="metqem" '.$metqem.'>TQEM</input><br/><br/>
 	</fieldset>
   </div>
   
@@ -206,17 +245,17 @@ if (strpos($row['branches_me'],"TQEM") !== false) {
     </div>
 	<div class="form-group">
 	    <label for="written">Written Test</label>
-		<select name="written" id="written" class="form-control input-lg" value="'.$row['written'].'">
-        <option value="Technical">Technical</option>
-  <option value="Aptitude">Aptitude</option>
-  <option value="Both">Both</option>
+		<select name="written" id="written" class="form-control input-lg">
+        <option value="Technical" '.$tech.'>Technical</option>
+  <option value="Aptitude" '.$apti.'>Aptitude</option>
+  <option value="Both" '.$teap.'>Both</option>
   </select>
   </div>
   <div class="form-group">
 	    <label for="interview">Interviews</label>
-		<select name="interview" id="interview" class="form-control input-lg" value="'.$row['interview'].'">
-        <option value="In Person">In Person</option>
-  <option value="Video Conferencing">Video Conferencing</option>
+		<select name="interview" id="interview" class="form-control input-lg">
+        <option value="In Person" '.$inper.'>In Person</option>
+  <option value="Video Conferencing" '.$vc.'>Video Conferencing</option>
   </select>
   </div>
   <div class="form-group">
