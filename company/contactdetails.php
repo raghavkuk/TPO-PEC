@@ -103,7 +103,7 @@ include '../functions.php';
                         
                         <div class="form-group">
                             <label for="contactcontact2">Contact Number (Other)</label>
-                            <input type="text" class="form-control input-lg" name="contactcontact2" required>
+                            <input type="text" class="form-control input-lg" name="contactcontact2">
                         </div>
                         
                         <div class="form-group">

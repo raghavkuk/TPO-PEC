@@ -22,7 +22,8 @@ if($result->num_rows == 1){
 	$result->close();
 
 } else {
-	echo "Username or password didn't match.";
+	header('Location: login.php?status=failed');
+	//echo "Username or password didn't match.";
 }
 
 function redirect($url, $statusCode = 303)

@@ -28,11 +28,11 @@ $programme_row = $programme_result->fetch_assoc();
 $programme = $programme_row['programme'];
 $placementtable="";
 $loginprog=$_SESSION['loginprog'];
-if($loginprog=="BE Final year")
+if($loginprog=="BE")
 	$placementtable="placementdetails_be";
-if($loginprog=="BE Third year")
+if($loginprog=="BEINT")
 	$placementtable="placementdetails_beint";
-if($loginprog=="ME Final year")
+if($loginprog=="ME")
 	$placementtable="placementdetails_me";
 $_SESSION['prog']=$programme;
 ?>
@@ -89,19 +89,39 @@ $_SESSION['prog']=$programme;
 
                             <?php 
                                 $pkg=0;
+								$sql="SELECT distinct jaf_id from applications where sid='$sid' AND student_programme='$programme'";
+								$result=$mysqli->query($sql);
+								$app="";
+								$cnt=$result->num_rows;
+								if($cnt>0)
+								{
+								while($row=$result->fetch_assoc())
+								{
+									if($cnt==1)
+										$app=$app."'".$row['jaf_id']."'";
+									else
+										$app=$app."'".$row['jaf_id']."',";
+									$cnt--;
+								}
+								}
                                 $sql="select * from $placementtable where sid=$sid";
+								//echo $sql;
+								$eligible="";
 								$result=$mysqli->query($sql);
 								while($row=$result->fetch_assoc())
 								{
 									if($row['status']!='PLACED')
 									{
 										$pkg=$row['package1'];
-										$pkg=200000+$pkg;
+										$pkg=2+$pkg;
 									}
+									$eligible=$row['eligible_further'];
+									
 								}
-								
-								$jaf_query = "SELECT * FROM ".$jaf_table." WHERE reviewed>0 and cgpa <= ".$cgpa." and ctc>=$pkg and deadline>curdate() and programme like '%BE%' and (branches_be like '%$branch%' or branches_me like '%$branch%') order by deadline";
-                                
+								if($eligible=="YES")
+								{
+								$jaf_query = "SELECT * FROM ".$jaf_table." WHERE reviewed>0 and cgpa <= ".$cgpa." and ctc>=$pkg and deadline >= curdate() and programme like '%BE%' and (branches_be like '%$branch%' or branches_me like '%$branch%') and jaf_id NOT IN ($app) order by deadline";
+                                //echo $jaf_query;
 								$jaf_result = $mysqli->query($jaf_query);
 
                                 $i = 0;
@@ -226,6 +246,7 @@ $_SESSION['prog']=$programme;
                                                                         <option value="<?php echo $filename;  ?>"><?php echo $filename; ?></option>
 
                                                                     <?php }
+								                                          
                                                                 ?>
                                                                 </select>
                                                             </div>
@@ -246,10 +267,10 @@ $_SESSION['prog']=$programme;
                                     </div>
 
                                 <?php $i++; }
-
-                            ?>
-                        </div>
-
+								}
+								
+                        ?>
+                     </div>
                     </div>
                 </div>
 

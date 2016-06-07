@@ -16,5 +16,6 @@ if ($mysqli->query($sql) === TRUE) {
 } else {
     echo "Error: " . $sql . "<br>" . $mysqli->error;
 }
+header('Location: contactdetails.php');
 $mysqli->close();
 ?>

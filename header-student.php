@@ -23,12 +23,19 @@
             <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
             <div class="collapse navbar-collapse navbar-ex1-collapse">
                 <ul class="nav navbar-nav side-nav">
-                    <li class="active">
-                        <a href="home.php"><i class="fa fa-fw fa-dashboard"></i> New Companies</a>
-                    </li>
                     <li>
                         <a href="announcements.php"><i class="fa fa-fw fa-bar-chart-o"></i> Announcements</a>
                     </li>
+					<li>
+                        <a href="home.php"><i class="fa fa-fw fa-dashboard"></i> New Companies</a>
+                    </li>
+					<li>
+                        <a href="applications-students.php"><i class="fa fa-fw fa-bar-chart-o"></i>My Applications</a>
+                    </li>
+					<li>
+                        <a href="placements.php"><i class="fa fa-fw fa-bar-chart-o"></i> My placements</a>
+                    </li>
+                    
                     
                   </ul>
             </div>

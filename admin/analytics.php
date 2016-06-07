@@ -378,7 +378,7 @@ $(document).ready(function(){
 	<option value='Civil'>Civil</option>
 	<option value='Computer Science'>Computer Science</option>
 	<option value='Electrical'>Electrical</option>
-	<option value='Electronics and Communiction'>Electronics and Communiction</option>
+	<option value='Electronics and Communication'>Electronics and Communication</option>
 	<option value='Mechanical'>Mechanical</option>
 	<option value='Metallurgy'>Metallurgy</option>
 	<option value='Production'>Production</option>

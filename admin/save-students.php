@@ -11,8 +11,26 @@ $databasetable = "student_details";
 include '../Classes/PHPExcel/IOFactory.php';
 
 // This is the file path to be uploaded.
-$inputFileName = $_FILES["file"]["name"]; 
-
+$branchbe=$_POST['branchbe'];
+$branchme=$_POST['branchme'];
+$branchbeint=$_POST['branchbeint'];
+$branch="";
+if($branchbe!="NA")
+{
+	$branch=$branchbe;
+    $prog="BE";
+}
+else if($branchme!="NA")
+{
+	$branch=$branchme;
+    $prog="ME";
+}
+else
+{
+	$branch=$branchbeint;
+    $prog="BEINT";
+}
+$inputFileName = $_FILES["file"]["name"];
 try {
 	$objPHPExcel = PHPExcel_IOFactory::load($inputFileName);
 } catch(Exception $e) {
@@ -23,7 +41,8 @@ try {
 $allDataInSheet = $objPHPExcel->getActiveSheet()->toArray(null,true,true,true);
 $arrayCount = count($allDataInSheet);  // Here get total count of row in that Excel sheet
 
-
+$sql="DELETE from student_details";
+$result = $mysqli->query($sql);
 for($i = 2; $i <= $arrayCount; $i++) {
 
 	$sid = trim( $allDataInSheet[$i]["B"] );
@@ -53,20 +72,19 @@ for($i = 2; $i <= $arrayCount; $i++) {
 	$father_name = trim( $allDataInSheet[$i]["AA"] );
 	$mother_name = trim( $allDataInSheet[$i]["AB"] );
 	$father_contact = trim( $allDataInSheet[$i]["AC"] );
-	$branch = "Computer Science";
 
 
-	$query = "INSERT INTO student_details (sid, name, gender, category, address, dob, branch, aieee_rank, 
+	$query = "INSERT INTO student_details (sid, name, gender, category, address, dob,programme, branch, aieee_rank, 
 		10th_marks, 10th_board, 10th_year, 10th_school, 12th_marks, 12th_board, 12th_year, 12th_school, 
 		sgpa_sem1, sgpa_sem2, sgpa_sem3, sgpa_sem4, cgpa, training, backlogs, contact_no, email, father_name, 
 		mother_name, father_contact) VALUES ('".$sid."', '".$name."', '".$gender."', '".$category."', 
-		'".$address."', '".$dob."', '".$branch."', '".$aieee_rank."', '".$marks_10th."', '".$board_10th."', 
+		'".$address."', '".$dob."', '".$prog."', '".$branch."', '".$aieee_rank."', '".$marks_10th."', '".$board_10th."', 
 		'".$year_10th."', '".$school_10th."', '".$marks_12th."', '".$board_12th."', '".$year_12th."', 
 		'".$school_12th."', '".$sgpa_sem1."', '".$sgpa_sem2."', '".$sgpa_sem3."', '".$sgpa_sem4."', '".$cgpa."', 
 		'".$training."', '".$backlog."', '".$contact_no."', '".$email."', '".$father_name."', '".$mother_name."', 
 		'".$father_contact."')";
 echo $query."<br>";
-	//$result = $mysqli->query($query);
+	$result = $mysqli->query($query);
 
 }
 
