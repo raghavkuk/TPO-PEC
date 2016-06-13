@@ -44,6 +44,7 @@
                 <option value="BE Third year">BE Third year</option>
                 </select><br>
                 <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+                <p><a href="forgot-password.php">Forgot password?</a></p>
             </form>
 <center>
 <img src="../images/PEC-Logo.png">

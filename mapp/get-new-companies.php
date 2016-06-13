@@ -24,33 +24,29 @@ $jaf_result = $mysqli->query($jaf_query);
 $i = 0;
 
 $response = array();
-echo "[";
 
 while($jaf = $jaf_result->fetch_assoc()) {
 
-	$response[] = $jaf;
-	echo json_encode($jaf);
-	echo ",";
-    // $jaf_id = $jaf['JAF_id'];
-    // $company_id = $jaf['company_id'];
-    // $job_designation = $jaf['job_designation'];
-    // $job_description = $jaf['job_description'];
-    // $ctc = $jaf['ctc'];
-    // $gross = $jaf['gross'];
-    // $perks = $jaf['perks'];
-    // $bond = $jaf['bond'];
-    // $min_cgpa = $jaf['cgpa'];
-    // $interview = $jaf['interview'];
-    // $selection_process = $jaf['selection_proc'];
+    $temp = array();
 
-    // $company_query = "SELECT company_name, company_about FROM ".$companies_table." WHERE company_id = ".$company_id;
-    // $company_result = $mysqli->query($company_query);
-    // $company = $company_result->fetch_assoc(); 
-    // $company_name = $company['company_name'];
-    // $company_about = $company['company_about'];  
+    $temp['company_name'] = $jaf['company_name'];
+    $temp['job_designation'] = $jaf['job_designation'];
+    $temp['job_description'] = $jaf['job_description'];
+    $temp['ctc'] = $jaf['ctc'];
+    $temp['gross'] = $jaf['gross'];
+    $temp['perks'] = $jaf['perks'];
+    $temp['bond'] = $jaf['bond'];
+    $temp['deadline'] = $jaf['deadline'];
+    $temp['date_of_visit'] = $jaf['dateofvisit'];
+    $temp['cgpa'] = $jaf['cgpa'];
+    $temp['jaf_id'] = $jaf['JAF_id'];
+    $temp['company_id'] = $jaf['company_id'];
+
+    array_push($response, $temp);
+     
 }
-echo "]";
-//echo json_encode($response);
-$jaf_result->close();
+
+echo json_encode($response);
+$mysqli->close();
 
 ?>

@@ -11,11 +11,6 @@ $companies_table = "companies";
 $app_table = "applications";
 $cv_table = "cvs";
 
-// $detail_query = "SELECT cgpa FROM ".$student_details_table." WHERE sid = ".$sid;
-// $result = $mysqli->query($detail_query);
-// $details_row = $result->fetch_assoc();
-
-// $cgpa = $details_row['cgpa'];
 
 
 $app_query = "SELECT * FROM ".$app_table." WHERE sid = ".$sid;
@@ -24,33 +19,26 @@ $app_result = $mysqli->query($app_query);
 $i = 0;
 
 $response = array();
-echo "[";
 
 while($appl = $app_result->fetch_assoc()) {
 
-	$response[] = $appl;
-	echo json_encode($appl);
-	echo ",";
-    // $jaf_id = $jaf['JAF_id'];
-    // $company_id = $jaf['company_id'];
-    // $job_designation = $jaf['job_designation'];
-    // $job_description = $jaf['job_description'];
-    // $ctc = $jaf['ctc'];
-    // $gross = $jaf['gross'];
-    // $perks = $jaf['perks'];
-    // $bond = $jaf['bond'];
-    // $min_cgpa = $jaf['cgpa'];
-    // $interview = $jaf['interview'];
-    // $selection_process = $jaf['selection_proc'];
+	$temp = array();
 
-    // $company_query = "SELECT company_name, company_about FROM ".$companies_table." WHERE company_id = ".$company_id;
-    // $company_result = $mysqli->query($company_query);
-    // $company = $company_result->fetch_assoc(); 
-    // $company_name = $company['company_name'];
-    // $company_about = $company['company_about'];  
+    $temp['company_name'] = $appl['company_name'];
+    $temp['job_designation'] = $appl['job_designation'];
+    $temp['company_id'] = $appl['company_id'];
+    $temp['jaf_id'] = $appl['jaf_id'];
+    $temp['sid'] = $appl['sid'];
+    $temp['cv_id'] = $appl['cv_id'];
+    $temp['student_name'] = $appl['student_name'];
+    $temp['student_programme'] = $appl['student_programme'];
+    $temp['student_branch'] = $appl['student_branch'];
+
+    array_push($response, $temp);
+
 }
-echo "]";
-//echo json_encode($response);
-$app_result->close();
+
+echo json_encode($response);
+$mysqli->close();
 
 ?>

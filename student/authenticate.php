@@ -4,6 +4,7 @@ include '../db_connection.php';
 
 $username = $_POST["username"];
 $password = $_POST["password"];
+$password = md5($password);
 $programme= $_POST["prog"];
 $_SESSION['loginprog']=$programme;
 $login_table = "student_login";
