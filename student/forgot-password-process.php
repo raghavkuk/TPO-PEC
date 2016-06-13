@@ -58,13 +58,14 @@ if(!filter_var($email,FILTER_VALIDATE_EMAIL)){
 echo "<br><br>";
 if($status=="OK"){
 
-	$email_exist_query = "SELECT email,sid FROM $student_details_table WHERE email = '$email'";
+	$email_exist_query = "SELECT email,sid,name FROM $student_details_table WHERE email = '$email'";
 	$email_result = $mysqli->query($email_exist_query);
 	$email_row = $email_result->fetch_assoc();
 	$email_rows = $email_result->num_rows;
 
 	$db_email = $email_row['email'];// email is stored to a variable
 	$db_sid = $email_row['sid'];
+	$db_name = $email_row['name'];
 
 	if ($email_rows == 0) {  
 		echo "<center><font face='Verdana' size='2' color=red><b>No Password</b><br> Sorry Your address is not there in our database . 
@@ -153,11 +154,11 @@ if($status=="OK"){
 	//Password to use for SMTP authentication
 	$mail->Password = "tpodev01";
 	//Set who the message is to be sent from
-	$mail->setFrom('tpo.pecuniv', 'TPO PEC');
+	$mail->setFrom('tpo.pecuniv@gmail.com', 'TPO PEC');
 	//Set an alternative reply-to address
 	//$mail->addReplyTo('replyto@example.com', 'First Last');
 	//Set who the message is to be sent to
-	$mail->addAddress($db_email, 'First Last');
+	$mail->addAddress($db_email, $db_name);
 	//Set the subject line
 	$mail->Subject = 'TPO PEC - Reset your password';
 	//Read an HTML message body from an external file, convert referenced images to embedded,
