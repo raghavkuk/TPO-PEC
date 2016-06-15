@@ -66,7 +66,7 @@ if(isset($todo) and $todo=="new-password"){
 
 
 	if ( strlen($password) < 3 or strlen($password) > 13 ){
-		$msg=$msg."Password must be more than 3 char legth and maximum 13 char lenght<BR>";
+		$msg=$msg."Password must be more than 3 char legth and maximum 14 char lenght<BR>";
 		$status= "NOTOK";
 	}					
 

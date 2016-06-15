@@ -143,6 +143,7 @@ $(document).ready(function()
 							<br><br>
 							<h4>SEND PASSWORDS TO STUDENTS</h4>
 							<form action='sendpasswords.php' method="post" enctype="multipart/form-data">
+							<div class="row">
 							<div class='col-md-3'>
 	<select name='passprog' class='form-control input-lg'>
 	<option value='BE'>B.E. Final Year</option>
@@ -150,7 +151,8 @@ $(document).ready(function()
 	<option value='ME'>M.E. Final Year</option>
 	</select>
 	</div>
-							<input type="submit" class="btn btn-secondary">Send Passwords</input>
+	</div><br>
+							<input type="submit" class="btn btn-secondary" value="Send">
 							</form>
                     </div>
                 </div>

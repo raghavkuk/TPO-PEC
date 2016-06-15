@@ -27,6 +27,14 @@ $programme_result = $mysqli->query($programme_query);
 $programme_row = $programme_result->fetch_assoc();
 $programme = $programme_row['programme'];
 $branch = $programme_row['branch'];
+/*if($branch=="Computer Science and Engineering")
+	$branch="Computer Science";
+else if($branch=="Materials and Metallurgical Engineering")
+	$branch="Metallurgy";
+else if($branch=="Industrial and Production Engineering")
+	$branch="Production";
+else
+	$branch=str_replace(" Engineering","",$branch);*/
 $_SESSION['branch']=$branch;
 $placementtable="";
 $jtype="";
@@ -137,6 +145,7 @@ $(document).ready(function()
                                 $pkg=0;
 								$_SESSION['applied']="";
 								$sql="SELECT distinct jaf_id from applications where sid='$sid' AND student_programme='$programme'";
+								//echo $sql;
 								$result=$mysqli->query($sql);
 								$app="";
 								$cnt=$result->num_rows;
@@ -175,7 +184,8 @@ $(document).ready(function()
 								if($eligible=="YES")
 								{
 								$jaf_query = "SELECT * FROM ".$jaf_table." WHERE reviewed>0 and jobtype='".$jtype."' and cgpa <= ".$cgpa." and ctc>=$pkg and deadline >= curdate() and programme like '%BE%' and (branches_be like '%$branch%' or branches_me like '%$branch%')".$jafq." order by deadline";
-                                //echo $jaf_query;
+                                echo $jaf_query;
+								
 								$jaf_result = $mysqli->query($jaf_query);
 
                                 $i = 0;

@@ -8,7 +8,8 @@ $result = $mysqli->query($query);
 if($result->num_rows>0){
 	while($row=$result->fetch_assoc())
 	{
-		$msg="Greetings from TPO-PEC. For using the Student Panel: <br> Your Username is: ".$row['username']."<br>Your Password is: ".$row['textpwd']."<br>You are advised to change the password after logging in successfully into the system.";
+		$name=$row['student_name'];
+		$msg="Hi $name, <br><br>Greetings from TPO-PEC. For using the Student Panel: <br> Your Username is: ".$row['username']."<br>Your Password is: ".$row['textpwd']."<br>You are advised to change the password after logging in successfully into the system.";
 		$email=$row['email'];
 		
 
@@ -47,7 +48,7 @@ if($result->num_rows>0){
 	//Set who the message is to be sent to
 	$mail->addAddress($email, "");
 	//Set the subject line
-	$mail->Subject = 'TPO PEC - Reset your password';
+	$mail->Subject = 'TPO PEC - Login Credentials';
 	//Read an HTML message body from an external file, convert referenced images to embedded,
 	//convert HTML into a basic plain-text alternative body
 	$mail->Body = $msg;
@@ -61,7 +62,7 @@ if($result->num_rows>0){
 	    //echo "Mailer Error: " . $mail->ErrorInfo;
 	    echo "<center><font face='Verdana' size='2' color=red><b>Couldn't send mail!";
 	} else {
-	    echo "<center><font face='Verdana' size='2' color=red><b>A link to reset your password has been sent to the email address you provided.";
+	    echo "<center><font face='Verdana' size='2' color=red><b>All set.". $email;
 	} 
 
 	}

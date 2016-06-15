@@ -39,7 +39,7 @@ else
     $prog="ME";
 	$placement_table="placementdetails_me";
 }
-$sql="DELETE from student_login where programme=$prog";
+$sql="DELETE from student_login where programme='$prog'";
 $result = $mysqli->query($sql);
 $inputFileName = $_FILES["file"]["name"];
 try {
@@ -99,7 +99,8 @@ for($i = 2; $i <= $arrayCount; $i++) {
 	$parent_contact = trim( $allDataInSheet[$i]["AI"] );
     $branch= trim( $allDataInSheet[$i]["K"] );
 	$branch= str_replace("'","",$branch);
-    
+    if($sid!="")
+	{
 	$query = "INSERT INTO student_details (sid, name, gender, category, address, hometown,state, pincode, dob,programme, branch, aieee_rank, 
 		10th_marks, 10th_board, 10th_year, 10th_school, 12th_marks, 12th_board, 12th_year, 12th_school, 
 		sgpa_sem1, sgpa_sem2, sgpa_sem3, sgpa_sem4, sgpa_sem5, sgpa_sem6, cgpa, percentage, training, backlogs, contact_no, email, father_name, 
@@ -114,14 +115,17 @@ echo $query."<br>";
 	$password=random_password(8);
 	$passwd=md5($password);
 	
-$query="INSERT into student_login (sid, branch, programme, username, password, textpwd) values ('$sid', '$branch', '$programme', '$sid', '$passwd', '$password')";
+$query="INSERT into student_login (sid, student_name, branch, programme, email, username, password, textpwd) values ('$sid','$name', '$branch', '$prog', '$email', '$sid', '$passwd', '$password')";
 $result = $mysqli->query($query);
-
+	}
 }
 }
-      //$sql="DELETE from $placement_table";
-      //$mysqli->query($sql);
-	  $sql="INSERT into $placement_table (sid, student_name, gender, student_branch, category, cgpa) 
-            SELECT sid, name, gender, branch, category, cgpa";
+      $sql="DELETE from $placement_table";
       $mysqli->query($sql);
+	  $sql="INSERT into $placement_table (sid, student_name, gender, student_branch, category, cgpa) SELECT sid, name, gender, branch, category, cgpa from student_details";
+      if($mysqli->query($sql)==TRUE)
+	  {
+		  header('Location: add-students.php');
+	  }
+	  
 ?>
