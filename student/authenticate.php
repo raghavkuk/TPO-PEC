@@ -15,7 +15,7 @@ if($programme=="BEINT")
 	$pt="placementdetails_beint";
 if($programme=="ME")
 	$pt="placementdetails_me";
-$query="SELECT blocked from $pt where sid=$username";
+$query="SELECT blocked from $pt where sid='$username'";
 $blockstatus="N";
 $result = $mysqli->query($query);
 if($result->num_rows == 1){

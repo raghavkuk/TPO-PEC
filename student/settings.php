@@ -53,11 +53,13 @@ include '../functions.php';
 
 						if(isset($_POST['submit'])){
 
+							
 							$old_password = md5($_POST['existing-password']);
 							$student_login_table = "student_login";
 							$sid = $_SESSION['sid'];
 
 							$new_password = md5($_POST['new-password']);
+							$newpwd= $_POST['new-password-confirm'];
 							$confirm_password = md5($_POST['new-password-confirm']);
 
 
@@ -71,7 +73,7 @@ include '../functions.php';
 									exit;
 								}
 
-								$password_update_query = "UPDATE $student_login_table SET password='$new_password' WHERE sid=$sid AND password='$old_password'";
+								$password_update_query = "UPDATE $student_login_table SET password='$new_password' AND textpwd='$newpwd' WHERE sid=$sid AND password='$old_password'";
 								$mysqli->query($password_update_query);
 								$update_result_rows = $mysqli->affected_rows;
 

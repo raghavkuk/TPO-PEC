@@ -114,7 +114,7 @@ echo $query."<br>";
 	$password=random_password(8);
 	$passwd=md5($password);
 	
-$query="INSERT into student_login (sid, branch, programme, username, password, textpwd) values ($sid, $branch, $programme, $sid, $passwd, $password)";
+$query="INSERT into student_login (sid, branch, programme, username, password, textpwd) values ('$sid', '$branch', '$programme', '$sid', '$passwd', '$password')";
 $result = $mysqli->query($query);
 
 }
