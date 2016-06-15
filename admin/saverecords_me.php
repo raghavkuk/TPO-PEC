@@ -9,6 +9,7 @@ if(!empty($_POST))
         //clean post values
         $field_userid = strip_tags(trim($field_name));
         $val = strip_tags(trim($mysqli->real_escape_string($val)));
+		$val= str_replace("'","",$val);
         //from the fieldname:user_id we need to get user_id
         $split_data = explode(':', $field_userid);
         $user_id = $split_data[1];

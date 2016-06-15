@@ -28,7 +28,25 @@
     <![endif]-->
 
 </head>
-
+<script type="text/javascript">
+$(document).ready(function()
+{
+	var status="<?php
+	if(isset($_GET['sent']))
+	{
+		if($_GET['sent']=="success")
+			echo "success";
+		else echo "";
+	}
+	else echo "";
+	?>";
+	if(status=="success")
+	{
+		$('#successmessage').html('');
+		$('#successmessage').html("You successfully sent passwords to students!<br>";
+	}
+}
+</script>
 <body>
 
     <div id="wrapper">
@@ -47,10 +65,23 @@
                                     <span class="label label-default">Upload Excel File (.xlsx) Do not change the default format</span>
                                 </h3>
 								<br>
-								<h4>Select one of the following three programmes. Do not select multiple..</h4>
-								<br>
+								<div class="alert alert-info alert-dismissable">
+				<div id="successmessage">
+	<strong>Send randomly generated passwords to students after uploading the data</strong>
+	</div>
+	</div>
+								<h4>Select one of the following three programmes.. </h4>
+								
+								
 								<div class="row">
-                                <div class='col-md-3'>
+								<div class='col-md-3'>
+	<select name='branch' class='form-control input-lg'>
+	<option value='be'>B.E. Final Year</option>
+	<option value='beint'>B.E. Third Year</option>
+	<option value='me'>M.E. Final Year</option>
+	</select>
+	</div>
+                                <!--div class='col-md-3'>
 	<h4>Select Branch if BE Placement</h4>
 	<select name='branchbe' class='form-control input-lg'>
 	<option value='NA'>None</option>
@@ -97,11 +128,11 @@
 <option value='Electronics'>Electronics</option>
 <option value='TQEM'>TQEM</option>
 	</select>
-	</div>
+	</div-->
 	</div>
 	<br><br>
                                 <div class="form-group">
-                                    <label for="file">File input</label>
+                                    <label for="file">File input (Excel with all sheets)</label>
                                     <input type="file" name="file" id="file" />
                                 </div> 
                                 
@@ -109,6 +140,18 @@
                                    <input class="btn btn-primary" type="submit" name="submit" /></td> 
                                 </div>
                             </form> 
+							<br><br>
+							<h4>SEND PASSWORDS TO STUDENTS</h4>
+							<form action='sendpasswords.php' method="post" enctype="multipart/form-data">
+							<div class='col-md-3'>
+	<select name='passprog' class='form-control input-lg'>
+	<option value='BE'>B.E. Final Year</option>
+	<option value='BEINT'>B.E. Third Year</option>
+	<option value='ME'>M.E. Final Year</option>
+	</select>
+	</div>
+							<input type="submit" class="btn btn-secondary">Send Passwords</input>
+							</form>
                     </div>
                 </div>
 

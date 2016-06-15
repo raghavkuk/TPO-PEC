@@ -33,6 +33,8 @@ $(document).ready(function()
 	{
 		if($_GET['status']=='failed')
 			echo "failed";
+		else if($_GET['status']=='frozen')
+			echo "frozen";
 	}
     else echo "success";	
 	?>";
@@ -40,6 +42,11 @@ $(document).ready(function()
 	{
 		$('#message').show();
 		$('#message').html('<font color="yellow"><h4>Please login with valid credentials</h4></font>');
+	}
+	else if(status=="frozen")
+	{
+		$('#message').show();
+		$('#message').html('<font color="yellow"><h4>Your account stands blocked or frozen. Please contact TPO.</h4></font>');
 	}
 	else
 		$('#message').hide();

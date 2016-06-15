@@ -2,7 +2,7 @@
 session_start();
 include '../db_connection.php';
 $ann= $_POST['ann'];
-$company=$_POST['company'];
+$jafid=$_POST['company'];
 $branches=array();
 $branchesbeint=array();
 $c = 0;
@@ -174,7 +174,7 @@ if($trades=="")
 	$trades="NULL";
 if($company=="None")
 	$company="NULL";
-$sql="INSERT INTO announcements (date,announcement,company_name,branches_be,branches_me,branches_beint) values (curdate(),'".$ann."','".$company."','".$trades."','".$tradesme."','".$tradesbeint."')";
+$sql="INSERT INTO announcements (date,announcement,jaf_id,branches_be,branches_me,branches_beint) values (curdate(),'".$ann."','".$jafid."','".$trades."','".$tradesme."','".$tradesbeint."')";
 if ($mysqli->query($sql) === TRUE) {
 	$_SESSION['statusann']='success';
 header('Location:add-announcement.php?status=success');

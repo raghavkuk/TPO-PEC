@@ -9,7 +9,7 @@ $result = $mysqli->query($sql);
 if($result->num_rows > 0)
 {       
 		while($row=$result->fetch_assoc()) {
-			$rethtml = $rethtml."<option value='".$row['company_name']."'>".$row['company_name']." (".$row['jobtype'].")</option>";
+			$rethtml = $rethtml."<option value='".$row['JAF_id']."'>".$row['company_name']." (".$row['jobtype'].")</option>";
 		}
 
 		$rethtml = $rethtml."</select>";

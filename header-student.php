@@ -23,7 +23,7 @@
             <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
             <div class="collapse navbar-collapse navbar-ex1-collapse">
                 <ul class="nav navbar-nav side-nav">
-                    <li>
+                    <li class="selected">
                         <a href="announcements.php"><i class="fa fa-fw fa-bar-chart-o"></i> Announcements</a>
                     </li>
 					<li>
@@ -32,9 +32,7 @@
 					<li>
                         <a href="applications-students.php"><i class="fa fa-fw fa-bar-chart-o"></i>My Applications</a>
                     </li>
-					<li>
-                        <a href="placements.php"><i class="fa fa-fw fa-bar-chart-o"></i> My placements</a>
-                    </li>
+					
                     
                     <li>
                         <a href="settings.php"><i class="fa fa-fw fa-bar-chart-o"></i> Settings</a>

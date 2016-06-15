@@ -79,4 +79,5 @@ $application_query = "INSERT INTO ".$applications_table." (company_id, jaf_id, j
                         '".$student_programme."', '".$student_branch."', '".$cv_id."', '".$date_of_application."')";
 
 $application_result = $mysqli->query($application_query);
+header('Location: home.php?status=success');
 ?>

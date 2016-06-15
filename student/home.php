@@ -17,15 +17,17 @@ $result = $mysqli->query($detail_query);
 $details_row = $result->fetch_assoc();
 
 $student_name = $details_row['name'];
-$branch = $details_row['branch'];
+
 $cgpa = $details_row['cgpa'];
-$_SESSION['branch']=$branch;
+
 $_SESSION['name']=$student_name;
 $_SESSION['cgpa']=$cgpa;
-$programme_query = "SELECT programme FROM ".$student_login_table." WHERE sid = ".$sid;
+$programme_query = "SELECT programme, branch FROM ".$student_login_table." WHERE sid = ".$sid;
 $programme_result = $mysqli->query($programme_query);
 $programme_row = $programme_result->fetch_assoc();
 $programme = $programme_row['programme'];
+$branch = $programme_row['branch'];
+$_SESSION['branch']=$branch;
 $placementtable="";
 $jtype="";
 $loginprog=$_SESSION['loginprog'];
@@ -59,7 +61,10 @@ $_SESSION['prog']=$programme;
     <meta name="author" content="">
 
     <title>Student Home - TPO</title>
+    <script src="../js/jquery.js"></script>
 
+    <!-- Bootstrap Core JavaScript -->
+    <script src="../js/bootstrap.min.js"></script>
     <!-- Bootstrap Core CSS -->
     <link href="../css/bootstrap.min.css" rel="stylesheet">
 
@@ -70,7 +75,32 @@ $_SESSION['prog']=$programme;
     <link href="../font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 
 </head>
-
+<script type="text/javascript">
+$(document).ready(function()
+{
+	var status="<?php
+	if(isset($_GET['status']))
+	{
+		if($_GET['status']=="success")
+			echo "success";
+		else echo "";
+	}
+	else echo "";
+	?>";
+	if(status=="success")
+	{
+		$('#successmessage').html('');
+		$('#successmessage').html("You successfully applied for the company!<br>");
+		$('#successmessage').append("<strong>Watch out for more..</strong>");
+	}
+	$('#cvoptions').change(function()
+	{
+		if($('#cvoptions').val()!="No CV")
+			document.getElementById('fileToUpload').required=false;
+	});
+		
+});
+</script>
 <body>
 
     <div id="wrapper">
@@ -82,6 +112,7 @@ $_SESSION['prog']=$programme;
             <div class="container-fluid">
 
                 <!-- Page Heading -->
+				
                 <div class="row">
                     <div class="col-lg-12">
                         <h1 class="page-header">
@@ -90,6 +121,11 @@ $_SESSION['prog']=$programme;
                             
                     </div>
                 </div>
+				<div class="alert alert-info alert-dismissable">
+				<div id="successmessage">
+	<strong>Following are the companies available for you</strong>
+	</div>
+	</div>
                 <!-- /.row -->
 
                 <div class="row">
@@ -99,6 +135,7 @@ $_SESSION['prog']=$programme;
 
                             <?php 
                                 $pkg=0;
+								$_SESSION['applied']="";
 								$sql="SELECT distinct jaf_id from applications where sid='$sid' AND student_programme='$programme'";
 								$result=$mysqli->query($sql);
 								$app="";
@@ -118,8 +155,12 @@ $_SESSION['prog']=$programme;
 								//echo $sql;
 								$eligible="";
 								$jafq="";
+								
 								if($app!="")
-									$jafq=" and jaf_id NOT IN ($app)";
+								{	
+								   $jafq=" and jaf_id NOT IN ($app)";
+								   $_SESSION['applied']=$app;
+								}
 								$result=$mysqli->query($sql);
 								while($row=$result->fetch_assoc())
 								{
@@ -134,7 +175,7 @@ $_SESSION['prog']=$programme;
 								if($eligible=="YES")
 								{
 								$jaf_query = "SELECT * FROM ".$jaf_table." WHERE reviewed>0 and jobtype='".$jtype."' and cgpa <= ".$cgpa." and ctc>=$pkg and deadline >= curdate() and programme like '%BE%' and (branches_be like '%$branch%' or branches_me like '%$branch%')".$jafq." order by deadline";
-                                echo $jaf_query;
+                                //echo $jaf_query;
 								$jaf_result = $mysqli->query($jaf_query);
 
                                 $i = 0;
@@ -246,7 +287,7 @@ $_SESSION['prog']=$programme;
                                                         <div class="form-group">
                                                             <label class="control-label col-sm-2"></label>
                                                             <div class="col-sm-4">
-                                                                <select class="form-control" name="cvoptions" required="true">
+                                                                <select class="form-control" name="cvoptions" id="cvoptions" class="cvoptions">
 																<option value="No CV">No CV</option>
                                                                 <?php 
 
@@ -298,10 +339,7 @@ $_SESSION['prog']=$programme;
     <!-- /#wrapper -->
 
     <!-- jQuery -->
-    <script src="../js/jquery.js"></script>
-
-    <!-- Bootstrap Core JavaScript -->
-    <script src="../js/bootstrap.min.js"></script>
+    
 
 </body>
 

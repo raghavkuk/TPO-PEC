@@ -200,28 +200,28 @@ $(document).ready(function() {
 	<h4>Send to all students of these branches (B.E. Placement)</h4>
 	<div class="form-group">
 	<fieldset>
-	<input type="checkbox" value="Aerospace" id="aero" name="aero">Aerospace</input><br/><br/>
-	<input type="checkbox" value="Civil" name="civil" id="civil">Civil</input><br/><br/>
-	<input type="checkbox" value="Computer Science" name="cse" id="cse">Computer Science</input><br/><br/>
-	<input type="checkbox" value="Electronics and Communication" name="ece" id="ece">Electronics and Communication</input><br/><br/>
-	<input type="checkbox" value="Electrical" name="ee" id="ee">Electrical</input><br/><br/>
-	<input type="checkbox" value="Mechanical" name="mech" id="mech">Mechanical</input><br/><br/>
-	<input type="checkbox" value="Metallurgy" name="meta" id="meta">Metallurgy</input><br/><br/>
-	<input type="checkbox" value="Production" name="prod" id="prod">Production</input><br/>
+	<input type="checkbox" value="Aerospace" id="aero" name="aero">Aerospace Engineering</input><br/><br/>
+	<input type="checkbox" value="Civil" name="civil" id="civil">Civil Engineering</input><br/><br/>
+	<input type="checkbox" value="Computer Science" name="cse" id="cse">Computer Science and Engineering</input><br/><br/>
+	<input type="checkbox" value="Electronics and Communication" name="ece" id="ece">Electronics and Communication Engineering</input><br/><br/>
+	<input type="checkbox" value="Electrical" name="ee" id="ee">Electrical Engineering</input><br/><br/>
+	<input type="checkbox" value="Mechanical" name="mech" id="mech">Mechanical Engineering</input><br/><br/>
+	<input type="checkbox" value="Metallurgy" name="meta" id="meta">Materials and Metallurgical Engineering</input><br/><br/>
+	<input type="checkbox" value="Production" name="prod" id="prod">Industrial and Production Engineering</input><br/>
 	</fieldset>
   </div>
   <br>
   <h4>Send to all students of these branches (B.E. Internship)</h4>
   <div class="form-group">
 	<fieldset>
-	<input type="checkbox" value="Aerospace" id="aeroint" name="aeroint">Aerospace</input><br/><br/>
-	<input type="checkbox" value="Civil" name="civilint" id="civilint">Civil</input><br/><br/>
-	<input type="checkbox" value="Computer Science" name="cseint" id="cseint">Computer Science</input><br/><br/>
-	<input type="checkbox" value="Electronics and Communication" name="eceint" id="eceint">Electronics and Communication</input><br/><br/>
-	<input type="checkbox" value="Electrical" name="eeint" id="eeint">Electrical</input><br/><br/>
-	<input type="checkbox" value="Mechanical" name="mechint" id="mechint">Mechanical</input><br/><br/>
-	<input type="checkbox" value="Metallurgy" name="metaint" id="metaint">Metallurgy</input><br/><br/>
-	<input type="checkbox" value="Production" name="prodint" id="prodint">Production</input><br/>
+	<input type="checkbox" value="Aerospace" id="aeroint" name="aeroint">Aerospace Engineering</input><br/><br/>
+	<input type="checkbox" value="Civil" name="civilint" id="civilint">Civil Engineering</input><br/><br/>
+	<input type="checkbox" value="Computer Science" name="cseint" id="cseint">Computer Science and Engineering</input><br/><br/>
+	<input type="checkbox" value="Electronics and Communication" name="eceint" id="eceint">Electronics and Communication Engineering</input><br/><br/>
+	<input type="checkbox" value="Electrical" name="eeint" id="eeint">Electrical Engineering</input><br/><br/>
+	<input type="checkbox" value="Mechanical" name="mechint" id="mechint">Mechanical Engineering</input><br/><br/>
+	<input type="checkbox" value="Metallurgy" name="metaint" id="metaint">Materials and Metallurgical Engineering</input><br/><br/>
+	<input type="checkbox" value="Production" name="prodint" id="prodint">Industrial and Production Engineering</input><br/>
 	</fieldset>
   </div>
   <br>
