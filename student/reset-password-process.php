@@ -101,7 +101,7 @@ if(isset($todo) and $todo=="new-password"){
 	} 
 }
 
-
+$mysqli->close();
 ?>
 
 </body>

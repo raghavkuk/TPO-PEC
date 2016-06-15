@@ -36,7 +36,9 @@
                         <a href="placements.php"><i class="fa fa-fw fa-bar-chart-o"></i> My placements</a>
                     </li>
                     
-                    
+                    <li>
+                        <a href="settings.php"><i class="fa fa-fw fa-bar-chart-o"></i> Settings</a>
+                    </li>
                   </ul>
             </div>
             <!-- /.navbar-collapse -->
