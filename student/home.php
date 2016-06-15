@@ -27,13 +27,23 @@ $programme_result = $mysqli->query($programme_query);
 $programme_row = $programme_result->fetch_assoc();
 $programme = $programme_row['programme'];
 $placementtable="";
+$jtype="";
 $loginprog=$_SESSION['loginprog'];
 if($loginprog=="BE")
+{
 	$placementtable="placementdetails_be";
+	$jtype="Placement";
+}
 if($loginprog=="BEINT")
+{
 	$placementtable="placementdetails_beint";
+	$jtype="Internship";
+}
 if($loginprog=="ME")
+{
 	$placementtable="placementdetails_me";
+	$jtype="Placement";
+}
 $_SESSION['prog']=$programme;
 ?>
 
@@ -107,6 +117,9 @@ $_SESSION['prog']=$programme;
                                 $sql="select * from $placementtable where sid=$sid";
 								//echo $sql;
 								$eligible="";
+								$jafq="";
+								if($app!="")
+									$jafq=" and jaf_id NOT IN ($app)";
 								$result=$mysqli->query($sql);
 								while($row=$result->fetch_assoc())
 								{
@@ -120,8 +133,8 @@ $_SESSION['prog']=$programme;
 								}
 								if($eligible=="YES")
 								{
-								$jaf_query = "SELECT * FROM ".$jaf_table." WHERE reviewed>0 and cgpa <= ".$cgpa." and ctc>=$pkg and deadline >= curdate() and programme like '%BE%' and (branches_be like '%$branch%' or branches_me like '%$branch%') and jaf_id NOT IN ($app) order by deadline";
-                                //echo $jaf_query;
+								$jaf_query = "SELECT * FROM ".$jaf_table." WHERE reviewed>0 and jobtype='".$jtype."' and cgpa <= ".$cgpa." and ctc>=$pkg and deadline >= curdate() and programme like '%BE%' and (branches_be like '%$branch%' or branches_me like '%$branch%')".$jafq." order by deadline";
+                                echo $jaf_query;
 								$jaf_result = $mysqli->query($jaf_query);
 
                                 $i = 0;
@@ -139,7 +152,7 @@ $_SESSION['prog']=$programme;
                                     $min_cgpa = $jaf['cgpa'];
                                     $interview = $jaf['interview'];
                                     $selection_process = $jaf['selection_proc'];
-
+                                    $jobtype=$jaf['jobtype'];
                                     $company_query = "SELECT company_name, company_about FROM ".$companies_table." WHERE company_id = ".$company_id;
                                     $company_result = $mysqli->query($company_query);
                                     $company = $company_result->fetch_assoc(); 
@@ -219,9 +232,9 @@ $_SESSION['prog']=$programme;
                                                             </div>
                                                         </div>
                                                         <div class="form-group">
-                                                            <label class="control-label col-sm-2">Upload Resume/CV:</label>
+                                                            <label for="fileToUpload" class="control-label col-sm-2">Upload Resume/CV:</label>
                                                             <div class="col-sm-10"> 
-                                                                <input type="file" name="fileToUpload" id="fileToUpload">
+                                                                <input type="file" name="fileToUpload" id="fileToUpload" required="true">
                                                             </div>
                                                         </div>
                                                         <div class="form-group">
@@ -232,8 +245,8 @@ $_SESSION['prog']=$programme;
                                                         </div>
                                                         <div class="form-group">
                                                             <label class="control-label col-sm-2"></label>
-                                                            <div class="col-sm-10">
-                                                                <select class="form-control" name="cvoptions">
+                                                            <div class="col-sm-4">
+                                                                <select class="form-control" name="cvoptions" required="true">
 																<option value="No CV">No CV</option>
                                                                 <?php 
 
@@ -259,6 +272,7 @@ $_SESSION['prog']=$programme;
                                                         <input type="hidden" name="sid" value="<?php echo $sid; ?>" />
                                                         <input type="hidden" name="student_programme" value="<?php echo $programme; ?>" />
                                                         <input type="hidden" name="student_branch" value="<?php echo $branch; ?>" />
+														<input type="hidden" name="jobtype" value="<?php echo $jobtype; ?>" />
                                                         <button type="submit" class="btn btn-default" name="submit">Apply</button>
                                                     </form>
                                                 </div>

@@ -146,7 +146,7 @@ if ( isset($_POST["submit"]) ) {
                 unlink($_FILES["file"]["name"]); 
             } 
             $file_name = $_FILES["file"]["name"];
-            if(move_uploaded_file($_FILES["file"]["tmp_name"], '..\sheets\\'.$file_name)){
+            if(move_uploaded_file($_FILES["file"]["tmp_name"], '../sheets//'.$file_name)){
                 echo 'hey!';
             } 
             $uploadedStatus = 1; 

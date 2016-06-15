@@ -59,7 +59,7 @@ if ($uploadOk == 0) {
 }
 
 $applications_table = "applications";
-
+$jobtype=$_POST['jobtype'];
 $jaf_id = $_POST['jaf_id'];
 $company_id = $_POST['company_id'];
 $job_designation = $_POST['job_designation'];
@@ -73,9 +73,9 @@ $date_of_application = date('Y-m-d H:i:s');
 
 
 
-$application_query = "INSERT INTO ".$applications_table." (company_id, jaf_id, job_designation, company_name, sid, 
+$application_query = "INSERT INTO ".$applications_table." (company_id, jaf_id, job_designation, jobtype, company_name, sid, 
                         student_name, student_programme, student_branch, cv_id, date_of_application) VALUES ('".$company_id."', 
-                        '".$jaf_id."', '".$job_designation."', '".$company_name."', '".$sid."', '".$student_name."', 
+                        '".$jaf_id."', '".$job_designation."', '".$jobtype."', '".$company_name."', '".$sid."', '".$student_name."', 
                         '".$student_programme."', '".$student_branch."', '".$cv_id."', '".$date_of_application."')";
 
 $application_result = $mysqli->query($application_query);
