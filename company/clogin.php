@@ -51,5 +51,9 @@ $con=mysqli_connect("localhost","root","");
 	}
 	header('Location: aboutcompany.php');
    }
+   else
+   {
+	   header('Location: company-login.php?status=failed');
+   }
 $con->close();
 	?>

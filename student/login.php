@@ -67,7 +67,7 @@ $(document).ready(function()
                 <input type="text" id="inputUsername" name="username" class="form-control" placeholder="Username" required>
 				<br>
                 <label for="inputPassword" class="sr-only">Password</label>
-                <input type="password" id="inputPassword" name="password" class="form-control" placeholder="Password" required>
+                <input type="password" id="inputPassword" name="password" class="form-control" placeholder="Password" pattern="^[a-zA-Z0-9_- ]*$" required>
                 <font color="white"><label for="prog">Programme</label></font>
 		        <select name="prog" id="prog" class="form-control input-lg" required>
                 <option value="BE">BE Final year</option>

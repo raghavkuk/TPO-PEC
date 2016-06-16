@@ -12,6 +12,10 @@ $con=mysqli_connect("localhost","root","");
 	  
 	header('Location: newcompany.php');
    }
+   else
+   {
+	   header('Location: admin-login.php?status=failed');
+   }
    $_SESSION['statusadd']='failure';
 $con->close();
 ?>
