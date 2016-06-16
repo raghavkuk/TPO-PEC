@@ -15,6 +15,27 @@ include '../db_connection.php';
 $databasetable = "student_details";
 
 include '../Classes/PHPExcel/IOFactory.php';
+$uploadedStatus = 0;
+if ( isset($_POST["submit"]) ) { 
+
+    if ( isset($_FILES["file"])) { 
+        //if there was an error uploading the file 
+        if ($_FILES["file"]["error"] > 0) { 
+            echo "Return Code: " . $_FILES["file"]["error"] . "<br />"; 
+        } else { 
+            if (file_exists($_FILES["file"]["name"])) { 
+                unlink($_FILES["file"]["name"]); 
+            } 
+            $file_name = $_FILES["file"]["name"];
+            if(move_uploaded_file($_FILES["file"]["tmp_name"], $file_name)){
+                //echo 'hey!';
+            } 
+            $uploadedStatus = 1; 
+        }
+    } else { 
+        echo "No file selected <br />"; 
+    } 
+}
 
 // This is the file path to be uploaded.
 $sql="DELETE from student_details";
@@ -110,7 +131,7 @@ for($i = 2; $i <= $arrayCount; $i++) {
 		'".$school_12th."', '".$sgpa_sem1."', '".$sgpa_sem2."', '".$sgpa_sem3."', '".$sgpa_sem4."', '".$sgpa_sem5."', '".$sgpa_sem6."', '".$cgpa."', 
 		'".$percentage."', '".$training."', '".$backlog."', '".$contact_no."', '".$email."', '".$father_name."', '".$mother_name."', 
 		'".$parent_contact."')";
-echo $query."<br>";
+//echo $query."<br>";
 	$result = $mysqli->query($query);
 	$password=random_password(8);
 	$passwd=md5($password);
@@ -125,7 +146,7 @@ $result = $mysqli->query($query);
 	  $sql="INSERT into $placement_table (sid, student_name, gender, student_branch, category, cgpa) SELECT sid, name, gender, branch, category, cgpa from student_details";
       if($mysqli->query($sql)==TRUE)
 	  {
-		  header('Location: add-students.php');
+		  header('Location: add-students.php?status=success');
 	  }
 	  
 ?>

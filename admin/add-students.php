@@ -10,6 +10,10 @@
     <meta name="author" content="">
 
     <title>Update Student Record</title>
+    <script src="../js/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="../js/bootstrap.min.js"></script>
 
     <!-- Bootstrap Core CSS -->
     <link href="../css/bootstrap.min.css" rel="stylesheet">
@@ -43,9 +47,24 @@ $(document).ready(function()
 	if(status=="success")
 	{
 		$('#successmessage').html('');
-		$('#successmessage').html("You successfully sent passwords to students!<br>";
+		$('#successmessage').html("You successfully sent passwords to students!<br>");
 	}
-}
+
+var status2="<?php
+	if(isset($_GET['status']))
+	{
+		if($_GET['status']=="success")
+			echo "success";
+		else echo "";
+	}
+	else echo "";
+	?>";
+	if(status2=="success")
+	{
+		$('#successmessage').html('');
+		$('#successmessage').html("You successfully added the student data! Send Passwords to students now!<br>");
+	}
+});
 </script>
 <body>
 
@@ -167,38 +186,7 @@ $(document).ready(function()
     <!-- /#wrapper -->
 
     <!-- jQuery -->
-    <script src="../js/jquery.js"></script>
-
-    <!-- Bootstrap Core JavaScript -->
-    <script src="../js/bootstrap.min.js"></script>
-
+    
 </body>
 
 </html>
-
-<?php
-
-$uploadedStatus = 0; 
-
-if ( isset($_POST["submit"]) ) { 
-
-    if ( isset($_FILES["file"])) { 
-        //if there was an error uploading the file 
-        if ($_FILES["file"]["error"] > 0) { 
-            echo "Return Code: " . $_FILES["file"]["error"] . "<br />"; 
-        } else { 
-            if (!file_exists($_FILES["file"]["name"])) { 
-                unlink($_FILES["file"]["name"]); 
-            } 
-            $file_name = $_FILES["file"]["name"];
-            if(move_uploaded_file($_FILES["file"]["tmp_name"], '../sheets//'.$file_name)){
-                echo 'hey!';
-            } 
-            $uploadedStatus = 1; 
-        }
-    } else { 
-        echo "No file selected <br />"; 
-    } 
-} 
-
-?>
