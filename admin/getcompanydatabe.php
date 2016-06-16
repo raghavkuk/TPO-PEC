@@ -3,7 +3,7 @@ session_start();
 $company=$_GET['company'];
 include '../db_connection.php';
 $rethtml="";
-$sql="SELECT dateofvisit,ctc,gross from jaf_details where company_name='$company' AND dateofdept < curdate() AND dateofdept!='0000-00-00' AND reviewed!='0' AND removed='0' AND jobtype='Placement' and programme like '%BE%'";
+$sql="SELECT dateofvisit,ctc,gross from jaf_details where company_name='$company' AND dateofdept <= curdate() AND dateofdept!='0000-00-00' AND reviewed!='0' AND removed='0' AND jobtype='Placement' and programme like '%BE%'";
 //echo $sql;
 $result = $mysqli->query($sql);
 if($result->num_rows > 0)
