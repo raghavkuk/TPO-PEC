@@ -370,20 +370,21 @@ $(document).ready(function(){
 	<h4>Select Branch</h4>
 	<select name='branch' id='branchselect' class='form-control input-lg'>
 	<option value='All'>All</option>
-	<option value='Industrial Material Metallurgy'>Industrial Material Metallurgy</option>
-<option value='Civil (Water Resources'>Civil (Water Resources)</option>
+	<option value='Industrial Materials and Metallurgy'>Industrial Materials and Metallurgy</option>
+<option value='Civil Engineering (Irrigation and Hydraulics)'>Civil Engineering (Irrigation and Hydraulics)</option>
 <option value='Environmental Engineering'>Environmental Engineering</option>
 <option value='Transportation Engineering'>Transportation Engineering</option>
-<option value='Production'>Production</option>
-<option value='Electrical'>Electrical</option>
-<option value='Civil (Structure)'>Civil (Structure)</option>
-<option value='Electronics (VLSI)'>Electronics (VLSI)</option>
-<option value='Computer Science'>Computer Science</option>
-<option value='Industrial Design'>Industrial Design</option>
-<option value='Mechanical'>Mechanical</option>
-<option value='Computer Science (Information Security)'>Computer Science (Information Security)</option>
-<option value='Electronics'>Electronics</option>
-<option value='TQEM'>TQEM</option>
+<option value='Production and Industrial Engineering'>Production and Industrial Engineering</option>
+<option value='Electrical Engineering'>Electrical Engineering</option>
+<option value='Civil Engineering (Structures)'>Civil Engineering (Structures)</option>
+<option value='Civil Engineering (Highways)'>Civil Engineering (Highways)</option>
+<option value='Electronics (VLSI) Engineering'>Electronics (VLSI) Engineering</option>
+<option value='Computer Science and Engineering'>Computer Science and Engineering</option>
+<option value='Industrial Design Engineering'>Industrial Design Engineering</option>
+<option value='Mechanical Engineering'>Mechanical Engineering</option>
+<option value='Computer Science and Engineering (Information Security)'>Computer Science and Engineering (Information Security)</option>
+<option value='Electronics Engineering'>Electronics Engineering</option>
+<option value='Total Quality Engineering and Management'>Total Quality Engineering and Management</option>
 	</select>
 	</div>
 	<div class="col-md-3">

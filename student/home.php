@@ -184,7 +184,7 @@ $(document).ready(function()
 								if($eligible=="YES")
 								{
 								$jaf_query = "SELECT * FROM ".$jaf_table." WHERE reviewed>0 and jobtype='".$jtype."' and cgpa <= ".$cgpa." and ctc>=$pkg and deadline >= curdate() and programme like '%BE%' and (branches_be like '%$branch%' or branches_me like '%$branch%')".$jafq." order by deadline";
-                                echo $jaf_query;
+                                //echo $jaf_query;
 								
 								$jaf_result = $mysqli->query($jaf_query);
 

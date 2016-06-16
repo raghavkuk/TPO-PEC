@@ -22,6 +22,7 @@ $meprod="";
 $meee="";
 $mecivilstru="";
 $meecevlsi="";
+$mecivilhigh="";
 $mecse="";
 $meinddes="";
 $memech="";
@@ -78,34 +79,34 @@ if (strpos($row['selection_proc'],"Shortlist from Resumes") !== false) {
 if (strpos($row['selection_proc'],"Group Discussion") !== false) {
         $gd="checked";
 }
-if (strpos($row['branches_be'],"Aerospace") !== false) {
+if (strpos($row['branches_be'],"Aerospace Engineering") !== false) {
         $aero="checked";
 }
-if (strpos($row['branches_be'],"Civil") !== false) {
+if (strpos($row['branches_be'],"Civil Engineering") !== false) {
         $civil="checked";
 }
-if (strpos($row['branches_be'],"Computer Science") !== false) {
+if (strpos($row['branches_be'],"Computer Science and Engineering") !== false) {
         $cse="checked";
 }
-if (strpos($row['branches_be'],"Electronics and Communication") !== false) {
+if (strpos($row['branches_be'],"Electronics and Communication Engineering") !== false) {
         $ece="checked";
 }
-if (strpos($row['branches_be'],"Electrical") !== false) {
+if (strpos($row['branches_be'],"Electrical Engineering") !== false) {
         $ee="checked";
 }
-if (strpos($row['branches_be'],"Mechanical") !== false) {
+if (strpos($row['branches_be'],"Mechanical Engineering") !== false) {
         $mech="checked";
 }
-if (strpos($row['branches_be'],"Metallurgy") !== false) {
+if (strpos($row['branches_be'],"Materials and Metallurgical Engineering") !== false) {
         $meta="checked";
 }
-if (strpos($row['branches_be'],"Production") !== false) {
+if (strpos($row['branches_be'],"Production and Industrial Engineering") !== false) {
         $prod="checked";
 }
-if (strpos($row['branches_me'],"Industrial Material Metallurgy") !== false) {
+if (strpos($row['branches_me'],"Industrial Materials and Metallurgy") !== false) {
         $meind="checked";
 }
-if (strpos($row['branches_me'],"Civil (Water Resources)") !== false) {
+if (strpos($row['branches_me'],"Civil Engineering (Irrigation and Hydraulics)") !== false) {
         $mecivilwr="checked";
 }
 if (strpos($row['branches_me'],"Environmental Engineering") !== false) {
@@ -114,34 +115,34 @@ if (strpos($row['branches_me'],"Environmental Engineering") !== false) {
 if (strpos($row['branches_me'],"Transportation Engineering") !== false) {
         $metran="checked";
 }
-if (strpos($row['branches_me'],"Electrical") !== false) {
+if (strpos($row['branches_me'],"Electrical Engineering") !== false) {
         $meee="checked";
 }
-if (strpos($row['branches_me'],"Mechanical") !== false) {
+if (strpos($row['branches_me'],"Mechanical Engineering") !== false) {
         $memech="checked";
 }
-if (strpos($row['branches_me'],"Civil (Structure)") !== false) {
+if (strpos($row['branches_me'],"Civil Engineering (Structures)") !== false) {
         $mecivilstru="checked";
 }
-if (strpos($row['branches_me'],"Production") !== false) {
+if (strpos($row['branches_me'],"Production and Industrial Engineering") !== false) {
         $meprod="checked";
 }
-if (strpos($row['branches_me'],"Electronics (VLSI)") !== false) {
+if (strpos($row['branches_me'],"Electronics (VLSI) Engineering") !== false) {
         $meecevlsi="checked";
 }
-if (strpos($row['branches_me'],"Computer Science") !== false) {
+if (strpos($row['branches_me'],"Computer Science and Engineering") !== false) {
         $mecse="checked";
 }
-if (strpos($row['branches_me'],"Industrial Design") !== false) {
+if (strpos($row['branches_me'],"Industrial Design Engineering") !== false) {
         $meinddes="checked";
 }
-if (strpos($row['branches_me'],"Computer Science (Information Security)") !== false) {
+if (strpos($row['branches_me'],"Computer Science and Engineering (Information Security)") !== false) {
         $meis="checked";
 }
-if (strpos($row['branches_me'],"Electronics") !== false) {
+if (strpos($row['branches_me'],"Electronics Engineering") !== false) {
         $meece="checked";
 }
-if (strpos($row['branches_me'],"TQEM") !== false) {
+if (strpos($row['branches_me'],"Total Quality Engineering and Management") !== false) {
         $metqem="checked";
 }
 
@@ -196,14 +197,14 @@ if (strpos($row['branches_me'],"TQEM") !== false) {
   <h4>Allowed Trades in B.E.</h4>
 	<div class="form-group">
 	<fieldset>
-	<input type="checkbox" value="Aerospace" id="aero" name="aero" '.$aero.'>Aerospace</input><br/><br/>
-	<input type="checkbox" value="Civil" name="civil" id="civil" '.$civil.'>Civil</input><br/><br/>
-	<input type="checkbox" value="Computer Science" name="cse" id="cse" '.$cse.'>Computer Science</input><br/><br/>
-	<input type="checkbox" value="Electronics and Communication" name="ece" id="ece" '.$ece.'>Electronics and Communication</input><br/><br/>
-	<input type="checkbox" value="Electrical" name="ee" id="ee" '.$ee.'>Electrical</input><br/><br/>
-	<input type="checkbox" value="Mechanical" name="mech" id="mech" '.$mech.'>Mechanical</input><br/><br/>
-	<input type="checkbox" value="Metallurgy" name="meta" id="meta" '.$meta.'>Metallurgy</input><br/><br/>
-	<input type="checkbox" value="Production" name="prod" id="prod" '.$prod.'>Production</input><br/>
+	<input type="checkbox" value="Aerospace Engineering" id="aero" name="aero" '.$aero.'>Aerospace Engineering</input><br/><br/>
+	<input type="checkbox" value="Civil Engineering" name="civil" id="civil" '.$civil.'>Civil Engineering</input><br/><br/>
+	<input type="checkbox" value="Computer Science and Engineering" name="cse" id="cse" '.$cse.'>Computer Science and Engineering</input><br/><br/>
+	<input type="checkbox" value="Electronics and Communication Engineering" name="ece" id="ece" '.$ece.'>Electronics and Communication Engineering</input><br/><br/>
+	<input type="checkbox" value="Electrical Engineering" name="ee" id="ee" '.$ee.'>Electrical Engineering</input><br/><br/>
+	<input type="checkbox" value="Mechanical Engineering" name="mech" id="mech" '.$mech.'>Mechanical Engineering</input><br/><br/>
+	<input type="checkbox" value="Materials and Metallurgical Engineering" name="meta" id="meta" '.$meta.'>Materials and Metallurgical Engineering</input><br/><br/>
+	<input type="checkbox" value=" and Industrial Engineering" name="prod" id="prod" '.$prod.'>Production and Industrial Engineering</input><br/>
 	</fieldset>
   </div>
   </div>
@@ -213,20 +214,21 @@ if (strpos($row['branches_me'],"TQEM") !== false) {
   <h4>Allowed Trades in M.E.</h4>
 	<div class="form-group">
 	<fieldset>
-	<input type="checkbox" value="Industrial Material Metallurgy" name="meind" id="meind" '. $meind.'>Industrial Material Metallurgy</input><br/><br/>
-	<input type="checkbox" value="Civil (Water Resources)" name="mecivilwr" id="mecivilwr" '.$mecivilwr.'>Civil (Water Resources)</input><br/><br/>
+	<input type="checkbox" value="Industrial Materials and Metallurgy" name="meind" id="meind" '. $meind.'>Industrial Materials and Metallurgy</input><br/><br/>
+	<input type="checkbox" value="Civil Engineering (Irrigation and Hydraulics)" name="mecivilwr" id="mecivilwr" '.$mecivilwr.'>Civil Engineering (Irrigation and Hydraulics)</input><br/><br/>
 	<input type="checkbox" value="Environmental Engineering" name="meenv" id="meenv" '.$meenv.'>Environmental Engineering</input><br/><br/>
 	<input type="checkbox" value="Transportation Engineering" name="metran" id="metran" '.$metran.'>Transportation Engineering</input><br/><br/>
-	<input type="checkbox" value="Production" name="meprod" id="meprod" '.$meprod.'>Production</input><br/><br/>
-	<input type="checkbox" value="Electrical" name="meee" id="meee" '.$meee.'>Electrical</input><br/><br/>
-	<input type="checkbox" value="Civil (Structure)" name="mecivilstru" id="mecivilstru" '.$mecivilstru.'>Civil (Structure)</input><br/><br/>
-	<input type="checkbox" value="Electronics (VLSI)" name="meecevlsi" id="meecevlsi" '.$meecevlsi.'>Electronics (VLSI)</input><br/><br/>
-	<input type="checkbox" value="Computer Science" name="mecse" id="mecse" '.$mecse.'>Computer Science</input><br/><br/>
-	<input type="checkbox" value="Industrial Design" name="meinddes" id="meinddes" '.$meinddes.'>Industrial Design</input><br/><br/>
-	<input type="checkbox" value="Mechanical" name="memech" id="memech" '.$memech.'>Mechanical</input><br/><br/>
-	<input type="checkbox" value="Computer Science (Information Security)" name="meis" id="meis" '.$meis.'>Computer Science (Information Security)</input><br/><br/>
-	<input type="checkbox" value="Electronics" name="meece" id="meece" '.$meece.'>Electronics</input><br/><br/>
-	<input type="checkbox" value="TQEM" name="metqem" id="metqem" '.$metqem.'>TQEM</input><br/><br/>
+	<input type="checkbox" value="Production and Industrial Engineering" name="meprod" id="meprod" '.$meprod.'>Production and Industrial Engineering</input><br/><br/>
+	<input type="checkbox" value="Electrical Engineering" name="meee" id="meee" '.$meee.'>Electrical Engineering</input><br/><br/>
+	<input type="checkbox" value="Civil Engineering (Structures)" name="mecivilstru" id="mecivilstru" '.$mecivilstru.'>Civil Engineering (Structures)</input><br/><br/>
+	<input type="checkbox" value="Civil Engineering (Highways)" name="mecivilhigh" id="mecivilhigh" '.$mecivilhigh.'>Civil Engineering (Highways)</input><br/><br/>
+	<input type="checkbox" value="Electronics (VLSI) Engineering" name="meecevlsi" id="meecevlsi" '.$meecevlsi.'>Electronics (VLSI) Engineering</input><br/><br/>
+	<input type="checkbox" value="Computer Science and Engineering" name="mecse" id="mecse" '.$mecse.'>Computer Science and Engineering</input><br/><br/>
+	<input type="checkbox" value="Industrial Design Engineering" name="meinddes" id="meinddes" '.$meinddes.'>Industrial Design Engineering</input><br/><br/>
+	<input type="checkbox" value="Mechanical Engineering" name="memech" id="memech" '.$memech.'>Mechanical Engineering</input><br/><br/>
+	<input type="checkbox" value="Computer Science and Engineering (Information Security)" name="meis" id="meis" '.$meis.'>Computer Science and Engineering (Information Security)</input><br/><br/>
+	<input type="checkbox" value="Electronics Engineering" name="meece" id="meece" '.$meece.'>Electronics Engineering</input><br/><br/>
+	<input type="checkbox" value="Tota; Quality Engineering and Management" name="metqem" id="metqem" '.$metqem.'>Tota; Quality Engineering and Management</input><br/><br/>
 	</fieldset>
   </div>
   

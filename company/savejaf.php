@@ -37,32 +37,32 @@ $trades="";
 $branchesme=array();
 $d = 0;
 $tradesme="";
-if(isset($_POST["aero"]) && $_POST["aero"] == 'Aerospace')
-{	$branches[$c]="Aerospace";
+if(isset($_POST["aero"]) && $_POST["aero"] == 'Aerospace Engineering')
+{	$branches[$c]="Aerospace Engineering";
     $c++;
 }
-if(isset($_POST["cse"]) && $_POST["cse"] == 'Computer Science')
-{$branches[$c]="Computer Science";
+if(isset($_POST["cse"]) && $_POST["cse"] == 'Computer Science and Engineering')
+{$branches[$c]="Computer Science and Engineering";
 $c++;
 }
-if(isset($_POST["ece"]) && $_POST["ece"] == 'Electronics and Communication'){
-	$branches[$c]="Electronics and Communication";
+if(isset($_POST["ece"]) && $_POST["ece"] == 'Electronics and Communication Engineering'){
+	$branches[$c]="Electronics and Communication Engineering";
 	$c++;
 }
-if(isset($_POST["ee"]) && $_POST["ee"] == 'Electrical'){
-	$branches[$c]="Electrical";
+if(isset($_POST["ee"]) && $_POST["ee"] == 'Electrical Engineering'){
+	$branches[$c]="Electrical Engineering";
     $c++;
 	}
-if(isset($_POST["mech"]) && $_POST["mech"] == 'Mechanical'){
-	$branches[$c]="Mechanical";
+if(isset($_POST["mech"]) && $_POST["mech"] == 'Mechanical Engineering'){
+	$branches[$c]="Mechanical Engineering";
 	$c++;
 }
-if(isset($_POST["meta"]) && $_POST["meta"] == 'Metallurgy'){
-	$branches[$c]="Metallurgy";
+if(isset($_POST["meta"]) && $_POST["meta"] == 'Materials and Metallurgical Engineering'){
+	$branches[$c]="Materials and Metallurgical Engineering";
     $c++;
 	}
-if(isset($_POST["prod"]) && $_POST["prod"] == 'Production'){
-	$branches[$c]="Production";
+if(isset($_POST["prod"]) && $_POST["prod"] == 'Production and Industrial Engineering'){
+	$branches[$c]="Production and Industrial Engineering";
     $c++;
 	}
 	$d=$c-1;
@@ -77,12 +77,12 @@ if($c>0)
 	$trades=$trades.$branches[$i];
 }
 $c=0;
-if(isset($_POST["meind"]) && $_POST["meind"] == 'Industrial Material Metallurgy')
-{$branchesme[$c]="Industrial Material Metallurgy";
+if(isset($_POST["meind"]) && $_POST["meind"] == 'Industrial Materials and Metallurgy')
+{$branchesme[$c]="Industrial Materials and Metallurgy";
 $c++;
 }
-if(isset($_POST["mecivilwr"]) && $_POST["mecivilwr"] == 'Civil (Water Resources)'){
-	$branchesme[$c]="Civil (Water Resources)";
+if(isset($_POST["mecivilwr"]) && $_POST["mecivilwr"] == 'Civil Engineering (Irrigation and Hydrauics)'){
+	$branchesme[$c]="Civil Engineering (Irrigation and Hydrauics)";
 	$c++;
 }
 if(isset($_POST["meenv"]) && $_POST["meenv"] == 'Environmental Engineering'){
@@ -93,44 +93,48 @@ if(isset($_POST["metran"]) && $_POST["metran"] == 'Transportation Engineering'){
 	$branchesme[$c]="Transportation Engineering";
 	$c++;
 }
-if(isset($_POST["meprod"]) && $_POST["meprod"] == 'Production'){
-	$branchesme[$c]="Production";
+if(isset($_POST["meprod"]) && $_POST["meprod"] == 'Production and Industrial Engineering'){
+	$branchesme[$c]="Production and Industrial Engineering";
     $c++;
 	}
-if(isset($_POST["meee"]) && $_POST["meee"] == 'Electrical'){
-	$branchesme[$c]="Electrical";
+if(isset($_POST["meee"]) && $_POST["meee"] == 'Electrical Engineering'){
+	$branchesme[$c]="Electrical Engineering";
     $c++;
 	}
-if(isset($_POST["mecivilstru"]) && $_POST["mecivilstru"] == 'Civil (Structure)'){
-	$branchesme[$c]="Civil (Structure)";
+if(isset($_POST["mecivilstru"]) && $_POST["mecivilstru"] == 'Civil Engineering (Structures)'){
+	$branchesme[$c]="Civil Engineering (Structures)";
     $c++;
 	}
-if(isset($_POST["meecevlsi"]) && $_POST["meecevlsi"] == 'Electronics (VLSI)'){
-	$branchesme[$c]="Electronics (VLSI)";
+if(isset($_POST["mecivilhigh"]) && $_POST["mecivilhigh"] == 'Civil Engineering (Highways)'){
+	$branchesme[$c]="Civil Engineering (Highways)";
     $c++;
 	}
-if(isset($_POST["mecse"]) && $_POST["mecse"] == 'Computer Science'){
-	$branchesme[$c]="Computer Science";
+if(isset($_POST["meecevlsi"]) && $_POST["meecevlsi"] == 'Electronics (VLSI) Engineering'){
+	$branchesme[$c]="Electronics (VLSI) Engineering";
     $c++;
 	}
-if(isset($_POST["meinddes"]) && $_POST["meinddes"] == 'Industrial Design'){
-	$branchesme[$c]="Industrial Design";
+if(isset($_POST["mecse"]) && $_POST["mecse"] == 'Computer Science and Engineering'){
+	$branchesme[$c]="Computer Science and Engineering";
     $c++;
 	}
-if(isset($_POST["memech"]) && $_POST["memech"] == 'Mechanical'){
-	$branchesme[$c]="Mechanical";
+if(isset($_POST["meinddes"]) && $_POST["meinddes"] == 'Industrial Design Engineering'){
+	$branchesme[$c]="Industrial Design Engineering";
     $c++;
 	}
-if(isset($_POST["meis"]) && $_POST["meis"] == 'Computer Science (Information Security)'){
-	$branchesme[$c]="Computer Science (Information Security)";
+if(isset($_POST["memech"]) && $_POST["memech"] == 'Mechanical Engineering'){
+	$branchesme[$c]="Mechanical Engineering";
     $c++;
 	}
-if(isset($_POST["meece"]) && $_POST["meece"] == 'Electronics'){
-	$branchesme[$c]="Electronics";
+if(isset($_POST["meis"]) && $_POST["meis"] == 'Computer Science and Engineering (Information Security)'){
+	$branchesme[$c]="Computer Science and Engineering (Information Security)";
     $c++;
 	}
-if(isset($_POST["metqem"]) && $_POST["metqem"] == 'TQEM'){
-	$branchesme[$c]="TQEM";
+if(isset($_POST["meece"]) && $_POST["meece"] == 'Electronics Engineering'){
+	$branchesme[$c]="Electronics Engineering";
+    $c++;
+	}
+if(isset($_POST["metqem"]) && $_POST["metqem"] == 'Total Quality Engineering and Management'){
+	$branchesme[$c]="Total Quality Engineering and Management";
     $c++;
 	}
 $d=$c-1;

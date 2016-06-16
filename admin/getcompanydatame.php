@@ -29,6 +29,7 @@ $meenv=0;
 $metran=0;
 $meprod=0;
 $meee=0;
+$mecivilhigh=0;
 $mecivilstru=0;
 $meecevlsi=0;
 $mecse=0;
@@ -42,53 +43,56 @@ $metqem=0;
 			$males++;
 		else
 			$females++;
-		if($row['student_branch']=="Industrial Material Metallurgy")
+		if($row['student_branch']=="Industrial Materials and Metallurgy")
 			$meind++;
-		if($row['student_branch']=="Civil (Water Resources)")
+		if($row['student_branch']=="Civil Engineering (Irrigation and Hydraulics)")
 			$mecivilwr++;
 		if($row['student_branch']=="Environmental Engineering")
 			$meenv++;
 		if($row['student_branch']=="Transportation Engineering")
 			$metran++;
-		if($row['student_branch']=="Production")
+		if($row['student_branch']=="Production and Industrial Engineering")
 			$meprod++;
-		if($row['student_branch']=="Elctrical")
+		if($row['student_branch']=="Elctrical Engineering")
 			$meee++;
-		if($row['student_branch']=="Civil (Structure)")
+		if($row['student_branch']=="Civil Engineering (Structures)")
 			$mecivilstru++;
-		if($row['student_branch']=="Electronics (VLSI)")
+		if($row['student_branch']=="Civil Engineering (Highways)")
+			$mecivilhigh++;
+		if($row['student_branch']=="Electronics (VLSI) Engineering")
 			$meecevlsi++;
-		if($row['student_branch']=="Computer Science")
+		if($row['student_branch']=="Computer Science and Engineering")
 			$mecse++;
-		if($row['student_branch']=="Industrial Design")
+		if($row['student_branch']=="Industrial Design Engineering")
 			$meinddes++;
-		if($row['student_branch']=="Mechanical")
+		if($row['student_branch']=="Mechanical Engineering")
 			$memech++;
-		if($row['student_branch']=="Computer Science (Information Security)")
+		if($row['student_branch']=="Computer Science and Engineering (Information Security)")
 			$meis++;
-		if($row['student_branch']=="Electronics")
+		if($row['student_branch']=="Electronics Engineering")
 			$meece++;
-		if($row['student_branch']=="TQEM")
+		if($row['student_branch']=="Total Quality Engineering and Management")
 			$metqem++;
 		
 	}
 	$rethtml=$rethtml."<h4><b>Males hired:</b> $males</h4><h4><b>Females hired:</b> $females</h4>";
 	$rethtml=$rethtml."<table class='table' id='branchwise'><thead><th>Branch</th><th>Number of Students hired</th></thead>
 	<tbody>
-	<tr><td>Industrial Material Metallurgy</td><td>$meind</td></tr>
-	<tr><td>Civil (Water Resources)</td><td>$mecivilwr</td></tr>
+	<tr><td>Industrial Materials and Metallurgy</td><td>$meind</td></tr>
+	<tr><td>Civil Engineering(Irrigation and Hydraulics)</td><td>$mecivilwr</td></tr>
+	<tr><td>Civil Engineering(Highways)</td><td>$mecivilhigh</td></tr>
 	<tr><td>Environmental Engineering</td><td>$meenv</td></tr>
 	<tr><td>Transportation Engineering</td><td>$metran</td></tr>
-	<tr><td>Production</td><td>$meprod</td></tr>
-	<tr><td>Elctrical</td><td>$meee</td></tr>
-	<tr><td>Civil (Structure)</td><td>$mecivilstru</td></tr>
-	<tr><td>Electronics (VLSI)</td><td>$meecevlsi</td></tr>
-	<tr><td>Computer Science</td><td>$mecse</td></tr>
-	<tr><td>Industrial Design</td><td>$meinddes</td></tr>
-	<tr><td>Mechanical</td><td>$memech</td></tr>
-	<tr><td>Computer Science (Information Security)</td><td>$meis</td></tr>
-	<tr><td>Electronics</td><td>$meece</td></tr>
-	<tr><td>TQEM</td><td>$metqem</td></tr>
+	<tr><td>Production and Industrial Engineering</td><td>$meprod</td></tr>
+	<tr><td>Electrical Engineering</td><td>$meee</td></tr>
+	<tr><td>Civil Engineering (Structures)</td><td>$mecivilstru</td></tr>
+	<tr><td>Electronics (VLSI) Engineering</td><td>$meecevlsi</td></tr>
+	<tr><td>Computer Science and Engineering</td><td>$mecse</td></tr>
+	<tr><td>Industrial Design Engineering</td><td>$meinddes</td></tr>
+	<tr><td>Mechanical Engineering</td><td>$memech</td></tr>
+	<tr><td>Computer Science and Engineering (Information Security)</td><td>$meis</td></tr>
+	<tr><td>Electronics Engineering</td><td>$meece</td></tr>
+	<tr><td>Total Quality Engineering and Management</td><td>$metqem</td></tr>
 	</tbody>
 	</table>";
 }

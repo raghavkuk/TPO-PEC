@@ -244,14 +244,14 @@ $(document).ready(function(){
 	<h4>Select Branch</h4>
 	<select name='branch' id='branchselect' class='form-control input-lg'>
 	<option value='All'>All</option>
-	<option value='Aerospace'>Aerospace</option>
-	<option value='Civil'>Civil</option>
-	<option value='Computer Science'>Computer Science</option>
-	<option value='Electrical'>Electrical</option>
-	<option value='Electronics and Communication'>Electronics and Communication</option>
-	<option value='Mechanical'>Mechanical</option>
-	<option value='Metallurgy'>Metallurgy</option>
-	<option value='Production'>Production</option>
+	<option value='Aerospace Engineering'>Aerospace Engineering</option>
+	<option value='Civil Engineering'>Civil Engineering</option>
+	<option value='Computer Science and Engineering'>Computer Science and Engineering</option>
+	<option value='Electrical Engineering'>Electrical Engineering</option>
+	<option value='Electronics and Communication Engineering'>Electronics and Communication Engineering</option>
+	<option value='Mechanical Engineering'>Mechanical Engineering</option>
+	<option value='Material and Metallurgical Engineering'>Materials and Metallurgical Engineering</option>
+	<option value='Production and Industrial Engineering'>Production and Industrial Engineering</option>
 	</select>
 	</div>
 	<div class="col-md-4">

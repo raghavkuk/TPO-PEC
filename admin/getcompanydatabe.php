@@ -36,34 +36,34 @@ if($result->num_rows > 0)
 			$males++;
 		else
 			$females++;
-		if($row['student_branch']=="Aerospace")
+		if($row['student_branch']=="Aerospace Engineering")
 			$aero++;
-		if($row['student_branch']=="Civil")
+		if($row['student_branch']=="Civil Engineering")
 			$civil++;
-		if($row['student_branch']=="Computer Science")
+		if($row['student_branch']=="Computer Science and Engineering")
 			$cse++;
-		if($row['student_branch']=="Electrical")
+		if($row['student_branch']=="Electrical Engineering")
 			$ee++;
-		if($row['student_branch']=="Electronics and Communication")
+		if($row['student_branch']=="Electronics and Communication Engineering")
 			$ece++;
-		if($row['student_branch']=="Mechanical")
+		if($row['student_branch']=="Mechanical Engineering")
 			$mech++;
-		if($row['student_branch']=="Metallurgy")
+		if($row['student_branch']=="Materials and Metallurgical Engineering")
 			$mett++;
-		if($row['student_branch']=="Production")
+		if($row['student_branch']=="Production and Industrial Engineering")
 			$prod++;
 	}
 	$rethtml=$rethtml."<h4><b>Males hired:</b> $males</h4><h4><b>Females hired:</b> $females</h4>";
 	$rethtml=$rethtml."<table class='table' id='branchwise'><thead><th>Branch</th><th>Number of Students hired</th></thead>
 	<tbody>
-	<tr><td>Aerospace</td><td>$aero</td></tr>
-	<tr><td>Civil</td><td>$civil</td></tr>
-	<tr><td>Computer Science</td><td>$cse</td></tr>
-	<tr><td>Electrical</td><td>$ee</td></tr>
-	<tr><td>Electronics and Communication</td><td>$ece</td></tr>
-	<tr><td>Mechanical</td><td>$mech</td></tr>
-	<tr><td>Mettalurgy</td><td>$mett</td></tr>
-	<tr><td>Production</td><td>$prod</td></tr>
+	<tr><td>Aerospace Engineering</td><td>$aero</td></tr>
+	<tr><td>Civil Engineering</td><td>$civil</td></tr>
+	<tr><td>Computer Science and Engineering</td><td>$cse</td></tr>
+	<tr><td>Electrical Engineering</td><td>$ee</td></tr>
+	<tr><td>Electronics and Communication Engineering</td><td>$ece</td></tr>
+	<tr><td>Mechanical Engineering</td><td>$mech</td></tr>
+	<tr><td>Materials and Metallurgical</td><td>$mett</td></tr>
+	<tr><td>Production and Industrial Engineering</td><td>$prod</td></tr>
 	</tbody>
 	</table>";
 }

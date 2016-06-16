@@ -7,22 +7,23 @@ $rethtml = "";
 $i = 0;
 $placement_table = "placementdetails_me";
 $branches=array();
-$branches[0]="Industrial Material Metallurgy";
-$branches[1]="Civil (Water Resources)";
+$branches[0]="Industrial Materials and Metallurgy";
+$branches[1]="Civil Engineering (Irrigation and Hydraulics)";
 $branches[2]="Environmental Engineering";
 $branches[3]="Transportation Engineering";
-$branches[4]="Production";
-$branches[5]="Electrical";
-$branches[6]="Civil (Structure)";
-$branches[7]="Electronics (VLSI)";
-$branches[8]="Computer Science";
-$branches[9]="Industrial Design";
-$branches[10]="Mechanical";
-$branches[11]="Computer Science (Information Security)";
-$branches[12]="Electronics";
-$branches[13]="TQEM";
+$branches[4]="Production and Industrial Engineering";
+$branches[5]="Electrical Engineering";
+$branches[6]="Civil Engineering (Structures)";
+$branches[7]="Electronics (VLSI) Engineering";
+$branches[8]="Computer Science and Engineering";
+$branches[9]="Industrial Design Engineering";
+$branches[10]="Mechanical Engineering";
+$branches[11]="Computer Science and Engineering(Information Security)";
+$branches[12]="Electronics Engineering";
+$branches[13]="Total Quality Engineering and Management";
+$branches[14]="Civil Engineering (Highways)";
 
-	$count = 14;
+	$count = 15;
 	$i = 0;
 
 	while($count--) {
