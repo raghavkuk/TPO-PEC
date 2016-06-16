@@ -7,6 +7,7 @@ $password = $_POST["password"];
 $password = md5($password);
 $programme= $_POST["prog"];
 $_SESSION['loginprog']=$programme;
+$_SESSION['logged_in'] = "no";
 $login_table = "student_login";
 $pt="";
 if($programme=="BE")
@@ -32,6 +33,7 @@ if($result->num_rows == 1 && $blockstatus=="N"){
 	
 	$res_row = $result->fetch_row();
 	$_SESSION["sid"] = $res_row[0];
+	$_SESSION['logged_in'] = "yes";
 	redirect("http://localhost/tpo-pec/student/home.php?sid=".$_SESSION['sid']);
 	$result->close();
 

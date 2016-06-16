@@ -1,4 +1,27 @@
 <!DOCTYPE html>
+<?php
+session_start();
+
+
+if(isset($_SESSION['logged_in']) && !empty($_SESSION['logged_in'])){
+
+    if(isset($_GET['lo']) && !empty($_GET['lo'])){
+
+        if($_GET['lo'] == 1){
+
+            $_SESSION['logged_in'] = "no";
+        }
+
+    }
+
+    if($_SESSION['logged_in'] == "yes"){
+        header("Location: home.php?sid=".$_SESSION['sid']);
+    }
+    
+}
+
+
+?>
 <html lang="en">
 
 <head>

@@ -4,6 +4,10 @@ include '../db_connection.php';
 
 session_start();
 
+if(!isset($_SESSION['logged_in'])){
+    header('Location: login.php');
+}
+
 $sid = $_SESSION["sid"];
 
 $student_details_table = "student_details";

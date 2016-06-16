@@ -205,6 +205,24 @@ for($i=0; $i<sizeof($branches); $i++){
 	}
 }
 
+for($i=0; $i<sizeof($branchesbeint); $i++){
+	$regIdQuery = 'SELECT token FROM '.$gcm_table.' WHERE branch LIKE "%'.$branchesbeint[i].'%"';
+	$regResult = $mysqli->query($regIdQuery);
+	while($regId = $regResult->fetch_assoc()){
+		$rid = $regId['token'];
+		array_push($registrationIds, $rid);
+	}
+}
+
+for($i=0; $i<sizeof($branchesme); $i++){
+	$regIdQuery = 'SELECT token FROM '.$gcm_table.' WHERE branch LIKE "%'.$branchesme[i].'%"';
+	$regResult = $mysqli->query($regIdQuery);
+	while($regId = $regResult->fetch_assoc()){
+		$rid = $regId['token'];
+		array_push($registrationIds, $rid);
+	}
+}
+
 
     // prep the bundle
 $msg = array

@@ -4,10 +4,15 @@ include '../db_connection.php';
 
 $sid = $_POST['sid'];
 $password = $_POST['password'];
+$programme = $_POST['student_programme'];
+
+if($programme == "BE Final Year"){
+	$programme = "BE";
+}
 
 $login_table = "student_login";
 
-$query = "SELECT sid, password, branch, student_name, programme FROM ".$login_table." WHERE username = '".$sid."' AND password = '".$password."'";
+$query = "SELECT sid, password, branch, student_name, programme FROM ".$login_table." WHERE username = '".$sid."' AND password = '".$password."' AND programme = '".$programme."'";
 
 $result = $mysqli->query($query);
 

@@ -1,4 +1,17 @@
 <!-- Navigation -->
+<?php
+
+if(isset($_SESSION['logged_in']) && !empty($_SESSION["logged_in"])){
+
+    if($_SESSION['logged_in'] == "no"){
+        header('Location: login.php');
+    }
+}else if(!isset($_SESSION['logged_in'])){
+    header('Location: login.php');
+}
+
+?>
+
         <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
             <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header">
@@ -16,7 +29,7 @@
             
                 
                 <li>
-                    <a href="login.php"><i class="fa fa-fw fa-power-off"></i><font color="#cdcdcd"> Log Out</font></a>
+                    <a href="login.php?lo=1"><i class="fa fa-fw fa-power-off"></i><font color="#cdcdcd"> Log Out</font></a>
 
                 </li>
             </ul>
