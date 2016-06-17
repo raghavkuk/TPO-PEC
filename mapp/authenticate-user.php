@@ -8,6 +8,10 @@ $programme = $_POST['student_programme'];
 
 if($programme == "BE Final Year"){
 	$programme = "BE";
+}else if($programme == "ME Final Year"){
+	$programme = "ME";
+}else if($programme == "BE Third Year"){
+	$programme = "BEINT";
 }
 
 $login_table = "student_login";
