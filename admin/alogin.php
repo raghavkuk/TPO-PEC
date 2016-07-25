@@ -14,7 +14,7 @@ $ap=$_POST["apass"];
    }
    else
    {
-	   header('Location: admin-login.php?status=failed');
+	   header('Location: index.php?status=failed');
    }
    $_SESSION['statusadd']='failure';
 $mysqli->close();

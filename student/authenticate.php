@@ -39,12 +39,12 @@ if($result->num_rows == 1 && $blockstatus=="N"){
 
 } else if($blockstatus=="Y")
 {
-	header('Location: login.php?status=frozen');
+	header('Location: index.php?status=frozen');
 }	
 else
 {
    
-	header('Location: login.php?status=failed');
+	header('Location: index.php?status=failed');
 	//echo "Username or password didn't match.";
 }
 
