@@ -43,7 +43,7 @@ $(document).ready(function()
 <div class="container">
 
 <div class="page-header">
-    <font color="white"><h2 align="center">Training and Placement Cell, PEC Chandigarh</h2></font>
+    <font color="white"><h2 align="center">Training and Placement Cell, PEC Chandigarh: Company Home</h2></font>
 </div>
 
 <!-- Simple Login - START -->

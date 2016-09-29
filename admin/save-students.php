@@ -89,6 +89,7 @@ for($i = 2; $i <= $arrayCount; $i++) {
 	$state= trim( $allDataInSheet[$i]["H"] );
 	$pin= trim( $allDataInSheet[$i]["I"] );
 	$branch= trim( $allDataInSheet[$i]["K"] );
+	$branch= str_replace("'","",$branch);
 	$address = trim( $allDataInSheet[$i]["F"] );
 	$address= str_replace("'","",$address);
 	$aieee_rank = trim( $allDataInSheet[$i]["L"] );
@@ -118,8 +119,7 @@ for($i = 2; $i <= $arrayCount; $i++) {
 	$father_name = trim( $allDataInSheet[$i]["AG"] );
 	$mother_name = trim( $allDataInSheet[$i]["AH"] );
 	$parent_contact = trim( $allDataInSheet[$i]["AI"] );
-    $branch= trim( $allDataInSheet[$i]["K"] );
-	$branch= str_replace("'","",$branch);
+    
     if($sid!="")
 	{
 	$query = "INSERT INTO student_details (sid, name, gender, category, address, hometown,state, pincode, dob,programme, branch, aieee_rank, 
