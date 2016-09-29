@@ -20,10 +20,11 @@ $cid=0;
 $cname="";
 $cn=$_POST["cname"];
 $cp=$_POST["cpass"];
+
 // $con=mysqli_connect("localhost","root","");
 //    mysqli_select_db($con,"tpo");
    $qry = "SELECT company_id, company_name from company_login where company_username='".$cn."' and company_password='".$cp."'";
-   $result = $mysql->query($qry);
+   $result = $mysqli->query($qry);
    if($result->num_rows>0)
    {
 	while($row=$result->fetch_assoc())

@@ -55,7 +55,7 @@ a:active {
     </div>
 
         <li>
-            <a href="company-login.html"><i class="fa fa-fw fa-power-off"></i> <font color="#cdcdcd">Log Out</font></a>
+            <a href="index.php"><i class="fa fa-fw fa-power-off"></i> <font color="#cdcdcd">Log Out</font></a>
         </li>
     </ul>
     <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
